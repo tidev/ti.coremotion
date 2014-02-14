@@ -1,0 +1,33 @@
+<Alloy>
+	<Window class="container">
+        <ScrollView>
+            <Label id="status" class="dataTitle">Status</Label>
+
+            <Label id="titleAtt" class="dataTitle">Attitude</Label>        
+            <Label id="rollAtt" class="dataLabel">roll:</Label>
+            <Label id="pitchAtt" class="dataLabel">pitch:</Label>
+            <Label id="yawAtt" class="dataLabel">yaw:</Label>
+
+            <Label id="titleRot" class="dataTitle">Rotation Rate</Label>        
+            <Label id="xRot" class="dataLabel">x:</Label>
+            <Label id="yRot" class="dataLabel">y:</Label>
+            <Label id="zRot" class="dataLabel">z:</Label>
+
+            <Label id="titleGrav" class="dataTitle">Gravity</Label>        
+            <Label id="xGrav" class="dataLabel">x:</Label>
+            <Label id="yGrav" class="dataLabel">y:</Label>
+            <Label id="zGrav" class="dataLabel">z:</Label>
+
+            <Label id="titleUserAcc" class="dataTitle">User Acceleration</Label>        
+            <Label id="xUserAcc" class="dataLabel">x:</Label>
+            <Label id="yUserAcc" class="dataLabel">y:</Label>
+            <Label id="zUserAcc" class="dataLabel">z:</Label>
+
+            <Label id="titleMag" class="dataTitle">Magnetic Field</Label>
+            <Label id="xMag" class="dataLabel">x:</Label>
+            <Label id="yMag" class="dataLabel">y:</Label>
+            <Label id="zMag" class="dataLabel">z:</Label>
+            <Label id="accMag" class="dataLabel">Accuracy:</Label>
+        </ScrollView>
+	</Window>
+</Alloy>
