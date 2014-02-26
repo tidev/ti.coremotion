@@ -10,7 +10,7 @@ COMPILING THE MODULE
 
 Since this is a hyperloop based module, compiling this module will be different. 
 
-First of [following instructions](https://github.com/appcelerator/hyperloop/blob/master/README.md) for installing hyperloop on you machine : 
+1. [Follow the instructions](https://github.com/appcelerator/hyperloop/blob/master/README.md) for installing hyperloop on your machine.
 
 #### fork, clone, and install locally
 
@@ -33,7 +33,7 @@ npm install
 sudo npm link
 ```
 
-Now that you have hyperloop installed on your machine, all you need to do is run the following in command-line:
+2. Run the following command:
 
 ```bash
 # Assuming ~/Documents/appcelerator-modules/ti.coremotion is location of this module and build is /Documents/appcelerator-modules/ti.coremotion/build destination where you want the compiled module.
@@ -67,7 +67,7 @@ After succesfully compiling the module and building the docs, follow the steps b
 # Navigate to the ios directory of the module project and execute the following commands
 # Add additional folders to the module zip
 # Make sure to change the version numbers below to match the current version of the module
-mkdir -p ./modules/iphone/ti.coremotion/1.0.0/platform
+mkdir -p ./modules/iphone/ti.coremotion/1.0.0
 cp -RP build/apidoc modules/iphone/ti.coremotion/1.0.0/
 cp -RP example modules/iphone/ti.coremotion/1.0.0/
 cp -RP documentation modules/iphone/ti.coremotion/1.0.0/
@@ -81,7 +81,7 @@ rm -rf ./modules
 OTHER NOTES
 -----------
 
-Ultimately, the `apidoc`, `example`, and `platform` foldes will be included in the module zip when the module is built.
+Ultimately, the `apidoc`, `example`, and `platform` folders will be included in the module zip when the module is built.
 
 This module is currently working correctly with tisdk 3.2.1.GA when built with hyperloop git hash b91e6788d9d2f393b83dc84c9742b3ddccb01cf8
 
