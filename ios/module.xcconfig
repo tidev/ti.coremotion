@@ -25,6 +25,3 @@
 //
 // IMPORTANT NOTE: always use $(inherited) in your overrides
 // 
-
-FRAMEWORK_SEARCH_PATHS=$(SRCROOT)/../../modules/iphone/ti.coremotion/1.0.0/platform/iphone /Library/Application\ Support/Titanium/modules/iphone/ti.coremotion/1.0.0/platform/iphone ~/Library/Application\ Support/Titanium/modules/iphone/ti.coremotion/1.0.0/platform/iphone
-OTHER_LDFLAGS=$(inherited) -framework KSCrash

@@ -37,7 +37,7 @@ Now that you have hyperloop installed on your machine, all you need to do is run
 
 ```bash
 # Assuming ~/Documents/appcelerator-modules/ti.coremotion is location of this module and build is /Documents/appcelerator-modules/ti.coremotion/build destination where you want the compiled module.
-hyperloop package module --platform=ios --src=~/Documents/appcelerator-modules/ti.coremotion --dest=~/Documents/appcelerator-modules/ti.coremotion/build
+hyperloop package module --cflags=-DHL_DISABLE_CRASH --platform=ios --src=~/Documents/appcelerator-modules/ti.coremotion --dest=~/Documents/appcelerator-modules/ti.coremotion/build
 ```
 
 BUILDING THE DOCS
@@ -65,17 +65,9 @@ After succesfully compiling the module and building the docs, follow the steps b
 
 ```bash
 # Navigate to the ios directory of the module project and execute the following commands
-# Setup symlinks for KSCrash framework
-cd ./platform-temp/iphone/KSCrash.framework/Versions/
-ln -s A/ Current
-cd ..
-ln -s Versions/Current/Headers/ Headers
-ln -s Versions/Current/KSCrash KSCrash
-ln -s Versions/Current/Resources/ Resources
-cd ../../../
 # Add additional folders to the module zip
+# Make sure to change the version numbers below to match the current version of the module
 mkdir -p ./modules/iphone/ti.coremotion/1.0.0/platform
-cp -RP platform-temp/ modules/iphone/ti.coremotion/1.0.0/platform/
 cp -RP build/apidoc modules/iphone/ti.coremotion/1.0.0/
 cp -RP example modules/iphone/ti.coremotion/1.0.0/
 cp -RP documentation modules/iphone/ti.coremotion/1.0.0/
