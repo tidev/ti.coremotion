@@ -469,13 +469,9 @@ function sharedStepCounter() {
 }
 
 function addErrorToEvent(error, eventDict) {
-    if (!error || error.code() !== kJSPropertyAttributeNone) {
-        eventDict.success = false;
-        eventDict.error = error.localizedDescription();
-        eventDict.code = error.code()
-    } else {
-        eventDict.success = true;
-    }
+    eventDict.success = !error || (error && error.code()===0);
+    eventDict.error = error && error.localizedDescription();
+    eventDict.code = error && error.code()
     return eventDict;
 }
 
