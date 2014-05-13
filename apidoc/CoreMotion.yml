@@ -420,7 +420,10 @@ methods:
         stop queries started using the <Modules.CoreMotion.queryStepCount> method.
 
   - name: queryStepCount
-    summary: 
+    summary: Gathers and returns historical step count data for the specified time period.
+    description: |
+        The system stores only the last seven days worth of step data at most. 
+        If there are no samples for the specified range of time, a value of 0 is passed to the callback.
     parameters:
       - name: args
         summary: An object of arguments

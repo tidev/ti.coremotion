@@ -314,7 +314,7 @@ var rows = [
     {
         title: 'stopActivityUpdates',
         onClick: function(){
-            logInApp('startActivityUpdates');
+            logInApp('stopActivityUpdates');
             CoreMotion.stopActivityUpdates();
         }
     },
