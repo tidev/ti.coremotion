@@ -2,54 +2,65 @@
 name: Modules.CoreMotion
 platforms: [iphone, ipad]
 summary: Allows Titanium client applications to access Apple's CoreMotion APIs.
-since: "1.0.0"
+since: "3.3.0"
 extends: Titanium.Module
 excludes:
     methods: [addEventListener, fireEvent, removeEventListener, applyProperties]
     properties: [bubbleParent]
 description: |
-    This module provides access to Apple's CoreMotion APIs.
+    The Core Motion module provides access to Apple's CoreMotion APIs.  The Core Motion module provides support
+    for monitoring various hardware sensors on iOS devices, such as the accelerometer, gyroscope, and
+    magnetometer.  The Core Motion module allows you to access the metrics provided by these sensors.
 
-    ### CoreMotion Resources
+    For instruction and examples of using the Core Motion Module, see the
+    [Core Motion Module guide](http://docs.appcelerator.com/titanium/latest/#!/guide/Core_Motion_Module).
 
-    - [Core Motion Framework Reference](https://developer.apple.com/library/ios/documentation/CoreMotion/Reference/CoreMotion_Reference/_index.html)
-    - [Motion Events](https://developer.apple.com/library/ios/documentation/EventHandling/Conceptual/EventHandlingiPhoneOS/motion_event_basics/motion_event_basics.html)
 
     ### Requirements
-    This module requires iOS 7 or greater
+
+    This module only works with devices running iOS 7.  Not all devices have the same hardware sensors,
+    so all features may not be available for all devices.  Be sure to use the API to check the device
+    for the existence of a feature.
+
+    You can only test the Core Motion module on a device.  The Core Motion API cannot be tested on the iOS
+    simulator.
+
+    Some features may require permission to use "Motion Activity". iOS requires the user's approval to
+    use the "Motion Activity" permission. When the application uses the Core Motion API for the first
+    time, iOS prompts the user to either approve or deny access to the Core Motion features of the
+    device.  The user can change the permission settings with **Settings** > **Privacy**.
+
 
     ### Getting Started
 
-    -   View the [Using Titanium Modules](http://docs.appcelerator.com/titanium/latest/#!/guide/Using_Titanium_Modules)
-        document for instructions on getting started with using this module in your application.
+    Once you have [installed](#!/guide/Using_a_Module) the module and added it as a depedency,
+    use `require()` to access it from JavaScript:
 
-    ### Accessing the Module
+        var CoreMotion = require("ti.coremotion");
 
-    -   Use `require` to access this module from JavaScript:
+    The `CoreMotion` variable is a reference to the Module object.  Use this reference to make
+    subsequent calls to the CoreMotion Module API.
 
-            var CoreMotion = require("ti.coremotion");
+        // This code checks to see if the device can gather step counting data
+        if (CoreMotion.isStepCountingAvailable()) {
+            // If it can, it starts the step counter and outputs the data to the console
+            CoreMotion.startStepCountingUpdates({stepCounts: 1}, function(e){
+                Ti.API.info(JSON.stringify(e.numberOfSteps));
+            });
+        } else {
+            Ti.API.warn('This device does not support counting steps.');
+        }
 
-        The `CoreMotion` variable is a reference to the Module object.
 
-    ### Example applications
+    ### Sample Application
 
-    Example applications are located in the `example` folder of the module.
+    The module ZIP file contains two Core Motion sample applications (**examples/Basic** and
+    **examples/DeviceMotion**).
 
-    ## Authors
+    ### Further Reading
 
-    Jon Alter
-
-    ## Module History
-
-    View the [change log](changelog.html) for this module.
-
-    ## Feedback and Support
-
-    Please direct all questions, feedback, and concerns to [info@appcelerator.com](mailto:info@appcelerator.com?subject=ti.coremotion%20Module).
-
-    ## License
-
-    Copyright(c) 2011-2014 by Appcelerator, Inc. All Rights Reserved. Please see the LICENSE file included in the distribution for further details.
+    - [iOS Developer Library: Core Motion Framework Reference](https://developer.apple.com/library/ios/documentation/CoreMotion/Reference/CoreMotion_Reference/_index.html)
+    - [iOS Developer Library: Motion Events](https://developer.apple.com/library/ios/documentation/EventHandling/Conceptual/EventHandlingiPhoneOS/motion_event_basics/motion_event_basics.html)
 
 methods:
   - name: setAccelerometerUpdateInterval
@@ -75,10 +86,10 @@ methods:
         optional: true
 
   - name: stopAccelerometerUpdates
-    summary: Stop accelerometer updates.
+    summary: Stops accelerometer updates.
 
   - name: isAccelerometerActive
-    summary: Returns a Boolean inducating whether accelerometer updates are currently happening.
+    summary: Returns a Boolean indicating whether accelerometer updates are currently happening.
     description: |
         Indicates whether <Modules.CoreMotion.startAccelerometerUpdates> has been called since 
         <Modules.CoreMotion.stopAccelerometerUpdates>.
@@ -86,7 +97,7 @@ methods:
         type: Boolean
 
   - name: isAccelerometerAvailable
-    summary: Returns a Boolean inducating whether an accelerometer is available on the device.
+    summary: Returns a Boolean indicating whether an accelerometer is available on the device.
     returns:
         type: Boolean
 
@@ -94,8 +105,8 @@ methods:
     summary: Returns the latest sample of accelerometer data.
     description: |
         An app that is receiving accelerometer data after calling 
-        <Modules.CoreMotion.startAccelerometerUpdates> with no callback, periodically 
-        checks the value returned by this method and processes the acceleration data.
+        <Modules.CoreMotion.startAccelerometerUpdates> with no callback, needs to periodically
+        check the value returned by this method and process the acceleration data.
     returns:
         type: CoreMotionAccelerometerData
 
@@ -111,10 +122,10 @@ methods:
     summary: Starts gyroscope updates.
     description: |
         If a callback is passed to this method, it will be called whenever there is an update.
-        The frequency of these updates can be controlled using the 
-        <Modules.CoreMotion.setGyroUpdateInterval> method. If no callback is passed, 
-        the gyroscope data can be accessed using the  <Modules.CoreMotion.getGyroData> 
-        method. You must call <Modules.CoreMotion.stopGyroUpdates> when you no longer want your app 
+        The frequency of these updates can be controlled using the
+        <Modules.CoreMotion.setGyroUpdateInterval> method. If no callback is passed,
+        the gyroscope data can be accessed using the  <Modules.CoreMotion.getGyroData>
+        method. You must call <Modules.CoreMotion.stopGyroUpdates> when you no longer want your app
         to process gyroscope updates.
         
     parameters:
@@ -124,10 +135,10 @@ methods:
         optional: true
 
   - name: stopGyroUpdates
-    summary: Stop gyroscope updates.
+    summary: Stops gyroscope updates.
 
   - name: isGyroActive
-    summary: Returns a Boolean inducating whether gyroscope updates are currently happening.
+    summary: Returns a Boolean indicating whether gyroscope updates are currently happening.
     description: |
         Indicates whether <Modules.CoreMotion.startGyroUpdates> has been called since 
         <Modules.CoreMotion.stopGyroUpdates>.
@@ -135,7 +146,7 @@ methods:
         type: Boolean
 
   - name: isGyroAvailable
-    summary: Returns a Boolean inducating whether a gyroscope is available on the device.
+    summary: Returns a Boolean indicating whether a gyroscope is available on the device.
     returns:
         type: Boolean
 
@@ -143,8 +154,8 @@ methods:
     summary: Returns the latest sample of gyroscope data.
     description: |
         An app that is receiving gyroscope data after calling 
-        <Modules.CoreMotion.startGyroUpdates> with no callback, periodically 
-        checks the value returned by this method and processes the acceleration data.
+        <Modules.CoreMotion.startGyroUpdates> with no callback, needs to periodically
+        check the value returned by this method and process the gyroscope data.
     returns:
         type: CoreMotionGyroData
 
@@ -173,10 +184,10 @@ methods:
         optional: true
 
   - name: stopMagnetometerUpdates
-    summary: Stop magnetometer updates.
+    summary: Stops magnetometer updates.
 
   - name: isMagnetometerActive
-    summary: Returns a Boolean inducating whether magnetometer updates are currently happening.
+    summary: Returns a Boolean indicating whether magnetometer updates are currently happening.
     description: |
         Indicates whether <Modules.CoreMotion.startMagnetometerUpdates> has been called since 
         <Modules.CoreMotion.stopMagnetometerUpdates>.
@@ -184,7 +195,7 @@ methods:
         type: Boolean
 
   - name: isMagnetometerAvailable
-    summary: Returns a Boolean inducating whether a magnetometer is available on the device.
+    summary: Returns a Boolean indicating whether a magnetometer is available on the device.
     returns:
         type: Boolean
 
@@ -192,8 +203,8 @@ methods:
     summary: Returns the latest sample of magnetometer data.
     description: |
         An app that is receiving magnetometer data after calling 
-        <Modules.CoreMotion.startMagnetometerUpdates> with no callback, periodically 
-        checks the value returned by this method and processes the magnetometer data.
+        <Modules.CoreMotion.startMagnetometerUpdates> with no callback, needs to periodically
+        check the value returned by this method and process the magnetometer data.
     returns:
         type: CoreMotionMagnetometerData
 
@@ -210,7 +221,7 @@ methods:
         this is set to false.
     parameters:
       - name: show
-        summary: Boolean inducating if the display should be show
+        summary: Boolean indicating if the display should be shown
         type: Boolean
 
   - name: setDeviceMotionUpdateInterval
@@ -265,7 +276,7 @@ methods:
         optional: true
 
   - name: stopDeviceMotionUpdates
-    summary: Stop device-motion updates.
+    summary: Stops device-motion updates.
 
   - name: getAttitudeReferenceFrame
     summary: |
@@ -311,7 +322,7 @@ methods:
         type: Boolean
 
   - name: isDeviceMotionAvailable
-    summary: Returns a Boolean inducating whether device-motion is available on the device.
+    summary: Returns a Boolean indicating whether device-motion is available on the device.
     returns:
         type: Boolean
 
@@ -320,19 +331,19 @@ methods:
     description: |
         An app that is receiving device-motion data after calling 
         <Modules.CoreMotion.startDeviceMotionUpdatesUsingReferenceFrame> or
-        <Modules.CoreMotion.startDeviceMotionUpdates> with no callback, periodically 
-        checks the value returned by this method and processes the device-motion data.
+        <Modules.CoreMotion.startDeviceMotionUpdates> with no callback, need to periodically
+        check the value returned by this method and process the device-motion data.
     returns:
         type: CoreMotionDeviceMotionData
 
 
   - name: isActivityAvailable
-    summary: Returns a Boolean indicating whether motion data is available on the current device.
+    summary: Returns a Boolean indicating whether motion activity data is available on the current device.
     returns:
         type: Boolean
 
   - name: startActivityUpdates
-    summary: Starts the delivery of current motion data updates to your app.
+    summary: Starts the delivery of current motion activity updates to your app.
     description: |
         This method initiates the tracking of motion data asynchronously. 
         Upon calling this method, the motion activity manager executes the 
@@ -358,10 +369,10 @@ methods:
         type: Callback<CoreMotionActivityData>
 
   - name: stopActivityUpdates
-    summary: Stops the delivery of motion updates to your app.
+    summary: Stops the delivery of motion activtiy updates to your app.
 
   - name: queryActivity
-    summary: Gathers and returns historical motion data for the specified time period.
+    summary: Gathers and returns historical motion activty data for the specified time period.
     description: |
         This method runs asynchronously, returning immediately and delivering the results 
         to the specified callback. The system stores only the last seven days worth of 
@@ -606,7 +617,7 @@ since: "1.0.0"
 extends: CoreMotionAccelerometerData
 properties:
   - name: success
-    summary: A Boolean indicating if the opperation was successful or not.
+    summary: A Boolean indicating if the operation was successful or not.
     type: Boolean
     permission: "read-only"
 
@@ -628,7 +639,7 @@ since: "1.0.0"
 extends: CoreMotionGyroData
 properties:
   - name: success
-    summary: A Boolean indicating if the opperation was successful or not.
+    summary: A Boolean indicating if the operation was successful or not.
     type: Boolean
     permission: "read-only"
 
@@ -650,7 +661,7 @@ since: "1.0.0"
 extends: CoreMotionMagnetometerData
 properties:
   - name: success
-    summary: A Boolean indicating if the opperation was successful or not.
+    summary: A Boolean indicating if the operation was successful or not.
     type: Boolean
     permission: "read-only"
 
@@ -672,7 +683,7 @@ since: "1.0.0"
 extends: CoreMotionDeviceMotionData
 properties:
   - name: success
-    summary: A Boolean indicating if the opperation was successful or not.
+    summary: A Boolean indicating if the operation was successful or not.
     type: Boolean
     permission: "read-only"
 
@@ -721,9 +732,8 @@ properties:
   - name: magneticField
     summary: The magnetic field measured by the magnetometer.
     description: |
-        For more information check out Apple's 
-        [CMMagnetometerData magneticField](https://developer.apple.com/library/ios/documentation/CoreMotion/Reference/CMMagnetometerData_Class/Reference/Reference.html#//apple_ref/occ/instp/CMMagnetometerData/magneticField) 
-        description.
+        For more information, see
+        [iOS Developer Library: CMMagnetometerData.magneticField property](https://developer.apple.com/library/ios/documentation/CoreMotion/Reference/CMMagnetometerData_Class/Reference/Reference.html#//apple_ref/occ/instp/CMMagnetometerData/magneticField).
     type: CoreMotionMagneticField
     permission: "read-only"
 
@@ -778,7 +788,7 @@ since: "1.0.0"
 extends: CoreMotionActivityQueryData
 properties:
   - name: success
-    summary: A Boolean indicating if the opperation was successful or not.
+    summary: A Boolean indicating if the operation was successful or not.
     type: Boolean
     permission: "read-only"
 
@@ -802,8 +812,8 @@ properties:
   - name: activities
     summary: An array of <Modules.CoreMotion.CoreMotionActivity> objects indicating the updates that occurred.
     description: |
-        The objects in the array are ordered by the time at which they occurred in the 
-        specified time interval. Use the startDate property in each motion object to 
+        The objects in the array are ordered by the time at which they occurred in the
+        specified time interval. Use the `startDate` property in each motion object to
         determine when the update occurred.
     type: Array<CoreMotionActivity>
     permission: "read-only"
@@ -815,7 +825,7 @@ since: "1.0.0"
 extends: CoreMotionStepCountingData
 properties:
   - name: success
-    summary: A Boolean indicating if the opperation was successful or not.
+    summary: A Boolean indicating if the operation was successful or not.
     type: Boolean
     permission: "read-only"
 
@@ -853,7 +863,7 @@ since: "1.0.0"
 extends: CoreMotionStepCountingQueryData
 properties:
   - name: success
-    summary: A Boolean indicating if the opperation was successful or not.
+    summary: A Boolean indicating if the operation was successful or not.
     type: Boolean
     permission: "read-only"
 
@@ -884,8 +894,8 @@ name: CoreMotionActivity
 platforms: [iphone, ipad]
 summary: Contains the data for a single motion update event.
 description: |
-    For more info see Apple's 
-    [CMMotionActivity Class Reference](https://developer.apple.com/library/ios/documentation/CoreMotion/Reference/CMMotionActivity_class/Reference/Reference.html).
+    For more information see,
+    [iOS Developer Library: CMMotionActivity Class Reference](https://developer.apple.com/library/ios/documentation/CoreMotion/Reference/CMMotionActivity_class/Reference/Reference.html).
 since: "1.0.0"
 properties:
   - name: stationary
@@ -1069,8 +1079,8 @@ name: CoreMotionQuaternion
 platforms: [iphone, ipad]
 summary: The type for a quaternion representing a measurement of attitude.
 description: |
-    For more information, checkout the Apple's 
-    [CMQuaternion discussion](https://developer.apple.com/library/ios/documentation/CoreMotion/Reference/CMAttitude_Class/Reference/Reference.html#//apple_ref/c/tdef/CMQuaternion).
+    For more information, see
+    [iOS Developer Library: CMAttitude.CMQuaternion constant](https://developer.apple.com/library/ios/documentation/CoreMotion/Reference/CMAttitude_Class/Reference/Reference.html#//apple_ref/c/tdef/CMQuaternion).
 since: "1.0.0"
 properties:
   - name: x
