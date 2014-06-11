@@ -1,7 +1,5 @@
-coremotion
+Core Motion
 ==========
-
-This module is an early attempt at making a module using hyperloop for the current version of Titanium. 
 
 ## This module is available only for iOS 7 and above.
 
