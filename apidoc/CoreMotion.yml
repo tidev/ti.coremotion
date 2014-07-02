@@ -561,8 +561,11 @@ properties:
 
 ---
 name: CoreMotionReferenceFrameArgs
+summary: |
+    Dictionary of arguments passed to the
+    [startDeviceMotionUpdatesUsingReferenceFrame()](Modules.CoreMotion.startDeviceMotionUpdatesUsingReferenceFrame) method.
 platforms: [iphone, ipad]
-since: "1.0.0"
+since: "3.3.0"
 properties:
   - name: referenceFrame
     summary: A constant identifying the reference frame to use for device-motion updates.
@@ -575,8 +578,10 @@ properties:
 
 ---
 name: CoreMotionQueryActivityArgs
+summary: |
+    Dictionary of arguments to pass to the [queryActivity()](Modules.CoreMotion.queryActivity) method.
 platforms: [iphone, ipad]
-since: "1.0.0"
+since: "3.3.0"
 properties:
   - name: start
     summary: The start time to use when gathering motion data.
@@ -588,8 +593,10 @@ properties:
 
 ---
 name: CoreMotionStartStepCountingArgs
+summary: |
+    Dictionary of arguments to pass to the [startStepCountingUpdates()](Modules.CoreMotion.startStepCountingUpdates) method.
 platforms: [iphone, ipad]
-since: "1.0.0"
+since: "3.3.0"
 properties:
   - name: stepCounts
     summary: |
@@ -599,8 +606,10 @@ properties:
 
 ---
 name: CoreMotionQueryStepCountArgs
+summary: |
+    Dictionary of arguments to pass to the [queryStepCount()](Modules.CoreMotion.queryStepCount) method.
 platforms: [iphone, ipad]
-since: "1.0.0"
+since: "3.3.0"
 properties:
   - name: start
     summary: The start time to use when gathering step count data.
@@ -612,8 +621,10 @@ properties:
 
 ---
 name: CoreMotionAccelerometerDataWithSuccess
+summary: |
+    Dictionary passed to the callback of the [startAccelerometerUpdates()](Modules.CoreMotion.startAccelerometerUpdates) method.
 platforms: [iphone, ipad]
-since: "1.0.0"
+since: "3.3.0"
 extends: CoreMotionAccelerometerData
 properties:
   - name: success
@@ -634,8 +645,10 @@ properties:
 
 ---
 name: CoreMotionGyroDataWithSuccess
+summary: |
+    Dictionary passed to the callback of the [startGyroUpdates()](Modules.CoreMotion.startGyroUpdates) method.
 platforms: [iphone, ipad]
-since: "1.0.0"
+since: "3.3.0"
 extends: CoreMotionGyroData
 properties:
   - name: success
@@ -656,8 +669,10 @@ properties:
 
 ---
 name: CoreMotionMagnetometerDataWithSuccess
+summary: |
+    Dictionary passed to the callback of the [startMagnetometerUpdates()](Modules.CoreMotion.startMagnetometerUpdates) method.
 platforms: [iphone, ipad]
-since: "1.0.0"
+since: "3.3.0"
 extends: CoreMotionMagnetometerData
 properties:
   - name: success
@@ -678,8 +693,12 @@ properties:
 
 ---
 name: CoreMotionDeviceMotionDataWithSuccess
+summary: |
+    Dictionary passed to the callback of the
+    [startDeviceMotionUpdates()](Modules.CoreMotion.startDeviceMotionUpdates) and
+    [startDeviceMotionUpdatesUsingReferenceFrame()](Modules.CoreMotion.startDeviceMotionUpdatesUsingReferenceFrame) methods.
 platforms: [iphone, ipad]
-since: "1.0.0"
+since: "3.3.0"
 extends: CoreMotionDeviceMotionData
 properties:
   - name: success
@@ -702,7 +721,7 @@ properties:
 name: CoreMotionAccelerometerData
 platforms: [iphone, ipad]
 summary: Representation of an accelerometer event.
-since: "1.0.0"
+since: "3.3.0"
 extends: CoreMotionLogItem
 properties:
   - name: acceleration
@@ -714,7 +733,7 @@ properties:
 name: CoreMotionGyroData
 platforms: [iphone, ipad]
 summary: Representation of a gyroscope event.
-since: "1.0.0"
+since: "3.3.0"
 extends: CoreMotionLogItem
 properties:
   - name: rotationRate
@@ -726,7 +745,7 @@ properties:
 name: CoreMotionMagnetometerData
 platforms: [iphone, ipad]
 summary: Representation of a magnetometer event.
-since: "1.0.0"
+since: "3.3.0"
 extends: CoreMotionLogItem
 properties:
   - name: magneticField
@@ -741,7 +760,7 @@ properties:
 name: CoreMotionDeviceMotionData
 platforms: [iphone, ipad]
 summary: Representation of a device-motion event.
-since: "1.0.0"
+since: "3.3.0"
 extends: CoreMotionLogItem
 properties:
   - name: attitude
@@ -774,7 +793,7 @@ name: CoreMotionActivityData
 platforms: [iphone, ipad]
 summary: Represents the current motion associated with the device.
 description: Note that there is no timestamp property for this class.
-since: "1.0.0"
+since: "3.3.0"
 properties:
   - name: activity
     summary: The motion activity object that defines the current type of motion for the device.
@@ -783,8 +802,10 @@ properties:
 
 ---
 name: CoreMotionActivityQueryDataWithSuccess
+summary: |
+    Dictionary passed to the callback of the [queryActivity()](Modules.CoreMotion.queryActivity) method.
 platforms: [iphone, ipad]
-since: "1.0.0"
+since: "3.3.0"
 extends: CoreMotionActivityQueryData
 properties:
   - name: success
@@ -807,7 +828,7 @@ properties:
 name: CoreMotionActivityQueryData
 platforms: [iphone, ipad]
 summary: Represents the activities that are returned by an activity query.
-since: "1.0.0"
+since: "3.3.0"
 properties:
   - name: activities
     summary: An array of <Modules.CoreMotion.CoreMotionActivity> objects indicating the updates that occurred.
@@ -820,8 +841,10 @@ properties:
 
 ---
 name: CoreMotionStepCountingDataWithSuccess
+summary: |
+    Dictionary passed to the callback of the [startStepCountingUpdates()](Modules.CoreMotion.startStepCountingUpdates) method.
 platforms: [iphone, ipad]
-since: "1.0.0"
+since: "3.3.0"
 extends: CoreMotionStepCountingData
 properties:
   - name: success
@@ -844,7 +867,7 @@ properties:
 name: CoreMotionStepCountingData
 platforms: [iphone, ipad]
 summary: Represents the steps that are returned by a step-count event.
-since: "1.0.0"
+since: "3.3.0"
 properties:
   - name: numberOfSteps
     summary: The total number of steps since the <Modules.CoreMotion.startStepCountingUpdates> method was called.
@@ -858,8 +881,10 @@ properties:
 
 ---
 name: CoreMotionStepCountingQueryDataWithSuccess
+summary: |
+    Dictionary passed to the callback of the [queryStepCount()](Modules.CoreMotion.queryStepCount) method.
 platforms: [iphone, ipad]
-since: "1.0.0"
+since: "3.3.0"
 extends: CoreMotionStepCountingQueryData
 properties:
   - name: success
@@ -882,7 +907,7 @@ properties:
 name: CoreMotionStepCountingQueryData
 platforms: [iphone, ipad]
 summary: Represents the steps that are returned by a step-count query.
-since: "1.0.0"
+since: "3.3.0"
 properties:
   - name: numberOfSteps
     summary: The number of steps that occurred between the start and end times specified by the query.
@@ -896,7 +921,7 @@ summary: Contains the data for a single motion update event.
 description: |
     For more information see,
     [iOS Developer Library: CMMotionActivity Class Reference](https://developer.apple.com/library/ios/documentation/CoreMotion/Reference/CMMotionActivity_class/Reference/Reference.html).
-since: "1.0.0"
+since: "3.3.0"
 properties:
   - name: stationary
     summary: A Boolean indicating whether the device is stationary.
@@ -941,7 +966,7 @@ properties:
 name: CoreMotionAcceleration
 platforms: [iphone, ipad]
 summary: Representation of an accelerometer event.
-since: "1.0.0"
+since: "3.3.0"
 properties:
   - name: x
     summary: X-axis acceleration in G's (gravitational force).
@@ -962,7 +987,7 @@ properties:
 name: CoreMotionRotationRate
 platforms: [iphone, ipad]
 summary: Representation of a gyroscope event.
-since: "1.0.0"
+since: "3.3.0"
 properties:
   - name: x
     summary: |
@@ -998,7 +1023,7 @@ properties:
 name: CoreMotionAttitude
 platforms: [iphone, ipad]
 summary: The attitude of the device.
-since: "1.0.0"
+since: "3.3.0"
 properties:
   - name: roll
     summary: The roll of the device, in radians.
@@ -1060,7 +1085,7 @@ methods:
 name: CoreMotionRotationMatrix
 platforms: [iphone, ipad]
 summary: The type of a structure representing a rotation matrix.
-since: "1.0.0"
+since: "3.3.0"
 properties:
   - name: m11-m33
     summary: |
@@ -1081,7 +1106,7 @@ summary: The type for a quaternion representing a measurement of attitude.
 description: |
     For more information, see
     [iOS Developer Library: CMAttitude.CMQuaternion constant](https://developer.apple.com/library/ios/documentation/CoreMotion/Reference/CMAttitude_Class/Reference/Reference.html#//apple_ref/c/tdef/CMQuaternion).
-since: "1.0.0"
+since: "3.3.0"
 properties:
   - name: x
     summary: A value for the X-axis.
@@ -1107,7 +1132,7 @@ properties:
 name: CoreMotionMagneticField
 platforms: [iphone, ipad]
 summary: A structure containing 3-axis magnetometer data.
-since: "1.0.0"
+since: "3.3.0"
 properties:
   - name: x
     summary: X-axis magnetic field in microteslas.
@@ -1128,7 +1153,7 @@ properties:
 name: CoreMotionCalibratedMagneticField
 platforms: [iphone, ipad]
 summary: Calibrated magnetic field data and an estimate of the accuracy of the calibration.
-since: "1.0.0"
+since: "3.3.0"
 properties:
   - name: field
     summary: |
@@ -1145,7 +1170,7 @@ properties:
 name: CoreMotionLogItem
 platforms: [iphone, ipad]
 summary: Base class for specific motion types.
-since: "1.0.0"
+since: "3.3.0"
 properties:
   - name: timestamp
     summary: The time when the logged item is valid.
