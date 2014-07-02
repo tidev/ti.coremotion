@@ -831,7 +831,7 @@ summary: Represents the activities that are returned by an activity query.
 since: "3.3.0"
 properties:
   - name: activities
-    summary: An array of <Modules.CoreMotion.CoreMotionActivity> objects indicating the updates that occurred.
+    summary: An array of <CoreMotionActivity> objects indicating the updates that occurred.
     description: |
         The objects in the array are ordered by the time at which they occurred in the
         specified time interval. Use the `startDate` property in each motion object to
