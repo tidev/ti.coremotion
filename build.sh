@@ -9,11 +9,11 @@
 # This script will compile and package the ti.coremotion iOS
 # module. Simply run it from this directory and then find the packaged
 # module in the build sub-directory,
-# e.g. build/ti.coremotion-iphone-1.2.0.zip
+# e.g. build/ti.coremotion-iphone-1.1.0.zip
 
 declare -r build_dir="build"
 declare -r module_name="ti.coremotion"
-declare -r module_version="1.2.0"
+declare -r module_version="1.1.0"
 declare -r library_name="lib${module_name}.a"
 declare -r library_path="ios/xcode/build/${library_name}"
 declare -r module_package_path="${build_dir}/modules/iphone/${module_name}/${module_version}"

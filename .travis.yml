@@ -1,22 +1,19 @@
 language: objective-c
 env:
  global:
-   - "MODULE_NAME=ti.coremotion"
-   - "MODULE_VERSION=1.0.1"
+   - MODULE_NAME=ti.coremotion
+   - MODULE_VERSION=1.1.0
 before_install:
-    - MODULE_ROOT=$PWD
+    - MODULE_ROOT="${PWD}"
 install:
-    - curl -o hyperloop.sh https://raw.githubusercontent.com/appcelerator-modules/ci/master/travis/hyperloop.sh
-    - source hyperloop.sh
     - curl -o install.sh https://raw.githubusercontent.com/appcelerator-modules/ci/master/travis/install.sh
-    - source install.sh -s "--branch 3_3_X"
+    - source install.sh -s "--branch 3_5_X"
 script: 
-    - curl -o script.sh https://raw.githubusercontent.com/appcelerator-modules/ci/master/travis/script-hyperloop.sh
-    - source script.sh
-    - mkdir $MODULE_ROOT/s3
+    - ./build.sh
+    - mkdir -p "$MODULE_ROOT/s3"
     - NOW=$(date +"%Y%m%d%H%M")
-    - echo "cp $MODULE_ROOT/ios/build/$MODULE_NAME-iphone-$MODULE_VERSION.zip $MODULE_ROOT/s3/$MODULE_NAME-iphone-$MODULE_VERSION-$TRAVIS_BRANCH-$NOW.zip"
-    - cp $MODULE_ROOT/ios/build/$MODULE_NAME-iphone-$MODULE_VERSION.zip $MODULE_ROOT/s3/$MODULE_NAME-iphone-$MODULE_VERSION-$TRAVIS_BRANCH-$NOW.zip
+    - echo "cp -p \"${MODULE_ROOT}/build/${MODULE_NAME}-iphone-${MODULE_VERSION}.zip\" \"${MODULE_ROOT}/s3/${MODULE_NAME}-iphone-${MODULE_VERSION}-${TRAVIS_BRANCH}-${NOW}.zip\""
+    - cp -p "${MODULE_ROOT}/build/${MODULE_NAME}-iphone-${MODULE_VERSION}.zip" "${MODULE_ROOT}/s3/${MODULE_NAME}-iphone-${MODULE_VERSION}-${TRAVIS_BRANCH}-${NOW}.zip"
 deploy:
   provider: s3
   access_key_id: AKIAJEU4ONO4EVCH6DRA
