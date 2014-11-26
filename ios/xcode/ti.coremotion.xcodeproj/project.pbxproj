@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C9BD13411A25633200495F42 /* libhyperloop.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C9BD133E1A25632000495F42 /* libhyperloop.a */; };
+		C9BD13511A262B6700495F42 /* libhyperloop.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C9BD134E1A262B3100495F42 /* libhyperloop.a */; };
 		C9EC0FC3192152D600F0901C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9EC0FC2192152D600F0901C /* Foundation.framework */; };
 		C9EC11B41921572400F0901C /* js_Class.m in Sources */ = {isa = PBXBuildFile; fileRef = C9EC0FEA1921572400F0901C /* js_Class.m */; };
 		C9EC11B51921572400F0901C /* js_const_void_P.m in Sources */ = {isa = PBXBuildFile; fileRef = C9EC0FEC1921572400F0901C /* js_const_void_P.m */; };
@@ -238,16 +238,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		C9BD133D1A25632000495F42 /* PBXContainerItemProxy */ = {
+		C9BD134D1A262B3100495F42 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = C9BD13391A25631F00495F42 /* hyperloop.xcodeproj */;
+			containerPortal = C9BD13491A262B3100495F42 /* hyperloop.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = C93717491916F006003FB523;
 			remoteInfo = hyperloop;
 		};
-		C9BD133F1A25632C00495F42 /* PBXContainerItemProxy */ = {
+		C9BD134F1A262B6100495F42 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = C9BD13391A25631F00495F42 /* hyperloop.xcodeproj */;
+			containerPortal = C9BD13491A262B3100495F42 /* hyperloop.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = C93717481916F006003FB523;
 			remoteInfo = hyperloop;
@@ -267,7 +267,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		C9BD13391A25631F00495F42 /* hyperloop.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = hyperloop.xcodeproj; path = ../../../../hyperloop/hyperloop.master/lib/ios/jsc/templates/source/xcode/hyperloop.xcodeproj; sourceTree = "<group>"; };
+		C9BD13491A262B3100495F42 /* hyperloop.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = hyperloop.xcodeproj; path = hyperloop/lib/ios/jsc/templates/source/xcode/hyperloop.xcodeproj; sourceTree = "<group>"; };
 		C9EC0FBF192152D600F0901C /* libti.coremotion.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libti.coremotion.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9EC0FC2192152D600F0901C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C9EC0FC6192152D600F0901C /* ti.coremotion-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ti.coremotion-Prefix.pch"; sourceTree = "<group>"; };
@@ -727,7 +727,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9BD13411A25633200495F42 /* libhyperloop.a in Frameworks */,
+				C9BD13511A262B6700495F42 /* libhyperloop.a in Frameworks */,
 				C9EC0FC3192152D600F0901C /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -735,10 +735,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C9BD133A1A25631F00495F42 /* Products */ = {
+		C9BD134A1A262B3100495F42 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C9BD133E1A25632000495F42 /* libhyperloop.a */,
+				C9BD134E1A262B3100495F42 /* libhyperloop.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -746,7 +746,7 @@
 		C9EC0FB6192152D600F0901C = {
 			isa = PBXGroup;
 			children = (
-				C9BD13391A25631F00495F42 /* hyperloop.xcodeproj */,
+				C9BD13491A262B3100495F42 /* hyperloop.xcodeproj */,
 				C9EC0FC4192152D600F0901C /* ti.coremotion */,
 				C9EC0FC1192152D600F0901C /* Frameworks */,
 				C9EC0FC0192152D600F0901C /* Products */,
@@ -1353,7 +1353,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				C9BD13401A25632C00495F42 /* PBXTargetDependency */,
+				C9BD13501A262B6100495F42 /* PBXTargetDependency */,
 			);
 			name = ti.coremotion;
 			productName = ti.coremotion;
@@ -1381,8 +1381,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = C9BD133A1A25631F00495F42 /* Products */;
-					ProjectRef = C9BD13391A25631F00495F42 /* hyperloop.xcodeproj */;
+					ProductGroup = C9BD134A1A262B3100495F42 /* Products */;
+					ProjectRef = C9BD13491A262B3100495F42 /* hyperloop.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -1393,11 +1393,11 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		C9BD133E1A25632000495F42 /* libhyperloop.a */ = {
+		C9BD134E1A262B3100495F42 /* libhyperloop.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libhyperloop.a;
-			remoteRef = C9BD133D1A25632000495F42 /* PBXContainerItemProxy */;
+			remoteRef = C9BD134D1A262B3100495F42 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -1639,10 +1639,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		C9BD13401A25632C00495F42 /* PBXTargetDependency */ = {
+		C9BD13501A262B6100495F42 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = hyperloop;
-			targetProxy = C9BD133F1A25632C00495F42 /* PBXContainerItemProxy */;
+			targetProxy = C9BD134F1A262B6100495F42 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1683,9 +1683,9 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"\"/Users/matt/Documents/Appcelerator/projects/core_runtime/ti.next/hyperloop/hyperloop.master/lib/ios/jsc/templates/source\"",
-					"\"/Users/matt/Library/Application Support/Titanium/mobilesdk/osx/3.5.0/iphone/include\"",
-					"\"/Users/matt/Library/Application Support/Titanium/mobilesdk/osx/3.5.0/iphone/headers\"",
+					"\"$(PROJECT_FILE_PATH)/../hyperloop/lib/ios/jsc/templates/source\"",
+					"\"$(HOME)/Library/Application Support/Titanium/mobilesdk/osx/3.5.0/iphone/include\"",
+					"\"$(HOME)/Library/Application Support/Titanium/mobilesdk/osx/3.5.0/iphone/headers\"",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1725,9 +1725,9 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"\"/Users/matt/Documents/Appcelerator/projects/core_runtime/ti.next/hyperloop/hyperloop.master/lib/ios/jsc/templates/source\"",
-					"\"/Users/matt/Library/Application Support/Titanium/mobilesdk/osx/3.5.0/iphone/include\"",
-					"\"/Users/matt/Library/Application Support/Titanium/mobilesdk/osx/3.5.0/iphone/headers\"",
+					"\"$(PROJECT_FILE_PATH)/../hyperloop/lib/ios/jsc/templates/source\"",
+					"\"$(HOME)/Library/Application Support/Titanium/mobilesdk/osx/3.5.0/iphone/include\"",
+					"\"$(HOME)/Library/Application Support/Titanium/mobilesdk/osx/3.5.0/iphone/headers\"",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				SDKROOT = iphoneos;
