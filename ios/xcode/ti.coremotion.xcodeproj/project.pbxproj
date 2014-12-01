@@ -267,6 +267,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C9BAC1A11A2CF865008C6C8A /* titanium.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = titanium.xcconfig; path = ../titanium.xcconfig; sourceTree = "<group>"; };
 		C9BD13491A262B3100495F42 /* hyperloop.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = hyperloop.xcodeproj; path = hyperloop/lib/ios/jsc/templates/source/xcode/hyperloop.xcodeproj; sourceTree = "<group>"; };
 		C9EC0FBF192152D600F0901C /* libti.coremotion.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libti.coremotion.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9EC0FC2192152D600F0901C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -746,6 +747,7 @@
 		C9EC0FB6192152D600F0901C = {
 			isa = PBXGroup;
 			children = (
+				C9BAC1A11A2CF865008C6C8A /* titanium.xcconfig */,
 				C9BD13491A262B3100495F42 /* hyperloop.xcodeproj */,
 				C9EC0FC4192152D600F0901C /* ti.coremotion */,
 				C9EC0FC1192152D600F0901C /* Frameworks */,
@@ -1649,6 +1651,7 @@
 /* Begin XCBuildConfiguration section */
 		C9EC0FE0192152D600F0901C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C9BAC1A11A2CF865008C6C8A /* titanium.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
@@ -1684,8 +1687,8 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"\"$(PROJECT_FILE_PATH)/../hyperloop/lib/ios/jsc/templates/source\"",
-					"\"$(HOME)/Library/Application Support/Titanium/mobilesdk/osx/3.5.0/iphone/include\"",
-					"\"$(HOME)/Library/Application Support/Titanium/mobilesdk/osx/3.5.0/iphone/headers\"",
+					"\"$(TITANIUM_SDK)/iphone/include\"",
+					"\"$(TITANIUM_SDK)/iphone/headers\"",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1695,6 +1698,7 @@
 		};
 		C9EC0FE1192152D600F0901C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C9BAC1A11A2CF865008C6C8A /* titanium.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
@@ -1726,8 +1730,8 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"\"$(PROJECT_FILE_PATH)/../hyperloop/lib/ios/jsc/templates/source\"",
-					"\"$(HOME)/Library/Application Support/Titanium/mobilesdk/osx/3.5.0/iphone/include\"",
-					"\"$(HOME)/Library/Application Support/Titanium/mobilesdk/osx/3.5.0/iphone/headers\"",
+					"\"$(TITANIUM_SDK)/iphone/include\"",
+					"\"$(TITANIUM_SDK)/iphone/headers\"",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				SDKROOT = iphoneos;

@@ -11,7 +11,7 @@ git checkout https://github.com/appcelerator-modules/ti.coremotion.git
 pushd ti.coremotion
 git submodule init
 git submodule update
-export TI_ROOT=/Users/matt/Documents/Appcelerator/src/Appcelerator/titanium_mobile
+export TI_ROOT=/Users/matt/Documents/Appcelerator/src/Appcelerator
 ./build.sh
 ```
 
