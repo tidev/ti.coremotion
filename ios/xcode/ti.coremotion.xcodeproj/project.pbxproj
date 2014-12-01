@@ -1651,6 +1651,7 @@
 /* Begin XCBuildConfiguration section */
 		C9EC0FE0192152D600F0901C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C9BAC1AA1A2D1B37008C6C8A /* titanium.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
@@ -1697,6 +1698,7 @@
 		};
 		C9EC0FE1192152D600F0901C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C9BAC1AA1A2D1B37008C6C8A /* titanium.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
