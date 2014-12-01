@@ -1,0 +1,3 @@
+[submodule "ios/xcode/hyperloop"]
+	path = ios/xcode/hyperloop
+	url = https://github.com/appcelerator/hyperloop.git
