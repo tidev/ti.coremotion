@@ -7,6 +7,10 @@
 Create an environment variable `TI_ROOT` that points to the root of your titanium_mobile repo and then run `build.sh`. For example
 
 ```bash
+git checkout https://github.com/appcelerator-modules/ti.coremotion.git
+pushd ti.coremotion
+git submodule init
+git submodule update
 export TI_ROOT=/Users/matt/Documents/Appcelerator/src/Appcelerator/titanium_mobile
 ./build.sh
 ```
