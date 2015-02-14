@@ -1,4 +1,4 @@
-# Core Motion
+# Core Motion [![Build Status](https://travis-ci.org/appcelerator-modules/ti.coremotion.svg?branch=master)](https://travis-ci.org/appcelerator-modules/ti.coremotion)
 
 **This module is available only for iOS 7 and above.**
 
