@@ -1,0 +1,477 @@
+Archive : build/libti.coremotion.a
+build/libti.coremotion.a(TiCoremotionModule.o):
+Load command 0
+      cmd LC_SEGMENT_64
+  cmdsize 1672
+  segname 
+   vmaddr 0x0000000000000000
+   vmsize 0x0000000000016d00
+  fileoff 1824
+ filesize 93440
+  maxprot 0x00000007
+ initprot 0x00000007
+   nsects 20
+    flags 0x0
+Section
+  sectname __text
+   segname __TEXT
+      addr 0x0000000000000000
+      size 0x0000000000004597
+    offset 1824
+     align 2^0 (1)
+    reloff 95264
+    nreloc 1275
+     flags 0x80000400
+ reserved1 0
+ reserved2 0
+Section
+  sectname __literal8
+   segname __TEXT
+      addr 0x0000000000004598
+      size 0x0000000000000018
+    offset 19640
+     align 2^3 (8)
+    reloff 0
+    nreloc 0
+     flags 0x00000004
+ reserved1 0
+ reserved2 0
+Section
+  sectname __cstring
+   segname __TEXT
+      addr 0x00000000000045b0
+      size 0x0000000000000584
+    offset 19664
+     align 2^0 (1)
+    reloff 0
+    nreloc 0
+     flags 0x00000002
+ reserved1 0
+ reserved2 0
+Section
+  sectname __cfstring
+   segname __DATA
+      addr 0x0000000000004b40
+      size 0x0000000000000440
+    offset 21088
+     align 2^4 (16)
+    reloff 105464
+    nreloc 68
+     flags 0x00000000
+ reserved1 0
+ reserved2 0
+Section
+  sectname __objc_data
+   segname __DATA
+      addr 0x0000000000004f80
+      size 0x0000000000000050
+    offset 22176
+     align 2^3 (8)
+    reloff 106008
+    nreloc 8
+     flags 0x00000000
+ reserved1 0
+ reserved2 0
+Section
+  sectname __objc_superrefs
+   segname __DATA
+      addr 0x0000000000004fd0
+      size 0x0000000000000008
+    offset 22256
+     align 2^3 (8)
+    reloff 106072
+    nreloc 1
+     flags 0x10000000
+ reserved1 0
+ reserved2 0
+Section
+  sectname __objc_methname
+   segname __TEXT
+      addr 0x0000000000004fd8
+      size 0x0000000000000dae
+    offset 22264
+     align 2^0 (1)
+    reloff 0
+    nreloc 0
+     flags 0x00000002
+ reserved1 0
+ reserved2 0
+Section
+  sectname __objc_selrefs
+   segname __DATA
+      addr 0x0000000000005d88
+      size 0x0000000000000308
+    offset 25768
+     align 2^3 (8)
+    reloff 106080
+    nreloc 97
+     flags 0x10000005
+ reserved1 0
+ reserved2 0
+Section
+  sectname __objc_classrefs
+   segname __DATA
+      addr 0x0000000000006090
+      size 0x0000000000000060
+    offset 26544
+     align 2^3 (8)
+    reloff 106856
+    nreloc 12
+     flags 0x10000000
+ reserved1 0
+ reserved2 0
+Section
+  sectname __const
+   segname __DATA
+      addr 0x00000000000060f0
+      size 0x00000000000001b0
+    offset 26640
+     align 2^4 (16)
+    reloff 106952
+    nreloc 27
+     flags 0x00000000
+ reserved1 0
+ reserved2 0
+Section
+  sectname __objc_ivar
+   segname __DATA
+      addr 0x00000000000062a0
+      size 0x0000000000000018
+    offset 27072
+     align 2^3 (8)
+    reloff 0
+    nreloc 0
+     flags 0x00000000
+ reserved1 0
+ reserved2 0
+Section
+  sectname __objc_classname
+   segname __TEXT
+      addr 0x00000000000062b8
+      size 0x0000000000000013
+    offset 27096
+     align 2^0 (1)
+    reloff 0
+    nreloc 0
+     flags 0x00000002
+ reserved1 0
+ reserved2 0
+Section
+  sectname __objc_const
+   segname __DATA
+      addr 0x00000000000062d0
+      size 0x00000000000007a8
+    offset 27120
+     align 2^3 (8)
+    reloff 107168
+    nreloc 226
+     flags 0x00000000
+ reserved1 0
+ reserved2 0
+Section
+  sectname __objc_methtype
+   segname __TEXT
+      addr 0x0000000000006a78
+      size 0x0000000000000089
+    offset 29080
+     align 2^0 (1)
+    reloff 0
+    nreloc 0
+     flags 0x00000002
+ reserved1 0
+ reserved2 0
+Section
+  sectname __objc_classlist
+   segname __DATA
+      addr 0x0000000000006b08
+      size 0x0000000000000008
+    offset 29224
+     align 2^3 (8)
+    reloff 108976
+    nreloc 1
+     flags 0x10000000
+ reserved1 0
+ reserved2 0
+Section
+  sectname __bitcode
+   segname __LLVM
+      addr 0x0000000000006b10
+      size 0x000000000000ea20
+    offset 29232
+     align 2^4 (16)
+    reloff 0
+    nreloc 0
+     flags 0x00000000
+ reserved1 0
+ reserved2 0
+Section
+  sectname __cmdline
+   segname __LLVM
+      addr 0x0000000000015530
+      size 0x0000000000000041
+    offset 89168
+     align 2^4 (16)
+    reloff 0
+    nreloc 0
+     flags 0x00000000
+ reserved1 0
+ reserved2 0
+Section
+  sectname __objc_imageinfo
+   segname __DATA
+      addr 0x0000000000015571
+      size 0x0000000000000008
+    offset 89233
+     align 2^0 (1)
+    reloff 0
+    nreloc 0
+     flags 0x10000000
+ reserved1 0
+ reserved2 0
+Section
+  sectname __compact_unwind
+   segname __LD
+      addr 0x0000000000015580
+      size 0x0000000000000a00
+    offset 89248
+     align 2^3 (8)
+    reloff 108984
+    nreloc 80
+     flags 0x02000000
+ reserved1 0
+ reserved2 0
+Section
+  sectname __eh_frame
+   segname __TEXT
+      addr 0x0000000000015f80
+      size 0x0000000000000d80
+    offset 91808
+     align 2^3 (8)
+    reloff 0
+    nreloc 0
+     flags 0x6800000b
+ reserved1 0
+ reserved2 0
+Load command 1
+      cmd LC_VERSION_MIN_IPHONEOS
+  cmdsize 16
+  version 6.0
+      sdk n/a
+Load command 2
+     cmd LC_SYMTAB
+ cmdsize 24
+  symoff 109624
+   nsyms 146
+  stroff 111960
+ strsize 5852
+Load command 3
+            cmd LC_DYSYMTAB
+        cmdsize 80
+      ilocalsym 0
+      nlocalsym 111
+     iextdefsym 111
+     nextdefsym 7
+      iundefsym 118
+      nundefsym 28
+         tocoff 0
+           ntoc 0
+      modtaboff 0
+        nmodtab 0
+   extrefsymoff 0
+    nextrefsyms 0
+ indirectsymoff 0
+  nindirectsyms 0
+      extreloff 0
+        nextrel 0
+      locreloff 0
+        nlocrel 0
+build/libti.coremotion.a(TiCoremotionModuleAssets.o):
+Load command 0
+      cmd LC_SEGMENT_64
+  cmdsize 1032
+  segname 
+   vmaddr 0x0000000000000000
+   vmsize 0x0000000000000dc8
+  fileoff 1184
+ filesize 3528
+  maxprot 0x00000007
+ initprot 0x00000007
+   nsects 12
+    flags 0x0
+Section
+  sectname __text
+   segname __TEXT
+      addr 0x0000000000000000
+      size 0x0000000000000010
+    offset 1184
+     align 2^0 (1)
+    reloff 0
+    nreloc 0
+     flags 0x80000400
+ reserved1 0
+ reserved2 0
+Section
+  sectname __objc_classname
+   segname __TEXT
+      addr 0x0000000000000010
+      size 0x0000000000000019
+    offset 1200
+     align 2^0 (1)
+    reloff 0
+    nreloc 0
+     flags 0x00000002
+ reserved1 0
+ reserved2 0
+Section
+  sectname __objc_const
+   segname __DATA
+      addr 0x0000000000000030
+      size 0x00000000000000c8
+    offset 1232
+     align 2^3 (8)
+    reloff 4712
+    nreloc 9
+     flags 0x00000000
+ reserved1 0
+ reserved2 0
+Section
+  sectname __objc_data
+   segname __DATA
+      addr 0x00000000000000f8
+      size 0x0000000000000050
+    offset 1432
+     align 2^3 (8)
+    reloff 4784
+    nreloc 8
+     flags 0x00000000
+ reserved1 0
+ reserved2 0
+Section
+  sectname __objc_methname
+   segname __TEXT
+      addr 0x0000000000000148
+      size 0x0000000000000020
+    offset 1512
+     align 2^0 (1)
+    reloff 0
+    nreloc 0
+     flags 0x00000002
+ reserved1 0
+ reserved2 0
+Section
+  sectname __objc_methtype
+   segname __TEXT
+      addr 0x0000000000000168
+      size 0x0000000000000013
+    offset 1544
+     align 2^0 (1)
+    reloff 0
+    nreloc 0
+     flags 0x00000002
+ reserved1 0
+ reserved2 0
+Section
+  sectname __objc_classlist
+   segname __DATA
+      addr 0x0000000000000180
+      size 0x0000000000000008
+    offset 1568
+     align 2^3 (8)
+    reloff 4848
+    nreloc 1
+     flags 0x10000000
+ reserved1 0
+ reserved2 0
+Section
+  sectname __bitcode
+   segname __LLVM
+      addr 0x0000000000000190
+      size 0x0000000000000b40
+    offset 1584
+     align 2^4 (16)
+    reloff 0
+    nreloc 0
+     flags 0x00000000
+ reserved1 0
+ reserved2 0
+Section
+  sectname __cmdline
+   segname __LLVM
+      addr 0x0000000000000cd0
+      size 0x0000000000000041
+    offset 4464
+     align 2^4 (16)
+    reloff 0
+    nreloc 0
+     flags 0x00000000
+ reserved1 0
+ reserved2 0
+Section
+  sectname __objc_imageinfo
+   segname __DATA
+      addr 0x0000000000000d11
+      size 0x0000000000000008
+    offset 4529
+     align 2^0 (1)
+    reloff 0
+    nreloc 0
+     flags 0x10000000
+ reserved1 0
+ reserved2 0
+Section
+  sectname __compact_unwind
+   segname __LD
+      addr 0x0000000000000d20
+      size 0x0000000000000040
+    offset 4544
+     align 2^3 (8)
+    reloff 4856
+    nreloc 2
+     flags 0x02000000
+ reserved1 0
+ reserved2 0
+Section
+  sectname __eh_frame
+   segname __TEXT
+      addr 0x0000000000000d60
+      size 0x0000000000000068
+    offset 4608
+     align 2^3 (8)
+    reloff 0
+    nreloc 0
+     flags 0x6800000b
+ reserved1 0
+ reserved2 0
+Load command 1
+      cmd LC_VERSION_MIN_IPHONEOS
+  cmdsize 16
+  version 6.0
+      sdk n/a
+Load command 2
+     cmd LC_SYMTAB
+ cmdsize 24
+  symoff 4872
+   nsyms 12
+  stroff 5064
+ strsize 420
+Load command 3
+            cmd LC_DYSYMTAB
+        cmdsize 80
+      ilocalsym 0
+      nlocalsym 5
+     iextdefsym 5
+     nextdefsym 4
+      iundefsym 9
+      nundefsym 3
+         tocoff 0
+           ntoc 0
+      modtaboff 0
+        nmodtab 0
+   extrefsymoff 0
+    nextrefsyms 0
+ indirectsymoff 0
+  nindirectsyms 0
+      extreloff 0
+        nextrel 0
+      locreloff 0
+        nlocrel 0
