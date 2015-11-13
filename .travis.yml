@@ -1,16 +1,17 @@
 language: objective-c
+osx_image: xcode7.1
 env:
- global:
-   - MODULE_NAME=ti.coremotion
-   - MODULE_VERSION=1.1.0
+global:
+    - "MODULE_NAME=ti.coremotion"
 before_install:
-    - MODULE_ROOT="${PWD}"
+    - MODULE_ROOT=$PWD
 install:
+    - cd $MODULE_ROOT
     - curl -o install.sh https://raw.githubusercontent.com/appcelerator-modules/ci/master/travis/install.sh
-    - source install.sh -s "--branch 3_5_X"
-script: 
-    - ./build.sh
-    - mkdir -p "$MODULE_ROOT/s3"
-    - NOW=$(date +"%Y%m%d%H%M")
-    - echo "cp -p \"${MODULE_ROOT}/build/${MODULE_NAME}-iphone-${MODULE_VERSION}.zip\" \"${MODULE_ROOT}/s3/${MODULE_NAME}-iphone-${MODULE_VERSION}-${TRAVIS_BRANCH}-${NOW}.zip\""
-    - cp -p "${MODULE_ROOT}/build/${MODULE_NAME}-iphone-${MODULE_VERSION}.zip" "${MODULE_ROOT}/s3/${MODULE_NAME}-iphone-${MODULE_VERSION}-${TRAVIS_BRANCH}-${NOW}.zip"
+    - source install.sh -s "--branch 5_1_X"
+script:
+    - curl -o script.sh https://raw.githubusercontent.com/appcelerator-modules/ci/master/travis/script.sh
+    - source script.sh
+after_success: # and this only on success
+    - curl -o deploy.sh https://raw.githubusercontent.com/appcelerator-modules/ci/master/travis/deploy.sh
+    - source deploy.sh
