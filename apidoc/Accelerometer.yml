@@ -1,0 +1,53 @@
+---
+name: Modules.CoreMotion.Acceleratometer
+platforms: [iphone, ipad]
+summary: Allows Titanium client applications to access Apple's CoreMotion APIs.
+since: "5.2.0"
+
+methods:
+  - name: setAccelerometerUpdateInterval
+    summary: The interval in milliseconds, for providing accelerometer updates to the callback.
+    parameters:
+      - name: interval
+        summary: The interval in milliseconds
+        type: Number
+
+  - name: startAccelerometerUpdates
+    summary: Starts accelerometer updates.
+    description: |
+        If a callback is passed to this method, it will be called whenever there is an update.
+        The frequency of these updates can be controlled using the 
+        <Modules.CoreMotion.Accelerometer.setAccelerometerUpdateInterval> method.
+        If no callback is passed, the accelerometer data can be accessed using the 
+        <Modules.CoreMotion.Accelerometer.getAccelerometerData> method.
+        
+    parameters:
+      - name: callback
+        summary: The method to be called when there is an update.
+        type: Callback<CoreMotionAccelerometerDataWithSuccess>
+        optional: true
+
+  - name: stopAccelerometerUpdates
+    summary: Stops accelerometer updates.
+
+  - name: isAccelerometerActive
+    summary: Returns a Boolean indicating whether accelerometer updates are currently happening.
+    description: |
+        Indicates whether <Modules.CoreMotion.Accelerometer.startAccelerometerUpdates> has been called since 
+        <Modules.CoreMotion.Accelerometer.stopAccelerometerUpdates>.
+    returns:
+        type: Boolean
+
+  - name: isAccelerometerAvailable
+    summary: Returns a Boolean indicating whether an accelerometer is available on the device.
+    returns:
+        type: Boolean
+
+  - name: getAccelerometerData
+    summary: Returns the latest sample of accelerometer data.
+    description: |
+        An app that is receiving accelerometer data after calling 
+        <Modules.CoreMotion.Accelerometer.startAccelerometerUpdates> with no callback, needs to periodically
+        check the value returned by this method and process the acceleration data.
+    returns:
+        type: CoreMotionAccelerometerData

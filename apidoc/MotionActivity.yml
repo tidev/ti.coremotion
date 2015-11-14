@@ -1,0 +1,58 @@
+---
+name: Modules.CoreMotion.MotionActivity
+platforms: [iphone, ipad]
+summary: Allows Titanium client applications to access Apple's CoreMotion APIs.
+since: "5.2.0"
+
+methods:
+  - name: isActivityAvailable
+    summary: Returns a Boolean indicating whether motion activity data is available on the current device.
+    returns:
+        type: Boolean
+
+  - name: startActivityUpdates
+    summary: Starts the delivery of current motion activity updates to your app.
+    description: |
+        This method initiates the tracking of motion data asynchronously. 
+        Upon calling this method, the motion activity manager executes the 
+        callback, reporting the current motion in effect for the device. 
+        After that, the motion activity manager executes the callback only 
+        when the motion data changes.
+
+        The callback is executed on a best effort basis and updates are not 
+        delivered while your app is suspended. If updates arrived while your 
+        app was suspended, the last update is delivered to your app when it 
+        resumes execution. To get all of the updates that occurred while your 
+        app was suspended, use the <Modules.CoreMotion.queryActivity> method.
+
+        Upon starting activity updates, the motion activity manager reports 
+        changes to its callback until you call the <Modules.CoreMotion.stopActivityUpdates> 
+        method. If you call this method again with a new callback, the activity 
+        manager stops delivering updates to the old callback and delivers them 
+        to the new callback instead.
+        
+    parameters:
+      - name: callback
+        summary: The method to be called when there is an update.
+        type: Callback<CoreMotionActivityData>
+
+  - name: stopActivityUpdates
+    summary: Stops the delivery of motion activtiy updates to your app.
+
+  - name: queryActivity
+    summary: Gathers and returns historical motion activty data for the specified time period.
+    description: |
+        This method runs asynchronously, returning immediately and delivering the results 
+        to the specified callback. The system stores only the last seven days worth of 
+        activity data at most. If there are no samples for the specified range of time, 
+        an error object with the code <Modules.CoreMotion.ERROR_UNKNOWN> is passed to the 
+        callback.
+        
+    parameters:
+      - name: args
+        summary: An object of arguments
+        type: CoreMotionQueryActivityArgs
+
+      - name: callback
+        summary: The callback to execute with the results.
+        type: Callback<CoreMotionActivityQueryDataWithSuccess>
