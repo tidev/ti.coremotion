@@ -21,6 +21,8 @@
 
 +(NSDictionary*)dictionaryFromMotionActivity:(CMMotionActivity*)motionActivity;
 
++(NSDictionary*)dictionaryFromPedometerData:(CMPedometerData*)pedometerData;
+
 +(NSDictionary*)dictionaryWithError:(NSError*)error andDictionary:(NSDictionary*)eventDict;
 
 +(NSMutableArray*)arrayFromMotionActivities:(NSArray*)array;

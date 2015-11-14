@@ -1,0 +1,100 @@
+---
+name: Modules.CoreMotion.Pedometer
+platforms: [iphone, ipad]
+summary: | 
+    Allows Titanium client applications to access CoreMotion's Pedometer APIs. 
+    Note: This API is only for iOS 8 or later.
+since: "5.2.0"
+
+methods:
+
+  - name: isSupported
+    summary: Returns a Boolean value indicating whether the pedometer is supported on the current iOS version.
+    returns:
+        type: Boolean
+
+  - name: isCadenceAvailable
+    summary: |
+        Returns a Boolean value indicating whether cadence information is available on the current device.
+        Note: This API is only available on iOS 9 and later.
+    returns:
+        type: Boolean
+    osver: {ios: {min: "9.0"}}
+
+  - name: isDistanceAvailable
+    summary: Returns a Boolean value indicating whether distance support is available on the current device.
+    returns:
+        type: Boolean
+    osver: {ios: {min: "8.0"}}
+
+  - name: isFloorCountingAvailable
+    summary: Returns a Boolean value indicating whether floor counting is available on the current device.
+    returns:
+        type: Boolean
+    osver: {ios: {min: "8.0"}}
+
+  - name: isPaceAvailable
+    summary: |
+        Returns a Boolean value indicating whether pace information is available on the current device.
+        Note: This API is only available on iOS 9 and later.
+    returns:
+        type: Boolean
+    osver: {ios: {min: "9.0"}}
+
+  - name: isStepCountingAvailable
+    summary: Returns a Boolean indicating whether step-counting support is available on the current device.
+    returns:
+        type: Boolean
+    osver: {ios: {min: "8.0"}}
+
+  - name: startPedometerUpdates
+    summary: Starts the delivery of recent pedestrian-related data to your app.
+    description: |
+        Upon calling this method, the pedometer object starts calling your handler block regularly 
+        with data. The data passed to your handler block represents the cumulative data starting at the 
+        specified start date and ending at the current time. (You can get the start and end dates from 
+        the CMPedometerData object passed to your handler.) This method initiates the event delivery 
+        process asynchronously and executes your block on a serial dispatch queue, which ensures that 
+        only one copy of the block runs at any given time.
+
+        When the app is suspended, the delivery of updates stops temporarily. Upon returning to foreground 
+        or background execution, the pedometer object begins updates again.
+
+        To stop the delivery of events, call the <Modules.CoreMotion.Pedometer.stopPedometerUpdates> method.
+
+    parameters:
+      - name: args
+        summary: An object of arguments
+        type: CoreMotionStartPedometerArgs
+
+      - name: callback
+        summary: The callback to execute with the results.
+        type: Callback<CoreMotionPedometerDataWithSuccess>
+    osver: {ios: {min: "8.0"}}
+
+  - name: stopPedometerUpdates
+    summary: Stops the delivery of recent pedestrian data updates to your app.
+    description: |
+        Use this method to stop the delivery of continuous updates that were initiated 
+        by a call to the <Modules.CoreMotion.Pedometer.startPedometerUpdates> method.       
+
+  - name: queryPedometerData
+    summary: Retrieves the data between the specified start and end dates.
+    description: |
+        Use this method to retrieve historical pedestrian data between the specified dates. 
+        This method runs asynchronously and delivers the data to the block you provide. Only the past 
+        seven days worth of data is stored and available for you to retrieve. Specifying a start date 
+        that is more than seven days in the past returns only the available data.
+
+        It is safe to call this method at the same time that you are generating continuous updates using the 
+        <Modules.CoreMotion.Pedometer.startPedometerUpdates> method.
+
+    parameters:
+      - name: args
+        summary: An object of arguments
+        type: CoreMotionStartPedometerArgs
+
+      - name: callback
+        summary: The callback to execute with the results.
+        type: Callback<CoreMotionPedometerDataWithSuccess>
+    osver: {ios: {min: "8.0"}}

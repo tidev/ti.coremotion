@@ -132,6 +132,28 @@
     };
 }
 
++(NSDictionary*)dictionaryFromPedometerData:(CMPedometerData*)pedometerData
+{
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:@{
+        @"startDate": (!pedometerData) ? [NSNull null] : [TiUtils UTCDateForDate:pedometerData.startDate],
+        @"endDate": (!pedometerData) ? [NSNull null] : [TiUtils UTCDateForDate:pedometerData.endDate],
+        @"numberOfSteps": (!pedometerData) ? [NSNull null] : NUMINT(pedometerData.numberOfSteps),
+        @"distance": (!pedometerData) ? [NSNull null] : NUMINT(pedometerData.distance),
+        @"floorsAscended": (!pedometerData) ? [NSNull null] : NUMINT(pedometerData.floorsAscended),
+        @"floorsDescended": (!pedometerData) ? [NSNull null] : NUMINT(pedometerData.floorsDescended)        
+    }];
+    
+#ifdef IS_XCODE_7
+    if ([TiUtils isIOS9OrGreater]) {
+        [dict setValue:(!pedometerData) ? [NSNull null] : NUMINT(pedometerData.currentCadence) forKey:@"currentCadence"];
+        [dict setValue:(!pedometerData) ? [NSNull null] : NUMINT(pedometerData.currentPace) forKey:@"currentPace"];
+    }
+#endif
+    
+    return dict;
+}
+
+
 +(NSDictionary*)dictionaryWithError:(NSError*)error andDictionary:(NSDictionary*)eventDict
 {
     NSMutableDictionary *errorDict = [NSMutableDictionary dictionaryWithDictionary:eventDict];
