@@ -3,8 +3,7 @@
  */
 
 @interface TiCoremotionModuleAssets : NSObject
-{
-}
+
 - (NSData*) moduleAsset;
 - (NSData*) resolveModuleAsset:(NSString*)path;
 

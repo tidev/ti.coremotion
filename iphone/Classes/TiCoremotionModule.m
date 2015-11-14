@@ -9,6 +9,7 @@
 #import "TiBase.h"
 #import "TiHost.h"
 #import "TiUtils.h"
+#import "CMHelper.h"
 
 @implementation TiCoremotionModule
 
@@ -34,564 +35,288 @@
 
 #pragma mark - Public APIs
 
-#pragma mark Accelerometer
+#pragma mark Accelerometer (deprecated)
 
 -(void)setAccelerometerUpdateInterval:(id)value
 {
-    ENSURE_TYPE(value, NSNumber);
-    double val = [TiUtils doubleValue:value];
-    [[self sharedManager] setAccelerometerUpdateInterval:[self millisecondsToSeconds:[TiUtils doubleValue:value]]];
+    [CMHelper logDeprecatedMethod:@"setAccelerometerUpdateInterval" withNewMethod:@"Accelerometer.setAccelerometerUpdateInterval"];
+    [[self sharedAccelerometer] setAccelerometerUpdateInterval:value];
 }
 
 -(void)startAccelerometerUpdates:(id)arg
 {
-    if ([[self sharedManager] isAccelerometerActive]) {
-        NSLog(@"[WARN] The accelerometer is already updating. Please stop accelerator updates first and try again.");
-        return;
-    }
-    
-    KrollCallback *callback = [arg objectAtIndex:0];
-    ENSURE_TYPE_OR_NIL(callback, KrollCallback);
-    
-    if (callback != nil) {
-        [[self sharedManager] startAccelerometerUpdatesToQueue:[NSOperationQueue mainQueue] withHandler:^(CMAccelerometerData *accelerometerData, NSError *error) {
-            
-            NSDictionary *eventDict = [self dictionaryWithError:error andDictionary:[self dictionaryFromAccelerometerData:accelerometerData]];
-            NSArray *invocationArray = [[NSArray alloc] initWithObjects:&eventDict count:1];
-            
-            [callback call:invocationArray thisObject:self];
-            [invocationArray release];
-        }];
-    } else {
-        [[self sharedManager] startDeviceMotionUpdates];
-    }
+    [CMHelper logDeprecatedMethod:@"startAccelerometerUpdates" withNewMethod:@"Accelerometer.startAccelerometerUpdates"];
+    [[self sharedAccelerometer] startAccelerometerUpdates:arg];
 }
 
 -(void)stopAccelerometerUpdates:(id)unused
 {
-    [[self sharedManager] stopAccelerometerUpdates];
+    [CMHelper logDeprecatedMethod:@"stopAccelerometerUpdates" withNewMethod:@"Accelerometer.stopAccelerometerUpdates"];
+    [[self sharedAccelerometer] stopAccelerometerUpdates:unused];
 }
 
 -(NSNumber*)isAccelerometerActive:(id)unused
 {
-    return NUMBOOL([[self sharedManager] isAccelerometerActive]);
+    [CMHelper logDeprecatedMethod:@"isAccelerometerActive" withNewMethod:@"Accelerometer.isAccelerometerActive"];
+    return [[self sharedAccelerometer] isAccelerometerActive:unused];
 }
 
 -(NSNumber*)isAccelerometerAvailable:(id)unused
 {
-    return NUMBOOL([[self sharedManager] isAccelerometerAvailable]);
+    [CMHelper logDeprecatedMethod:@"isAccelerometerAvailable" withNewMethod:@"Accelerometer.isAccelerometerAvailable"];
+    return [[self sharedAccelerometer] isAccelerometerAvailable:unused];
 }
 
 -(NSDictionary*)getAccelerometerData:(id)unused
 {
-    return [self dictionaryFromAccelerometerData:[[self sharedManager] accelerometerData]];
+    [CMHelper logDeprecatedMethod:@"getAccelerometerData" withNewMethod:@"Accelerometer.getAccelerometerData"];
+    return [[self sharedAccelerometer] getAccelerometerData:unused];
 }
 
-#pragma mark Gyroscope
-
+#pragma mark Gyroscope (deprecated)
 
 -(void)setGyroUpdateInterval:(id)value
 {
-    ENSURE_TYPE_OR_NIL(value, NSNumber);
-    [[self sharedManager] setGyroUpdateInterval:[self millisecondsToSeconds:[TiUtils doubleValue:value]]];
+    [CMHelper logDeprecatedMethod:@"setGyroUpdateInterval" withNewMethod:@"Gyroscope.setGyroUpdateInterval"];
+    [[self sharedGyroscope] setGyroUpdateInterval:value];
 }
 
 -(void)startGyroUpdates:(id)arg
 {
-    if ([[self sharedManager] isGyroActive]) {
-        NSLog(@"[WARN] The gyro is already updating. Please stop gyro updates first and try again.");
-        return;
-    }
-    
-    KrollCallback *callback = [arg objectAtIndex:0];
-    ENSURE_TYPE_OR_NIL(callback, KrollCallback);
-    
-    if (callback != nil) {
-        [[self sharedManager] startGyroUpdatesToQueue:[NSOperationQueue mainQueue] withHandler:^(CMGyroData *gyroData, NSError *error) {
-            
-            NSDictionary *eventDict = [self dictionaryWithError:error andDictionary:[self dictionaryFromGyroData:gyroData]];
-            NSArray *invocationArray = [[NSArray alloc] initWithObjects:&eventDict count:1];
-            
-            [callback call:invocationArray thisObject:self];
-            [invocationArray release];
-        }];
-    } else {
-        [[self sharedManager] startGyroUpdates];
-    }
+    [CMHelper logDeprecatedMethod:@"startGyroUpdates" withNewMethod:@"Gyroscope.startGyroUpdates"];
+    [[self sharedGyroscope] startGyroUpdates:arg];
 }
 
 -(void)stopGyroUpdates:(id)unused
 {
-    [[self sharedManager] stopGyroUpdates];
+    [CMHelper logDeprecatedMethod:@"stopGyroUpdates" withNewMethod:@"Gyroscope.stopGyroUpdates"];
+    [[self sharedGyroscope] stopGyroUpdates:unused];
 }
 
 -(NSNumber*)isGyroActive:(id)unused
 {
-    return NUMBOOL([[self sharedManager] isGyroActive]);
+    [CMHelper logDeprecatedMethod:@"isGyroActive" withNewMethod:@"Gyroscope.isGyroActive"];
+    return [[self sharedGyroscope] isGyroActive:unused];
 }
 
 -(NSNumber*)isGyroAvailable:(id)unused
 {
-    return NUMBOOL([[self sharedManager] isGyroAvailable]);
+    [CMHelper logDeprecatedMethod:@"isGyroAvailable" withNewMethod:@"Gyroscope.isGyroAvailable"];
+    return [[self sharedGyroscope] isGyroAvailable:unused];
 }
 
 -(NSDictionary*)getGyroData:(id)unused
 {
-    return [self dictionaryFromGyroData:[[self sharedManager] gyroData]];
+    [CMHelper logDeprecatedMethod:@"getGyroData" withNewMethod:@"Gyroscope.getGyroData"];
+    return [[self sharedGyroscope] getGyroData:unused];
 }
 
-#pragma mark Magnetometer
+#pragma mark Magnetometer (deprecated)
 
 -(void)setMagnetometerUpdateInterval:(id)value
 {
-    ENSURE_TYPE_OR_NIL(value, NSNumber);
-    [[self sharedManager] setMagnetometerUpdateInterval:[self millisecondsToSeconds:[TiUtils doubleValue:value]]];
+    [CMHelper logDeprecatedMethod:@"setMagnetometerUpdateInterval" withNewMethod:@"Magnetometer.setMagnetometerUpdateInterval"];
+    [[self sharedMagnetometer] setMagnetometerUpdateInterval:value];
 }
 
 -(void)startMagnetometerUpdates:(id)arg
 {
-    if ([[self sharedManager] isMagnetometerActive]) {
-        NSLog(@"[WARN] The magnetometer is already updating. Please stop magnetometer updates first and try again.");
-        return;
-    }
-    
-    KrollCallback *callback = [arg objectAtIndex:0];
-    ENSURE_TYPE_OR_NIL(callback, KrollCallback);
-    
-    if (callback != nil) {
-        [[self sharedManager] startMagnetometerUpdatesToQueue:[NSOperationQueue mainQueue] withHandler:^(CMMagnetometerData *magnetometerData, NSError *error) {
-            
-            NSDictionary *eventDict = [self dictionaryWithError:error andDictionary:[self dictionaryFromMagnetometerData:magnetometerData]];
-            NSArray *invocationArray = [[NSArray alloc] initWithObjects:&eventDict count:1];
-            
-            [callback call:invocationArray thisObject:self];
-            [invocationArray release];
-        }];
-    } else {
-        [[self sharedManager] startMagnetometerUpdates];
-    }
+    [CMHelper logDeprecatedMethod:@"startMagnetometerUpdates" withNewMethod:@"Magnetometer.startMagnetometerUpdates"];
+    [[self sharedMagnetometer] startMagnetometerUpdates:arg];
 }
 
 -(void)stopMagnetometerUpdates:(id)unused
 {
-    [[self sharedManager] stopMagnetometerUpdates];
+    [CMHelper logDeprecatedMethod:@"stopMagnetometerUpdates" withNewMethod:@"Magnetometer.stopMagnetometerUpdates"];
+    [[self sharedMagnetometer] stopMagnetometerUpdates:unused];
 }
 
 -(NSNumber*)isMagnetometerActive:(id)unused
 {
-    return NUMBOOL([[self sharedManager] isMagnetometerActive]);
+    [CMHelper logDeprecatedMethod:@"isMagnetometerActive" withNewMethod:@"Magnetometer.isMagnetometerActive"];
+    return [[self sharedMagnetometer] isMagnetometerActive:unused];
 }
 
 -(NSNumber*)isMagnetometerAvailable:(id)unused
 {
-    return NUMBOOL([[self sharedManager] isMagnetometerAvailable]);
+    [CMHelper logDeprecatedMethod:@"isMagnetometerAvailable" withNewMethod:@"Magnetometer.isMagnetometerAvailable"];
+    return [[self sharedMagnetometer] isMagnetometerAvailable:unused];
 }
 
 -(NSDictionary*)getMagnetometerData:(id)unused
 {
-    return [self dictionaryFromMagnetometerData:[[self sharedManager] magnetometerData]];
+    [CMHelper logDeprecatedMethod:@"getMagnetometerData" withNewMethod:@"Magnetometer.getMagnetometerData"];
+    return [[self sharedMagnetometer] getMagnetometerData:unused];
 }
 
-#pragma mark Device Motion
+#pragma mark Device Motion (deprecated)
 
 -(void)setShowsDeviceMovementDisplay:(id)value
 {
-    ENSURE_TYPE(value, NSNumber);
-    [[self sharedManager] setShowsDeviceMovementDisplay:[TiUtils boolValue:value]];
+    [CMHelper logDeprecatedMethod:@"setShowsDeviceMovementDisplay" withNewMethod:@"DeviceMotion.setShowsDeviceMovementDisplay"];
+    [[self sharedDeviceMotion] setShowsDeviceMovementDisplay:value];
 }
 
 -(void)setDeviceMotionUpdateInterval:(id)value
 {
-    ENSURE_TYPE(value, NSNumber);
-    double val = [self millisecondsToSeconds:[TiUtils doubleValue:value]];
-    [[self sharedManager] setDeviceMotionUpdateInterval:[self millisecondsToSeconds:[TiUtils doubleValue:value]]];
+    [CMHelper logDeprecatedMethod:@"setDeviceMotionUpdateInterval" withNewMethod:@"DeviceMotion.setDeviceMotionUpdateInterval"];
+    [[self sharedDeviceMotion] setDeviceMotionUpdateInterval:value];
 }
 
 -(void)startDeviceMotionUpdatesUsingReferenceFrame:(id)args
 {
-    if ([[self sharedManager] isDeviceMotionActive]) {
-        NSLog(@"[WARN] The device motion is already updating. Please stop device motion updates first and try again.");
-        return;
-    }
-
-    ENSURE_TYPE(args, NSArray);
-    
-    NSDictionary *dict = [args objectAtIndex:0];
-    CMAttitudeReferenceFrame referenceFrame = [TiUtils intValue:[dict valueForKey:@"referenceFrame"]];
-
-    KrollCallback *callback = nil;
-    
-    if ([args count] == 2) {
-        callback = [args objectAtIndex:1];
-        ENSURE_TYPE_OR_NIL(callback, KrollCallback);
-    }
-
-    if (callback != nil) {
-        [[self sharedManager] startDeviceMotionUpdatesUsingReferenceFrame:referenceFrame toQueue:[NSOperationQueue mainQueue] withHandler:^(CMDeviceMotion *motion, NSError *error) {
-           
-            NSDictionary *eventDict = [self dictionaryWithError:error andDictionary:[self dictionaryFromDeviceMotion:motion]];
-            NSArray *invocationArray = [[NSArray alloc] initWithObjects:&eventDict count:1];
-            
-            [callback call:invocationArray thisObject:self];
-            [invocationArray release];
-        }];
-    } else {
-        [[self sharedManager] startDeviceMotionUpdatesUsingReferenceFrame:referenceFrame];        
-    }
+    [CMHelper logDeprecatedMethod:@"startDeviceMotionUpdatesUsingReferenceFrame" withNewMethod:@"DeviceMotion.startDeviceMotionUpdatesUsingReferenceFrame"];
+    [[self sharedDeviceMotion] startDeviceMotionUpdatesUsingReferenceFrame:args];
 }
 
 -(void)startDeviceMotionUpdates:(id)arg
 {
-    if ([[self sharedManager] isDeviceMotionActive]) {
-        NSLog(@"[WARN] The device motion is already updating. Please stop device motion updates first and try again.");
-        return;
-    }
-
-    KrollCallback *callback = [arg objectAtIndex:0];
-    ENSURE_TYPE_OR_NIL(callback, KrollCallback);
-    
-    if (callback) {
-        [[self sharedManager] startDeviceMotionUpdatesToQueue:[NSOperationQueue mainQueue] withHandler:^(CMDeviceMotion *motion, NSError *error) {
-            NSDictionary *eventDict = [self dictionaryWithError:error andDictionary:[self dictionaryFromDeviceMotion:motion]];
-            NSArray *invocationArray = [[NSArray alloc] initWithObjects:&eventDict count:1];
-            
-            [callback call:invocationArray thisObject:self];
-            [invocationArray release];
-        }];
-    } else {
-        [[self sharedManager] startDeviceMotionUpdates];
-    }
+    [CMHelper logDeprecatedMethod:@"startDeviceMotionUpdates" withNewMethod:@"DeviceMotion.startDeviceMotionUpdates"];
+    [[self sharedDeviceMotion] startDeviceMotionUpdates:arg];
 }
 
 -(void)stopDeviceMotionUpdates:(id)unused
 {
-    [[self sharedManager] stopDeviceMotionUpdates];
+    [CMHelper logDeprecatedMethod:@"stopDeviceMotionUpdates" withNewMethod:@"DeviceMotion.stopDeviceMotionUpdates"];
+    [[self sharedDeviceMotion] stopDeviceMotionUpdates:unused];
 }
 
 -(NSNumber*)getAttitudeReferenceFrame:(id)unused
 {
-    return NUMINT([[self sharedManager] attitudeReferenceFrame]);
+    [CMHelper logDeprecatedMethod:@"getAttitudeReferenceFrame" withNewMethod:@"DeviceMotion.getAttitudeReferenceFrame"];
+    return [[self sharedDeviceMotion] getAttitudeReferenceFrame:unused];
 }
 
 -(NSNumber*)availableAttitudeReferenceFrames:(id)unused
 {
-    return NUMINT([CMMotionManager availableAttitudeReferenceFrames]);
+    [CMHelper logDeprecatedMethod:@"availableAttitudeReferenceFrames" withNewMethod:@"DeviceMotion.availableAttitudeReferenceFrames"];
+    return [[self sharedDeviceMotion] availableAttitudeReferenceFrames:unused];
 }
 
 -(NSNumber*)isDeviceMotionActive:(id)unused
 {
-    return NUMBOOL([[self sharedManager] isDeviceMotionActive]);
+    [CMHelper logDeprecatedMethod:@"isDeviceMotionActive" withNewMethod:@"DeviceMotion.isDeviceMotionActive"];
+    return [[self sharedDeviceMotion] isDeviceMotionActive:unused];
 }
 
 -(NSNumber*)isDeviceMotionAvailable:(id)unused
 {
-    return NUMBOOL([[self sharedManager] isDeviceMotionAvailable]);
+    [CMHelper logDeprecatedMethod:@"isDeviceMotionAvailable" withNewMethod:@"DeviceMotion.isDeviceMotionAvailable"];
+    return [[self sharedDeviceMotion] isDeviceMotionAvailable:unused];
 }
 
 -(NSDictionary*)getDeviceMotion:(id)unused
 {
-    NSDictionary *res =[self dictionaryFromDeviceMotion:[[self sharedManager] deviceMotion]];
-    return res;
+    [CMHelper logDeprecatedMethod:@"getDeviceMotion" withNewMethod:@"DeviceMotion.getDeviceMotion"];
+    return [[self sharedDeviceMotion] getDeviceMotion:unused];
 }
 
-#pragma mark Motion Activity
+#pragma mark Motion Activity (deprecated)
 
 -(NSNumber*)isActivityAvailable:(id)unused
 {
-    return NUMBOOL([CMMotionActivityManager isActivityAvailable]);
+    [CMHelper logDeprecatedMethod:@"isActivityAvailable" withNewMethod:@"MotionActivity.isActivityAvailable"];
+    return [[self sharedMotionActivity] isActivityAvailable:unused];
 }
 
 -(void)startActivityUpdates:(id)arg
 {
-    KrollCallback *callback = [arg objectAtIndex:0];
-    ENSURE_TYPE(callback, KrollCallback);
-    
-    [[self sharedActivityManager] startActivityUpdatesToQueue:[NSOperationQueue mainQueue] withHandler:^(CMMotionActivity *activity) {
-        NSMutableArray *result = [NSMutableArray array];
-        NSDictionary *eventDict = @{@"activity": [self dictionaryFromMotionActivity:activity]};
-        NSArray *invocationArray = [[NSArray alloc] initWithObjects:&eventDict count:1];
-        
-        [callback call:invocationArray thisObject:self];
-        [invocationArray release];
-    }];
+    [CMHelper logDeprecatedMethod:@"startActivityUpdates" withNewMethod:@"MotionActivity.startActivityUpdates"];
+    return [[self sharedMotionActivity] startActivityUpdates:arg];
 }
 
 -(void)stopActivityUpdates:(id)unused
 {
-    [[self sharedActivityManager] stopActivityUpdates];
+    [CMHelper logDeprecatedMethod:@"stopActivityUpdates" withNewMethod:@"MotionActivity.stopActivityUpdates"];
+    return [[self sharedMotionActivity] stopActivityUpdates:unused];
 }
 
 -(void)queryActivity:(id)args
 {
-    ENSURE_TYPE(args, NSArray);
-    
-    NSDictionary *dict = [args objectAtIndex:0];
-    KrollCallback *callback = [args objectAtIndex:1];
-    
-    ENSURE_TYPE([dict valueForKey:@"start"], NSDate);
-    ENSURE_TYPE([dict valueForKey:@"end"], NSDate);
-    
-    NSDate *start = [dict valueForKey:@"start"];
-    NSDate *end = [dict valueForKey:@"end"];
-    
-    [[self sharedActivityManager] queryActivityStartingFromDate:start toDate:end toQueue:[NSOperationQueue mainQueue] withHandler:^(NSArray<CMMotionActivity*>*activities, NSError *error) {
-        
-        NSDictionary *eventDict = [self dictionaryWithError:error andDictionary:@{@"activities": [self arrayFromMotionActivities:activities]}];
-        NSArray *invocationArray = [[NSArray alloc] initWithObjects:&eventDict count:1];
-        
-        [callback call:invocationArray thisObject:self];
-        [invocationArray release];
-    }];
+    [CMHelper logDeprecatedMethod:@"queryActivity" withNewMethod:@"MotionActivity.queryActivity"];
+    return [[self sharedMotionActivity] queryActivity:args];
 }
 
-#pragma mark Step Counter
+#pragma mark Step Counter (deprecated)
 
 -(NSNumber*)isStepCountingAvailable:(id)unused
 {
-    return NUMBOOL([CMStepCounter isStepCountingAvailable]);
+    [CMHelper logDeprecatedMethod:@"isStepCountingAvailable" withNewMethod:@"StepCounter.isStepCountingAvailable"];
+    return [[self sharedStepCounter] isStepCountingAvailable:unused];
 }
 
 -(void)startStepCountingUpdates:(id)args
 {
-    NSDictionary *dict = [args objectAtIndex:0];
-    KrollCallback *callback = [args objectAtIndex:1];
-    NSNumber *stepCounts = [dict valueForKey:@"stepCounts"];
-    
-    ENSURE_TYPE(dict, NSDictionary);
-    ENSURE_TYPE(stepCounts, NSNumber);
-    ENSURE_TYPE(callback, KrollCallback);
-    
-    [[self sharedStepCounter] startStepCountingUpdatesToQueue:[NSOperationQueue mainQueue] updateOn:stepCounts withHandler:^(NSInteger numberOfSteps, NSDate *timestamp, NSError * error) {
-        
-        NSDictionary *eventDict = [self dictionaryWithError:error andDictionary:@{
-            @"timestamp": [TiUtils UTCDateForDate:timestamp],
-            @"numberOfSteps": NUMINTEGER(numberOfSteps)
-        }];
-        
-        NSArray *invocationArray = [[NSArray alloc] initWithObjects:&eventDict count:1];
-        
-        [callback call:invocationArray thisObject:self];
-        [invocationArray release];
-    }];
+    [CMHelper logDeprecatedMethod:@"startStepCountingUpdates" withNewMethod:@"StepCounter.startStepCountingUpdates"];
+    [[self sharedStepCounter] startStepCountingUpdates:args];
 }
 
 -(void)stopStepCountingUpdates:(id)unused
 {
-    [[self sharedStepCounter] stopStepCountingUpdates];
+    [CMHelper logDeprecatedMethod:@"stopStepCountingUpdates" withNewMethod:@"StepCounter.stopStepCountingUpdates"];
+    [[self sharedStepCounter] stopStepCountingUpdates:unused];
 }
 
 -(void)queryStepCount:(id)args
 {
-    NSDictionary *dict = [args objectAtIndex:0];
-    KrollCallback *callback = [args objectAtIndex:1];
-    
-    ENSURE_TYPE([dict valueForKey:@"start"], NSDate);
-    ENSURE_TYPE([dict valueForKey:@"end"], NSDate);
-    
-    NSDate *start = [dict valueForKey:@"start"];
-    NSDate *end = [dict valueForKey:@"end"];
-    
-    [[self sharedStepCounter] queryStepCountStartingFrom:start to:end toQueue:[NSOperationQueue mainQueue] withHandler:^(NSInteger numberOfSteps, NSError *error) {
-    
-        NSDictionary *eventDict = [self dictionaryWithError:error andDictionary:@{
-            @"numberOfSteps": NUMINTEGER(numberOfSteps)
-        }];
-        
-        NSArray *invocationArray = [[NSArray alloc] initWithObjects:&eventDict count:1];
-        
-        [callback call:invocationArray thisObject:self];
-        [invocationArray release];
-    }];
+    [CMHelper logDeprecatedMethod:@"queryStepCount" withNewMethod:@"StepCounter.queryStepCount"];
+    [[self sharedStepCounter] queryStepCount:args];
 }
 
-#pragma mark - Singletons
+#pragma mark - Singleton instances (deprecated)
 
--(CMMotionManager*)sharedManager
+-(TiCoremotionAccelerometerProxy*)sharedAccelerometer
 {
-    if (motionManager == nil) {
-        motionManager = [[CMMotionManager alloc] init];
+    if(acceleratometer == nil) {
+        acceleratometer = [[TiCoremotionAccelerometerProxy alloc] init];
     }
     
-    return motionManager;
+    return acceleratometer;
 }
 
--(CMMotionActivityManager*)sharedActivityManager
+-(TiCoremotionGyroscopeProxy*)sharedGyroscope
 {
-    if (activityManager == nil) {
-        activityManager = [[CMMotionActivityManager alloc] init];
+    if(gyroscope == nil) {
+        gyroscope = [[TiCoremotionGyroscopeProxy alloc] init];
     }
     
-    return activityManager;
+    return gyroscope;
 }
 
--(CMStepCounter*)sharedStepCounter
+-(TiCoremotionMagnetometerProxy*)sharedMagnetometer
 {
-    if (stepCounter == nil) {
-        stepCounter = [[CMStepCounter alloc] init];
+    if(magnetometer == nil) {
+        magnetometer = [[TiCoremotionMagnetometerProxy alloc] init];
+    }
+    
+    return magnetometer;
+}
+
+-(TiCoremotionDeviceMotionProxy*)sharedDeviceMotion
+{
+    if(deviceMotion == nil) {
+        deviceMotion = [[TiCoremotionDeviceMotionProxy alloc] init];
+    }
+    
+    return deviceMotion;
+}
+
+-(TiCoremotionMotionActivityProxy*)sharedMotionActivity
+{
+    if(motionActivity == nil) {
+        motionActivity = [[TiCoremotionMotionActivityProxy alloc] init];
+    }
+    
+    return motionActivity;
+}
+
+-(TiCoremotionStepCounterProxy*)sharedStepCounter
+{
+    if(stepCounter == nil) {
+        stepCounter = [[TiCoremotionStepCounterProxy alloc] init];
     }
     
     return stepCounter;
-}
-
-#pragma mark - Helper
-
--(NSDictionary*)dictionaryFromAccelerometerData:(CMAccelerometerData*)accelerometerData
-{
-    NSDictionary *acceleration = @{
-        @"x" : (accelerometerData == nil) ? [NSNull null] : NUMDOUBLE(accelerometerData.acceleration.x),
-        @"y" : (accelerometerData == nil) ? [NSNull null] : NUMDOUBLE(accelerometerData.acceleration.y),
-        @"z" : (accelerometerData == nil) ? [NSNull null] : NUMDOUBLE(accelerometerData.acceleration.z)
-    };
-    
-    return @{
-        @"timestamp" : (!accelerometerData) ? [NSNull null] : NUMDOUBLE([self intervalToMilliseconds:accelerometerData.timestamp]),
-        @"acceleration": acceleration
-    };
-}
-
--(NSDictionary*)dictionaryFromGyroData:(CMGyroData*)gyroData
-{
-    NSDictionary *rotationRate = @{
-       @"x" : (gyroData == nil) ? [NSNull null] : NUMDOUBLE(gyroData.rotationRate.x),
-       @"y" : (gyroData == nil) ? [NSNull null] : NUMDOUBLE(gyroData.rotationRate.y),
-       @"z" : (gyroData == nil) ? [NSNull null] : NUMDOUBLE(gyroData.rotationRate.z)
-    };
-    
-    return @{
-        @"timestamp" : (!gyroData) ? [NSNull null] : NUMDOUBLE([self intervalToMilliseconds:gyroData.timestamp]),
-        @"rotationRate": rotationRate
-    };
-}
-
--(NSDictionary*)dictionaryFromMagnetometerData:(CMMagnetometerData*)magnetometerData
-{
-    NSDictionary *magneticField = @{
-       @"x" : (magnetometerData == nil) ? [NSNull null] : NUMDOUBLE(magnetometerData.magneticField.x),
-       @"y" : (magnetometerData == nil) ? [NSNull null] : NUMDOUBLE(magnetometerData.magneticField.y),
-       @"z" : (magnetometerData == nil) ? [NSNull null] : NUMDOUBLE(magnetometerData.magneticField.z)
-    };
-
-    return @{
-       @"timestamp" : (!magnetometerData) ? [NSNull null] : NUMDOUBLE([self intervalToMilliseconds:magnetometerData.timestamp]),
-       @"magneticField": magneticField
-    };
-}
-
--(NSDictionary*)dictionaryFromDeviceMotion:(CMDeviceMotion*)deviceMotion
-{
-    NSDictionary *rotationRate = @{
-       @"x" : (deviceMotion == nil) ? [NSNull null] : NUMDOUBLE(deviceMotion.rotationRate.x),
-       @"y" : (deviceMotion == nil) ? [NSNull null] : NUMDOUBLE(deviceMotion.rotationRate.y),
-       @"z" : (deviceMotion == nil) ? [NSNull null] : NUMDOUBLE(deviceMotion.rotationRate.z)
-    };
-    
-    NSDictionary *gravity = @{
-       @"x" : (deviceMotion == nil) ? [NSNull null] : NUMDOUBLE(deviceMotion.gravity.x),
-       @"y" : (deviceMotion == nil) ? [NSNull null] : NUMDOUBLE(deviceMotion.gravity.y),
-       @"z" : (deviceMotion == nil) ? [NSNull null] : NUMDOUBLE(deviceMotion.gravity.z)
-    };
-    
-    NSDictionary *userAcceleration = @{
-       @"x" : (deviceMotion == nil) ? [NSNull null] : NUMDOUBLE(deviceMotion.userAcceleration.x),
-       @"y" : (deviceMotion == nil) ? [NSNull null] : NUMDOUBLE(deviceMotion.userAcceleration.y),
-       @"z" : (deviceMotion == nil) ? [NSNull null] : NUMDOUBLE(deviceMotion.userAcceleration.z)
-    };
-    
-    NSDictionary *field = @{
-        @"x" : (deviceMotion == nil) ? [NSNull null] : NUMDOUBLE(deviceMotion.magneticField.field.x),
-        @"y" : (deviceMotion == nil) ? [NSNull null] : NUMDOUBLE(deviceMotion.magneticField.field.y),
-        @"z" : (deviceMotion == nil) ? [NSNull null] : NUMDOUBLE(deviceMotion.magneticField.field.z)
-    };
-
-    NSDictionary *magneticField = @{
-        @"field" : field,
-        @"accuracy" : (deviceMotion == nil) ? [NSNull null] : NUMINT(deviceMotion.magneticField.accuracy)
-    };
-    
-    NSDictionary *quaternion = @{
-        @"w" : (deviceMotion == nil) ? [NSNull null] : NUMDOUBLE(deviceMotion.attitude.quaternion.w),
-        @"x" : (deviceMotion == nil) ? [NSNull null] : NUMDOUBLE(deviceMotion.attitude.quaternion.x),
-        @"y" : (deviceMotion == nil) ? [NSNull null] : NUMDOUBLE(deviceMotion.attitude.quaternion.y),
-        @"z" : (deviceMotion == nil) ? [NSNull null] : NUMDOUBLE(deviceMotion.attitude.quaternion.z),
-    };
-    
-    NSDictionary *rotationMatrix = @{
-        @"m11" : (deviceMotion == nil) ? [NSNull null] : NUMDOUBLE(deviceMotion.attitude.rotationMatrix.m11),
-        @"m12" : (deviceMotion == nil) ? [NSNull null] : NUMDOUBLE(deviceMotion.attitude.rotationMatrix.m12),
-        @"m13" : (deviceMotion == nil) ? [NSNull null] : NUMDOUBLE(deviceMotion.attitude.rotationMatrix.m13),
-        @"m21" : (deviceMotion == nil) ? [NSNull null] : NUMDOUBLE(deviceMotion.attitude.rotationMatrix.m21),
-        @"m22" : (deviceMotion == nil) ? [NSNull null] : NUMDOUBLE(deviceMotion.attitude.rotationMatrix.m22),
-        @"m23" : (deviceMotion == nil) ? [NSNull null] : NUMDOUBLE(deviceMotion.attitude.rotationMatrix.m23),
-        @"m31" : (deviceMotion == nil) ? [NSNull null] : NUMDOUBLE(deviceMotion.attitude.rotationMatrix.m31),
-        @"m32" : (deviceMotion == nil) ? [NSNull null] : NUMDOUBLE(deviceMotion.attitude.rotationMatrix.m32),
-        @"m33" : (deviceMotion == nil) ? [NSNull null] : NUMDOUBLE(deviceMotion.attitude.rotationMatrix.m33)
-    };
-    
-    NSDictionary *attitude = @{
-        @"roll" : (deviceMotion == nil) ? [NSNull null] : NUMDOUBLE(deviceMotion.attitude.roll),
-        @"pitch" : (deviceMotion == nil) ? [NSNull null] : NUMDOUBLE(deviceMotion.attitude.pitch),
-        @"yaw" : (deviceMotion == nil) ? [NSNull null] : NUMDOUBLE(deviceMotion.attitude.yaw),
-        @"quaternion" : quaternion,
-        @"rotationMatrix" : rotationMatrix
-    };
-
-    return @{
-        @"timestamp" : (!deviceMotion) ? [NSNull null] : NUMDOUBLE([self intervalToMilliseconds:deviceMotion.timestamp]),
-        @"attitude": attitude,
-        @"rotationRate": rotationRate,
-        @"gravity": gravity,
-        @"userAcceleration": userAcceleration,
-        @"magneticField": magneticField
-    };
-}
-
--(id)dictionaryFromMotionActivity:(CMMotionActivity*)motionActivity
-{
-    return @{
-        @"stationary" : (!motionActivity) ? [NSNull null] : NUMBOOL(motionActivity.stationary),
-        @"walking": (!motionActivity) ? [NSNull null] : NUMBOOL(motionActivity.walking),
-        @"running": (!motionActivity) ? [NSNull null] : NUMBOOL(motionActivity.running),
-        @"automotive": (!motionActivity) ? [NSNull null] : NUMBOOL(motionActivity.automotive),
-        @"unknown": (!motionActivity) ? [NSNull null] : NUMBOOL(motionActivity.unknown),
-        @"startDate": (!motionActivity) ? [NSNull null] : [TiUtils UTCDateForDate:motionActivity.startDate],
-        @"confidence": (!motionActivity) ? [NSNull null] : NUMINT(motionActivity.confidence)
-    };
-}
-
--(NSDictionary*)dictionaryWithError:(NSError*)error andDictionary:(NSDictionary*)eventDict
-{
-    NSMutableDictionary *errorDict = [NSMutableDictionary dictionaryWithDictionary:eventDict];
-    
-    [errorDict setObject:NUMBOOL(!error || (error && [error code] == 0)) forKey:@"success"];
-    [errorDict setObject:(error ? [error localizedDescription] : [NSNull null]) forKey:@"error"];
-    [errorDict setObject:(error ? NUMINTEGER([error code]) : [NSNull null]) forKey:@"code"];
-    
-    return [NSDictionary dictionaryWithDictionary:errorDict];
-}
-
--(NSMutableArray*)arrayFromMotionActivities:(NSArray<CMMotionActivity*>*)array
-{
-    if (array == nil) {
-        return [NSMutableArray array];
-    }
-    
-    NSMutableArray *result = [NSMutableArray array];
-    
-    for (int i = 0; i < [array count]; i++) {
-        [result addObject:[self dictionaryFromMotionActivity:[array objectAtIndex:i]]];
-    }
-    
-    return result;
-}
-
--(double)millisecondsToSeconds:(double)milliSeconds
-{
-    return  milliSeconds / 1000;
-}
-
--(double)intervalToMilliseconds:(NSTimeInterval)interval
-{
-    return interval * 1000;
 }
 
 #pragma mark - Constants

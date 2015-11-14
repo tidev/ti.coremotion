@@ -5,14 +5,23 @@
  * Copyright (c) 2015 Appcelerator, Inc. All rights reserved.
  */
 
-#import "TiModule.h"
 #import <CoreMotion/CoreMotion.h>
+#import "TiModule.h"
+#import "TiCoremotionAccelerometerProxy.h"
+#import "TiCoremotionGyroscopeProxy.h"
+#import "TiCoremotionMagnetometerProxy.h"
+#import "TiCoremotionDeviceMotionProxy.h"
+#import "TiCoremotionMotionActivityProxy.h"
+#import "TiCoremotionStepCounterProxy.h"
 
 @interface TiCoremotionModule : TiModule
 {
-    CMMotionManager *motionManager;
-    CMMotionActivityManager *activityManager;
-    CMStepCounter *stepCounter;
+    TiCoremotionAccelerometerProxy *acceleratometer;
+    TiCoremotionGyroscopeProxy *gyroscope;
+    TiCoremotionMagnetometerProxy *magnetometer;
+    TiCoremotionDeviceMotionProxy *deviceMotion;
+    TiCoremotionMotionActivityProxy *motionActivity;
+    TiCoremotionStepCounterProxy *stepCounter;
 }
 
 // ----------------------------------------------------
@@ -115,7 +124,5 @@
 -(void)stopStepCountingUpdates:(id)unused;
 
 -(void)queryStepCount:(id)args;
-
-
 
 @end
