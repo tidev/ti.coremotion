@@ -1,7 +1,7 @@
 ---
 name: Modules.CoreMotion.Magnetometer
 platforms: [iphone, ipad]
-summary: Allows Titanium client applications to access Apple's CoreMotion APIs.
+summary: Allows Titanium client applications to access CoreMotion's Magnetometer APIs.
 since: "5.2.0"
 
 methods:
@@ -17,9 +17,9 @@ methods:
     description: |
         If a callback is passed to this method, it will be called whenever there is an update.
         The frequency of these updates can be controlled using the 
-        <Modules.CoreMotion.setMagnetometerUpdateInterval> method. If no callback is passed, 
-        the magnetometer data can be accessed using the  <Modules.CoreMotion.getMagnetometerData> 
-        method. You must call <Modules.CoreMotion.stopMagnetometerUpdates> when you no longer want your app 
+        <Modules.CoreMotion.Magnetometer.setMagnetometerUpdateInterval> method. If no callback is passed, 
+        the magnetometer data can be accessed using the  <Modules.CoreMotion.Magnetometer.Magnetometer.getMagnetometerData> 
+        method. You must call <Modules.CoreMotion.Magnetometer.Magnetometer.stopMagnetometerUpdates> when you no longer want your app 
         to process magnetometer updates.
         
     parameters:
@@ -34,7 +34,7 @@ methods:
   - name: isMagnetometerActive
     summary: Returns a Boolean indicating whether magnetometer updates are currently happening.
     description: |
-        Indicates whether <Modules.CoreMotion.startMagnetometerUpdates> has been called since 
+        Indicates whether <Modules.CoreMotion.Magnetometer.startMagnetometerUpdates> has been called since 
         <Modules.CoreMotion.stopMagnetometerUpdates>.
     returns:
         type: Boolean
@@ -48,7 +48,7 @@ methods:
     summary: Returns the latest sample of magnetometer data.
     description: |
         An app that is receiving magnetometer data after calling 
-        <Modules.CoreMotion.startMagnetometerUpdates> with no callback, needs to periodically
+        <Modules.CoreMotion.Magnetometer.startMagnetometerUpdates> with no callback, needs to periodically
         check the value returned by this method and process the magnetometer data.
     returns:
         type: CoreMotionMagnetometerData

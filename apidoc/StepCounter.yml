@@ -1,7 +1,7 @@
 ---
-name: Modules.CoreMotion.MotionActivity
+name: Modules.CoreMotion.StepCounter
 platforms: [iphone, ipad]
-summary: Allows Titanium client applications to access Apple's CoreMotion APIs.
+summary: Allows Titanium client applications to access CoreMotion's StepCounter APIs.
 since: "5.2.0"
 
 methods:
@@ -28,7 +28,7 @@ methods:
         until the threshold is exceeded again.
 
         To stop the delivery of step-counting updates, call the 
-        <Modules.CoreMotion.stopStepCountingUpdates> method. 
+        <Modules.CoreMotion.StepCounter.stopStepCountingUpdates> method. 
 
     parameters:
         - name: args
@@ -44,7 +44,7 @@ methods:
     description: |
         Call this method to stop the delivery of updates that you started by calling 
         the <Modules.CoreMotion.startStepCountingUpdates> method. This method does not 
-        stop queries started using the <Modules.CoreMotion.queryStepCount> method.
+        stop queries started using the <Modules.CoreMotion.StepCounter.queryStepCount> method.
 
   - name: queryStepCount
     summary: Gathers and returns historical step count data for the specified time period.

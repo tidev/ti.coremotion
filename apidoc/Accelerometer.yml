@@ -1,7 +1,7 @@
 ---
 name: Modules.CoreMotion.Acceleratometer
 platforms: [iphone, ipad]
-summary: Allows Titanium client applications to access Apple's CoreMotion APIs.
+summary: Allows Titanium client applications to access CoreMotion's Accelerometer APIs.
 since: "5.2.0"
 
 methods:

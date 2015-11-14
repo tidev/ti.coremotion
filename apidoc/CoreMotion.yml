@@ -227,6 +227,17 @@ properties:
     type: Number
 
 ---
+name: CoreMotionStartPedometerArgs
+summary: |
+    Dictionary of arguments to pass to the [Pedometer.startPedometerUpdates()](Modules.CoreMotion.Pedometer.startPedometerUpdates) method.
+platforms: [iphone, ipad]
+since: "5.2.0"
+properties:
+  - name: start
+    summary: The start time to use when gathering pedometer data.
+    type: Date
+
+---
 name: CoreMotionQueryStepCountArgs
 summary: |
     Dictionary of arguments to pass to the [Stepcounter.queryStepCount()](Modules.CoreMotion.Stepcounter.queryStepCount) method.
@@ -336,6 +347,76 @@ properties:
   - name: code
     summary: An error code describing the error if there was one.
     description: See `ERROR` constants for possible values.
+    type: Number
+    permission: "read-only"
+
+---
+name: CoreMotionPedometerDataWithSuccess
+summary: |
+    Dictionary passed to the callback of the
+    [Pedometer.startPedometerUpdates()](Modules.CoreMotion.Pedometer.startDeviceMotionUpdates) and
+    [Pedometer.queryPedometerData()](Modules.CoreMotion.Pedometer.queryPedometerData) methods.
+platforms: [iphone, ipad]
+since: "5.2.0"
+extends: CoreMotionDeviceMotionData
+properties:
+  - name: success
+    summary: A Boolean indicating if the operation was successful or not.
+    type: Boolean
+    permission: "read-only"
+
+  - name: error
+    summary: An error message describing the error if there was one.
+    type: String
+    permission: "read-only"
+
+  - name: code
+    summary: An error code describing the error if there was one.
+    description: See `ERROR` constants for possible values.
+    type: Number
+    permission: "read-only"
+
+  - name: startDate
+    summary: The start time for the pedometer data.
+    type: Date
+    permission: "read-only"
+
+  - name: endDate
+    summary: The end time for the pedometer data.
+    type: Date
+    permission: "read-only"
+
+  - name: numberOfSteps
+    summary: The number of steps taken by the user.
+    type: Number
+    permission: "read-only"
+
+  - name: distance
+    summary: The estimated distance (in meters) traveled by the user.
+    type: Number
+    permission: "read-only"
+
+  - name: floorsAscended
+    summary: The approximate number of floors ascended by walking.
+    type: Number
+    permission: "read-only"
+
+  - name: floorsDescended
+    summary: The approximate number of floors descended by walking.
+    type: Number
+    permission: "read-only"
+
+  - name: currentPace
+    summary: | 
+        The current pace of the user, measured in seconds per meter.
+        Note: This property is only available on iOS 9 and later.
+    type: Number
+    permission: "read-only"
+
+  - name: currentCadence
+    summary: |
+        The rate at which steps are taken, measured in steps per second.
+        Note: This property is only available on iOS 9 and later.
     type: Number
     permission: "read-only"
 

@@ -1,7 +1,7 @@
 ---
 name: Modules.CoreMotion.DeviceMotion
 platforms: [iphone, ipad]
-summary: Allows Titanium client applications to access Apple's CoreMotion APIs.
+summary: Allows Titanium client applications to access CoreMotion's DeviceMotion APIs.
 since: "5.2.0"
 
 methods:
@@ -11,8 +11,8 @@ methods:
         When a device requires movement (for example, to calibrate the compass), the value of 
         this property indicates if the system's device-movement display should be shown. 
         When a device requires movement, the callback for 
-        <Modules.CoreMotion.setDeviceMotionUpdateInterval> or 
-        <Modules.CoreMotion.startDeviceMotionUpdatesUsingReferenceFrame> reports 
+        <Modules.CoreMotion.DeviceMotion.setDeviceMotionUpdateInterval> or 
+        <Modules.CoreMotion.DeviceMotion.startDeviceMotionUpdatesUsingReferenceFrame> reports 
         the <Modules.CoreMotion.ERROR_DEVICE_REQUIRES_MOVEMENT> error once. By default, 
         this is set to false.
     parameters:
@@ -24,8 +24,8 @@ methods:
     summary: The interval in milliseconds, for providing device-motion updates to the callback.
     description: |
         The system supplies device-motion updates to the callback passed to 
-        <Modules.CoreMotion.startDeviceMotionUpdatesUsingReferenceFrame> or
-        <Modules.CoreMotion.startDeviceMotionUpdates> at regular intervals 
+        <Modules.CoreMotion.DeviceMotion.startDeviceMotionUpdatesUsingReferenceFrame> or
+        <Modules.CoreMotion.DeviceMotion.startDeviceMotionUpdates> at regular intervals 
         determined by the value passed to this method. The interval units 
         are in milliseconds. The value of this property is capped to minimum 
         and maximum values; the maximum value is determined by the maximum 
@@ -42,9 +42,9 @@ methods:
     description: |
         If a callback is passed to this method, it will be called whenever there is an update.
         The frequency of these updates can be controlled using the 
-        <Modules.CoreMotion.setDeviceMotionUpdateInterval> method.
+        <Modules.CoreMotion.DeviceMotion.setDeviceMotionUpdateInterval> method.
         If no callback is passed, the device-motion data can be accessed using the 
-        <Modules.CoreMotion.getDeviceMotion> method.
+        <Modules.CoreMotion.DeviceMotion.getDeviceMotion> method.
         
     parameters:
       - name: args
@@ -61,9 +61,9 @@ methods:
     description: |
         If a callback is passed to this method, it will be called whenever there is an update.
         The frequency of these updates can be controlled using the 
-        <Modules.CoreMotion.setDeviceMotionUpdateInterval> method.
+        <Modules.CoreMotion.DeviceMotion.setDeviceMotionUpdateInterval> method.
         If no callback is passed, the device-motion data can be accessed using the 
-        <Modules.CoreMotion.getDeviceMotion> method.
+        <Modules.CoreMotion.DeviceMotion.getDeviceMotion> method.
         
     parameters:
       - name: callback
@@ -100,7 +100,7 @@ methods:
 
         For example to determine if `ATTITUDE_REFERENCE_FRAME_X_MAGNETIC_NORTH_Z_VERTICAL` is available on device.
 
-            var frames = CoreMotion.availableAttitudeReferenceFrames();
+            var frames = CoreMotion.DeviceMotion.availableAttitudeReferenceFrames();
             if (frames & CoreMotion.ATTITUDE_REFERENCE_FRAME_X_MAGNETIC_NORTH_Z_VERTICAL) {
                 // do something here
             }
@@ -111,9 +111,9 @@ methods:
   - name: isDeviceMotionActive
     summary: Returns a Boolean value that determines whether the app is receiving updates from the device-motion service.
     description: |
-        Indicates whether <Modules.CoreMotion.startDeviceMotionUpdates> or 
-        <Modules.CoreMotion.startDeviceMotionUpdatesUsingReferenceFrame> has been called since 
-        <Modules.CoreMotion.stopDeviceMotionUpdates>.
+        Indicates whether <Modules.CoreMotion.DeviceMotion.startDeviceMotionUpdates> or 
+        <Modules.CoreMotion.DeviceMotion.startDeviceMotionUpdatesUsingReferenceFrame> has been called since 
+        <Modules.CoreMotion.DeviceMotion.stopDeviceMotionUpdates>.
     returns:
         type: Boolean
 
@@ -126,8 +126,8 @@ methods:
     summary: Returns the latest sample of device-motion data.
     description: |
         An app that is receiving device-motion data after calling 
-        <Modules.CoreMotion.startDeviceMotionUpdatesUsingReferenceFrame> or
-        <Modules.CoreMotion.startDeviceMotionUpdates> with no callback, need to periodically
+        <Modules.CoreMotion.DeviceMotion.startDeviceMotionUpdatesUsingReferenceFrame> or
+        <Modules.CoreMotion.DeviceMotion.startDeviceMotionUpdates> with no callback, need to periodically
         check the value returned by this method and process the device-motion data.
     returns:
         type: CoreMotionDeviceMotionData

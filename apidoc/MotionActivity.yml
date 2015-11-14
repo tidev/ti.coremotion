@@ -1,7 +1,7 @@
 ---
 name: Modules.CoreMotion.MotionActivity
 platforms: [iphone, ipad]
-summary: Allows Titanium client applications to access Apple's CoreMotion APIs.
+summary: Allows Titanium client applications to access CoreMotion's MotionActivity APIs.
 since: "5.2.0"
 
 methods:
@@ -23,10 +23,10 @@ methods:
         delivered while your app is suspended. If updates arrived while your 
         app was suspended, the last update is delivered to your app when it 
         resumes execution. To get all of the updates that occurred while your 
-        app was suspended, use the <Modules.CoreMotion.queryActivity> method.
+        app was suspended, use the <Modules.CoreMotion.MotionActivity.queryActivity> method.
 
         Upon starting activity updates, the motion activity manager reports 
-        changes to its callback until you call the <Modules.CoreMotion.stopActivityUpdates> 
+        changes to its callback until you call the <Modules.CoreMotion.MotionActivity.stopActivityUpdates> 
         method. If you call this method again with a new callback, the activity 
         manager stops delivering updates to the old callback and delivers them 
         to the new callback instead.
@@ -37,10 +37,10 @@ methods:
         type: Callback<CoreMotionActivityData>
 
   - name: stopActivityUpdates
-    summary: Stops the delivery of motion activtiy updates to your app.
+    summary: Stops the delivery of motion activity updates to your app.
 
   - name: queryActivity
-    summary: Gathers and returns historical motion activty data for the specified time period.
+    summary: Gathers and returns historical motion activity data for the specified time period.
     description: |
         This method runs asynchronously, returning immediately and delivering the results 
         to the specified callback. The system stores only the last seven days worth of 
