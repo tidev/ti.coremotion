@@ -15,4 +15,4 @@ export TI_ROOT=/Users/matt/Documents/Appcelerator/src/Appcelerator
 ./build.sh
 ```
 
-This will compile and package the ti.coremotion iOS module in the build sub-directory, e.g. build/ti.coremotion-iphone-1.1.0.zip
+This will compile and package the ti.coremotion iOS module in the build sub-directory, e.g. build/ti.coremotion-iphone-2.0.0.zip

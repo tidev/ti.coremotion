@@ -3,7 +3,7 @@ name: Modules.CoreMotion.Pedometer
 platforms: [iphone, ipad]
 summary: | 
     Allows Titanium client applications to access CoreMotion's Pedometer APIs. 
-    Note: This API is only for iOS 8 or later.
+    Note: This API is only available in iOS 8 and later.
 since: "5.2.0"
 
 methods:

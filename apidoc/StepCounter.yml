@@ -1,8 +1,15 @@
 ---
 name: Modules.CoreMotion.StepCounter
 platforms: [iphone, ipad]
-summary: Allows Titanium client applications to access CoreMotion's StepCounter APIs.
+summary: Allows Titanium client applications to access CoreMotion's (deprecated) StepCounter APIs.
 since: "5.2.0"
+deprecated:
+    since: "5.2.0"
+    notes: |
+        This API was deprecated by Apple in iOS 7 and is only available for backward compatibility 
+        with older versions of this module. It will be removed in the next release. Please use 
+        <Modules.CoreMotion.Pedometer> API instead, which provides the same functionality including 
+        new properties like `floorCount` and `distance`.
 
 methods:
 

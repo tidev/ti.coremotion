@@ -241,25 +241,25 @@
 
 -(NSNumber*)isStepCountingAvailable:(id)unused
 {
-    [CMHelper logDeprecatedMethod:@"isStepCountingAvailable" withNewMethod:@"StepCounter.isStepCountingAvailable"];
+    [CMHelper logDeprecatedMethod:@"isStepCountingAvailable" withNewMethod:@"Pedometer.isStepCountingAvailable"];
     return [[self sharedStepCounter] isStepCountingAvailable:unused];
 }
 
 -(void)startStepCountingUpdates:(id)args
 {
-    [CMHelper logDeprecatedMethod:@"startStepCountingUpdates" withNewMethod:@"StepCounter.startStepCountingUpdates"];
+    [CMHelper logDeprecatedMethod:@"startStepCountingUpdates" withNewMethod:@"Pedometer.startPedometerUpdates"];
     [[self sharedStepCounter] startStepCountingUpdates:args];
 }
 
 -(void)stopStepCountingUpdates:(id)unused
 {
-    [CMHelper logDeprecatedMethod:@"stopStepCountingUpdates" withNewMethod:@"StepCounter.stopStepCountingUpdates"];
+    [CMHelper logDeprecatedMethod:@"stopStepCountingUpdates" withNewMethod:@"Pedometer.stopPedometerUpdates"];
     [[self sharedStepCounter] stopStepCountingUpdates:unused];
 }
 
 -(void)queryStepCount:(id)args
 {
-    [CMHelper logDeprecatedMethod:@"queryStepCount" withNewMethod:@"StepCounter.queryStepCount"];
+    [CMHelper logDeprecatedMethod:@"queryStepCount" withNewMethod:@"Pedometer.queryPedometerData"];
     [[self sharedStepCounter] queryStepCount:args];
 }
 

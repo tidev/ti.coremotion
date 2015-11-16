@@ -26,6 +26,8 @@
 		24DD6CFA1134B3F500162E58 /* TiCoremotionModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DD6CF81134B3F500162E58 /* TiCoremotionModule.m */; };
 		24DE9E1111C5FE74003F90F6 /* TiCoremotionModuleAssets.h in Headers */ = {isa = PBXBuildFile; fileRef = 24DE9E0F11C5FE74003F90F6 /* TiCoremotionModuleAssets.h */; };
 		24DE9E1211C5FE74003F90F6 /* TiCoremotionModuleAssets.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DE9E1011C5FE74003F90F6 /* TiCoremotionModuleAssets.m */; };
+		3A2397151BFA861E00FAC51D /* TiCoremotionStepCounterProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A2397131BFA861E00FAC51D /* TiCoremotionStepCounterProxy.h */; };
+		3A2397161BFA861E00FAC51D /* TiCoremotionStepCounterProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A2397141BFA861E00FAC51D /* TiCoremotionStepCounterProxy.m */; };
 		3AB8E6531BF2AA0B00AA32F0 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AB8E6521BF2AA0B00AA32F0 /* CoreMotion.framework */; };
 		3AE255E41BF79C3400D6EA32 /* TiCoremotionPedometerProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AE255E21BF79C3400D6EA32 /* TiCoremotionPedometerProxy.h */; };
 		3AE255E51BF79C3400D6EA32 /* TiCoremotionPedometerProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE255E31BF79C3400D6EA32 /* TiCoremotionPedometerProxy.m */; };
@@ -41,8 +43,6 @@
 		3AFEA30A1BF6ACF90098A7D5 /* TiCoremotionMotionActivityProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFEA3081BF6ACF90098A7D5 /* TiCoremotionMotionActivityProxy.m */; };
 		3AFEA30D1BF6AD100098A7D5 /* TiCoremotionDeviceMotionProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AFEA30B1BF6AD100098A7D5 /* TiCoremotionDeviceMotionProxy.h */; };
 		3AFEA30E1BF6AD100098A7D5 /* TiCoremotionDeviceMotionProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFEA30C1BF6AD100098A7D5 /* TiCoremotionDeviceMotionProxy.m */; };
-		3AFEA3161BF6ADEE0098A7D5 /* TiCoremotionStepCounterProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AFEA3141BF6ADEE0098A7D5 /* TiCoremotionStepCounterProxy.h */; };
-		3AFEA3171BF6ADEE0098A7D5 /* TiCoremotionStepCounterProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFEA3151BF6ADEE0098A7D5 /* TiCoremotionStepCounterProxy.m */; };
 		AA747D9F0F9514B9006C5449 /* TiCoremotion_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* TiCoremotion_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 /* End PBXBuildFile section */
@@ -63,6 +63,8 @@
 		24DD6D1B1134B66800162E58 /* titanium.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = titanium.xcconfig; sourceTree = "<group>"; };
 		24DE9E0F11C5FE74003F90F6 /* TiCoremotionModuleAssets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TiCoremotionModuleAssets.h; path = Classes/TiCoremotionModuleAssets.h; sourceTree = "<group>"; };
 		24DE9E1011C5FE74003F90F6 /* TiCoremotionModuleAssets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TiCoremotionModuleAssets.m; path = Classes/TiCoremotionModuleAssets.m; sourceTree = "<group>"; };
+		3A2397131BFA861E00FAC51D /* TiCoremotionStepCounterProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TiCoremotionStepCounterProxy.h; path = Classes/TiCoremotionStepCounterProxy.h; sourceTree = "<group>"; };
+		3A2397141BFA861E00FAC51D /* TiCoremotionStepCounterProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TiCoremotionStepCounterProxy.m; path = Classes/TiCoremotionStepCounterProxy.m; sourceTree = "<group>"; };
 		3AB8E6521BF2AA0B00AA32F0 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		3AE255E21BF79C3400D6EA32 /* TiCoremotionPedometerProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TiCoremotionPedometerProxy.h; sourceTree = "<group>"; };
 		3AE255E31BF79C3400D6EA32 /* TiCoremotionPedometerProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TiCoremotionPedometerProxy.m; sourceTree = "<group>"; };
@@ -78,8 +80,6 @@
 		3AFEA3081BF6ACF90098A7D5 /* TiCoremotionMotionActivityProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TiCoremotionMotionActivityProxy.m; path = Classes/TiCoremotionMotionActivityProxy.m; sourceTree = "<group>"; };
 		3AFEA30B1BF6AD100098A7D5 /* TiCoremotionDeviceMotionProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TiCoremotionDeviceMotionProxy.h; path = Classes/TiCoremotionDeviceMotionProxy.h; sourceTree = "<group>"; };
 		3AFEA30C1BF6AD100098A7D5 /* TiCoremotionDeviceMotionProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TiCoremotionDeviceMotionProxy.m; path = Classes/TiCoremotionDeviceMotionProxy.m; sourceTree = "<group>"; };
-		3AFEA3141BF6ADEE0098A7D5 /* TiCoremotionStepCounterProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TiCoremotionStepCounterProxy.h; path = Classes/TiCoremotionStepCounterProxy.h; sourceTree = "<group>"; };
-		3AFEA3151BF6ADEE0098A7D5 /* TiCoremotionStepCounterProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TiCoremotionStepCounterProxy.m; path = Classes/TiCoremotionStepCounterProxy.m; sourceTree = "<group>"; };
 		AA747D9E0F9514B9006C5449 /* TiCoremotion_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TiCoremotion_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D2AAC07E0554694100DB518D /* libTiCoremotion.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTiCoremotion.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -139,7 +139,7 @@
 				3AFEA2AE1BF67CA10098A7D5 /* Magnetometer */,
 				3AFEA3011BF6A9F30098A7D5 /* Device Motion */,
 				3AFEA3061BF6ACD50098A7D5 /* Motion Activity */,
-				3AFEA30F1BF6ADBD0098A7D5 /* Step Counter */,
+				3A2397171BFA862300FAC51D /* Step Counter */,
 				3AE255E11BF79C2100D6EA32 /* Pedometer */,
 			);
 			name = Classes;
@@ -152,6 +152,15 @@
 				24DD6D1B1134B66800162E58 /* titanium.xcconfig */,
 			);
 			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		3A2397171BFA862300FAC51D /* Step Counter */ = {
+			isa = PBXGroup;
+			children = (
+				3A2397131BFA861E00FAC51D /* TiCoremotionStepCounterProxy.h */,
+				3A2397141BFA861E00FAC51D /* TiCoremotionStepCounterProxy.m */,
+			);
+			name = "Step Counter";
 			sourceTree = "<group>";
 		};
 		3AE255E11BF79C2100D6EA32 /* Pedometer */ = {
@@ -217,15 +226,6 @@
 			name = "Motion Activity";
 			sourceTree = "<group>";
 		};
-		3AFEA30F1BF6ADBD0098A7D5 /* Step Counter */ = {
-			isa = PBXGroup;
-			children = (
-				3AFEA3141BF6ADEE0098A7D5 /* TiCoremotionStepCounterProxy.h */,
-				3AFEA3151BF6ADEE0098A7D5 /* TiCoremotionStepCounterProxy.m */,
-			);
-			name = "Step Counter";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -236,8 +236,8 @@
 				3AFEA2D11BF68DF40098A7D5 /* TiCoremotionGyroscopeProxy.h in Headers */,
 				AA747D9F0F9514B9006C5449 /* TiCoremotion_Prefix.pch in Headers */,
 				3AFEA2D51BF68DFF0098A7D5 /* TiCoremotionAccelerometerProxy.h in Headers */,
+				3A2397151BFA861E00FAC51D /* TiCoremotionStepCounterProxy.h in Headers */,
 				24DD6CF91134B3F500162E58 /* TiCoremotionModule.h in Headers */,
-				3AFEA3161BF6ADEE0098A7D5 /* TiCoremotionStepCounterProxy.h in Headers */,
 				3AFEA30D1BF6AD100098A7D5 /* TiCoremotionDeviceMotionProxy.h in Headers */,
 				3AFEA2DC1BF68FC60098A7D5 /* CMHelper.h in Headers */,
 				3AFEA3091BF6ACF90098A7D5 /* TiCoremotionMotionActivityProxy.h in Headers */,
@@ -320,12 +320,12 @@
 				3AFEA2CE1BF68DEB0098A7D5 /* TiCoremotionMagnetometerProxy.m in Sources */,
 				3AFEA2D21BF68DF40098A7D5 /* TiCoremotionGyroscopeProxy.m in Sources */,
 				3AFEA2D61BF68DFF0098A7D5 /* TiCoremotionAccelerometerProxy.m in Sources */,
+				3A2397161BFA861E00FAC51D /* TiCoremotionStepCounterProxy.m in Sources */,
 				24DD6CFA1134B3F500162E58 /* TiCoremotionModule.m in Sources */,
 				24DE9E1211C5FE74003F90F6 /* TiCoremotionModuleAssets.m in Sources */,
 				3AFEA30A1BF6ACF90098A7D5 /* TiCoremotionMotionActivityProxy.m in Sources */,
 				3AE255E51BF79C3400D6EA32 /* TiCoremotionPedometerProxy.m in Sources */,
 				3AFEA30E1BF6AD100098A7D5 /* TiCoremotionDeviceMotionProxy.m in Sources */,
-				3AFEA3171BF6ADEE0098A7D5 /* TiCoremotionStepCounterProxy.m in Sources */,
 				3AFEA2DD1BF68FC60098A7D5 /* CMHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
