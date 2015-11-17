@@ -19,7 +19,7 @@
     // To be removed in next major update,
     // since just there for fallback with 1.x versions.
     
-    TiCoremotionAccelerometerProxy *acceleratometer;
+    TiCoremotionAccelerometerProxy *accelerometer;
     TiCoremotionGyroscopeProxy *gyroscope;
     TiCoremotionMagnetometerProxy *magnetometer;
     TiCoremotionDeviceMotionProxy *deviceMotion;

@@ -60,6 +60,8 @@
 
 -(void)startPedometerUpdates:(id)args
 {
+    ENSURE_TYPE(args, NSArray);
+
     NSDictionary *dict = [args objectAtIndex:0];
     KrollCallback *callback = [args objectAtIndex:1];
     NSDate *start = [dict valueForKey:@"start"];
@@ -85,6 +87,8 @@
 
 -(void)queryPedometerData:(id)args
 {
+    ENSURE_TYPE(args, NSArray);
+    
     NSDictionary *dict = [args objectAtIndex:0];
     KrollCallback *callback = [args objectAtIndex:1];
     

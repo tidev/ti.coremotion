@@ -22,7 +22,7 @@
 
 -(void)setMagnetometerUpdateInterval:(id)value
 {
-    ENSURE_TYPE_OR_NIL(value, NSNumber);
+    ENSURE_TYPE(value, NSNumber);
     [[self sharedManager] setMagnetometerUpdateInterval:[CMHelper millisecondsToSeconds:[TiUtils doubleValue:value]]];
 }
 

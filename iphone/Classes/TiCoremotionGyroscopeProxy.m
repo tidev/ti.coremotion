@@ -22,7 +22,7 @@
 
 -(void)setGyroUpdateInterval:(id)value
 {
-    ENSURE_TYPE_OR_NIL(value, NSNumber);
+    ENSURE_TYPE(value, NSNumber);
     [[self sharedManager] setGyroUpdateInterval:[CMHelper millisecondsToSeconds:[TiUtils doubleValue:value]]];
 }
 

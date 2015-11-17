@@ -165,7 +165,7 @@
     return [NSDictionary dictionaryWithDictionary:errorDict];
 }
 
-+(NSMutableArray*)arrayFromMotionActivities:(NSArray<CMMotionActivity*>*)array
++(NSMutableArray*)arrayFromMotionActivities:(NSArray*)array
 {
     if (array == nil) {
         return [NSMutableArray array];

@@ -27,6 +27,8 @@
 
 -(void)startStepCountingUpdates:(id)args
 {
+    ENSURE_TYPE(args, NSArray);
+    
     NSDictionary *dict = [args objectAtIndex:0];
     KrollCallback *callback = [args objectAtIndex:1];
     NSNumber *stepCounts = [dict valueForKey:@"stepCounts"];
@@ -56,6 +58,8 @@
 
 -(void)queryStepCount:(id)args
 {
+    ENSURE_TYPE(args, NSArray);
+
     NSDictionary *dict = [args objectAtIndex:0];
     KrollCallback *callback = [args objectAtIndex:1];
     
