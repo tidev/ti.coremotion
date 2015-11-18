@@ -44,7 +44,8 @@ methods:
         The frequency of these updates can be controlled using the 
         <Modules.CoreMotion.DeviceMotion.setDeviceMotionUpdateInterval> method.
         If no callback is passed, the device-motion data can be accessed using the 
-        <Modules.CoreMotion.DeviceMotion.getDeviceMotion> method.
+        <Modules.CoreMotion.DeviceMotion.getDeviceMotion> method. To stop the delivery of events, 
+        call the <Modules.CoreMotion.DeviceMotion.stopDeviceMotionUpdates> method.
         
     parameters:
       - name: args
@@ -63,7 +64,8 @@ methods:
         The frequency of these updates can be controlled using the 
         <Modules.CoreMotion.DeviceMotion.setDeviceMotionUpdateInterval> method.
         If no callback is passed, the device-motion data can be accessed using the 
-        <Modules.CoreMotion.DeviceMotion.getDeviceMotion> method.
+        <Modules.CoreMotion.DeviceMotion.getDeviceMotion> method. To stop the delivery of events, 
+        call the <Modules.CoreMotion.DeviceMotion.stopDeviceMotionUpdates> method.
         
     parameters:
       - name: callback

@@ -46,7 +46,7 @@
             [invocationArray release];
         }];
     } else {
-        [[self sharedManager] startDeviceMotionUpdates];
+        [[self sharedManager] startAccelerometerUpdates];
     }
 }
 

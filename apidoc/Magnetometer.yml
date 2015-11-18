@@ -18,9 +18,9 @@ methods:
         If a callback is passed to this method, it will be called whenever there is an update.
         The frequency of these updates can be controlled using the 
         <Modules.CoreMotion.Magnetometer.setMagnetometerUpdateInterval> method. If no callback is passed, 
-        the magnetometer data can be accessed using the  <Modules.CoreMotion.Magnetometer.Magnetometer.getMagnetometerData> 
-        method. You must call <Modules.CoreMotion.Magnetometer.Magnetometer.stopMagnetometerUpdates> when you no longer want your app 
-        to process magnetometer updates.
+        the magnetometer data can be accessed using the <Modules.CoreMotion.Magnetometer.getMagnetometerData> 
+        method. You must call <Modules.CoreMotion.Magnetometer.stopMagnetometerUpdates> when you no 
+        longer want your app to process magnetometer updates.
         
     parameters:
       - name: callback

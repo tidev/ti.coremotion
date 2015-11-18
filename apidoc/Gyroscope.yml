@@ -19,9 +19,11 @@ methods:
         The frequency of these updates can be controlled using the
         <Modules.CoreMotion.setGyroUpdateInterval> method. If no callback is passed,
         the gyroscope data can be accessed using the  <Modules.CoreMotion.Gyroscope.getGyroData>
-        method. You must call <Modules.CoreMotion.Gyroscope.stopGyroUpdates> when you no longer want your app
-        to process gyroscope updates.
-        
+        method. To stop the delivery of events, 
+        call the <Modules.CoreMotion.Gyroscope.stopGyroUpdates> method.
+        Note: It is recommended to set an update interval of at least 250ms before, to avoid receiving
+        too many callbacks at once.
+
     parameters:
       - name: callback
         summary: The method to be called when there is an update.
