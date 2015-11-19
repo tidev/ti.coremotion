@@ -1,0 +1,56 @@
+---
+name: Modules.CoreMotion.Gyroscope
+platforms: [iphone, ipad]
+summary: Allows Titanium client applications to access CoreMotion's Gyroscope APIs.
+since: "5.2.0"
+
+methods:
+  - name: setGyroUpdateInterval
+    summary: The interval in milliseconds, for providing gyroscope updates to the callback.
+    parameters:
+      - name: interval
+        summary: The interval in milliseconds
+        type: Number
+
+  - name: startGyroUpdates
+    summary: Starts gyroscope updates.
+    description: |
+        If a callback is passed to this method, it will be called whenever there is an update.
+        The frequency of these updates can be controlled using the
+        <Modules.CoreMotion.setGyroUpdateInterval> method. If no callback is passed,
+        the gyroscope data can be accessed using the  <Modules.CoreMotion.Gyroscope.getGyroData>
+        method. To stop the delivery of events, 
+        call the <Modules.CoreMotion.Gyroscope.stopGyroUpdates> method.
+        Note: It is recommended to set an update interval of at least 250ms before, to avoid receiving
+        too many callbacks at once.
+
+    parameters:
+      - name: callback
+        summary: The method to be called when there is an update.
+        type: Callback<CoreMotionGyroDataWithSuccess>
+        optional: true
+
+  - name: stopGyroUpdates
+    summary: Stops gyroscope updates.
+
+  - name: isGyroActive
+    summary: Returns a Boolean indicating whether gyroscope updates are currently happening.
+    description: |
+        Indicates whether <Modules.CoreMotion.Gyroscope.startGyroUpdates> has been called since 
+        <Modules.CoreMotion.Gyroscope.stopGyroUpdates>.
+    returns:
+        type: Boolean
+
+  - name: isGyroAvailable
+    summary: Returns a Boolean indicating whether a gyroscope is available on the device.
+    returns:
+        type: Boolean
+
+  - name: getGyroData
+    summary: Returns the latest sample of gyroscope data.
+    description: |
+        An app that is receiving gyroscope data after calling 
+        <Modules.CoreMotion.Gyroscope.startGyroUpdates> with no callback, needs to periodically
+        check the value returned by this method and process the gyroscope data.
+    returns:
+        type: CoreMotionGyroData

@@ -1,0 +1,136 @@
+---
+name: Modules.CoreMotion.DeviceMotion
+platforms: [iphone, ipad]
+summary: Allows Titanium client applications to access CoreMotion's DeviceMotion APIs.
+since: "5.2.0"
+
+methods:
+  - name: setShowsDeviceMovementDisplay
+    summary: Controls whether the device-movement display is shown.
+    description: |
+        When a device requires movement (for example, to calibrate the compass), the value of 
+        this property indicates if the system's device-movement display should be shown. 
+        When a device requires movement, the callback for 
+        <Modules.CoreMotion.DeviceMotion.setDeviceMotionUpdateInterval> or 
+        <Modules.CoreMotion.DeviceMotion.startDeviceMotionUpdatesUsingReferenceFrame> reports 
+        the <Modules.CoreMotion.ERROR_DEVICE_REQUIRES_MOVEMENT> error once. By default, 
+        this is set to false.
+    parameters:
+      - name: show
+        summary: Boolean indicating if the display should be shown
+        type: Boolean
+
+  - name: setDeviceMotionUpdateInterval
+    summary: The interval in milliseconds, for providing device-motion updates to the callback.
+    description: |
+        The system supplies device-motion updates to the callback passed to 
+        <Modules.CoreMotion.DeviceMotion.startDeviceMotionUpdatesUsingReferenceFrame> or
+        <Modules.CoreMotion.DeviceMotion.startDeviceMotionUpdates> at regular intervals 
+        determined by the value passed to this method. The interval units 
+        are in milliseconds. The value of this property is capped to minimum 
+        and maximum values; the maximum value is determined by the maximum 
+        frequency supported by the hardware. If your app is sensitive to the 
+        intervals of device-motion data, it should always check the timestamps 
+        of the delivered device-motion event to determine the true update interval.
+    parameters:
+      - name: interval
+        summary: The interval in milliseconds
+        type: Number
+
+  - name: startDeviceMotionUpdatesUsingReferenceFrame
+    summary: Starts device-motion updates using a reference frame.
+    description: |
+        If a callback is passed to this method, it will be called whenever there is an update.
+        The frequency of these updates can be controlled using the 
+        <Modules.CoreMotion.DeviceMotion.setDeviceMotionUpdateInterval> method.
+        If no callback is passed, the device-motion data can be accessed using the 
+        <Modules.CoreMotion.DeviceMotion.getDeviceMotion> method. To stop the delivery of events, 
+        call the <Modules.CoreMotion.DeviceMotion.stopDeviceMotionUpdates> method.
+        
+    parameters:
+      - name: args
+        summary: The arguments passed to this method
+        type: CoreMotionReferenceFrameArgs
+
+      - name: callback
+        summary: The method to be called when there is an update.
+        type: Callback<CoreMotionDeviceMotionDataWithSuccess>
+        optional: true
+
+  - name: startDeviceMotionUpdates
+    summary: Starts device-motion updates.
+    description: |
+        If a callback is passed to this method, it will be called whenever there is an update.
+        The frequency of these updates can be controlled using the 
+        <Modules.CoreMotion.DeviceMotion.setDeviceMotionUpdateInterval> method.
+        If no callback is passed, the device-motion data can be accessed using the 
+        <Modules.CoreMotion.DeviceMotion.getDeviceMotion> method. To stop the delivery of events, 
+        call the <Modules.CoreMotion.DeviceMotion.stopDeviceMotionUpdates> method.
+        
+    parameters:
+      - name: callback
+        summary: The method to be called when there is an update.
+        type: Callback<CoreMotionDeviceMotionDataWithSuccess>
+        optional: true
+
+  - name: stopDeviceMotionUpdates
+    summary: Stops device-motion updates.
+
+  - name: getAttitudeReferenceFrame
+    summary: |
+        Returns either the reference frame currently being used or the default 
+        attitude reference frame.
+    description: |
+        If device motion is active, this property returns the reference frame currently in use. 
+        If device motion is not active but has been active since the app was last launched, 
+        this property returns the last frame used. If device motion has not been active since 
+        the app was last launched, this property returns the default attitude reference frame 
+        for the device.
+        Possible reference frames include 
+        <Modules.CoreMotion.ATTITUDE_REFERENCE_FRAME_X_ARBITRARY_Z_VERTICAL>, 
+        <Modules.CoreMotion.ATTITUDE_REFERENCE_FRAME_X_ARBITRARY_CORRECTED_Z_VERTICAL>, 
+        <Modules.CoreMotion.ATTITUDE_REFERENCE_FRAME_X_MAGNETIC_NORTH_Z_VERTICAL>, and
+        <Modules.CoreMotion.ATTITUDE_REFERENCE_FRAME_X_TRUE_NORTH_Z_VERTICAL>.
+
+    returns:
+        type: Number
+
+  - name: availableAttitudeReferenceFrames
+    summary: Returns a bitmask specifying the available attitude reference frames on the device.
+    description: |
+        A bitmask that you can bitwise-AND with the `ATTITUDE_REFERENCE` constants.
+
+        For example to determine if `ATTITUDE_REFERENCE_FRAME_X_MAGNETIC_NORTH_Z_VERTICAL` is available on device.
+
+            var frames = CoreMotion.DeviceMotion.availableAttitudeReferenceFrames();
+            if (frames & CoreMotion.ATTITUDE_REFERENCE_FRAME_X_MAGNETIC_NORTH_Z_VERTICAL) {
+                // do something here
+            }
+
+    returns:
+        type: Number
+
+  - name: isDeviceMotionActive
+    summary: Returns a Boolean value that determines whether the app is receiving updates from the device-motion service.
+    description: |
+        Indicates whether <Modules.CoreMotion.DeviceMotion.startDeviceMotionUpdates> or 
+        <Modules.CoreMotion.DeviceMotion.startDeviceMotionUpdatesUsingReferenceFrame> has been called since 
+        <Modules.CoreMotion.DeviceMotion.stopDeviceMotionUpdates>.
+    returns:
+        type: Boolean
+
+  - name: isDeviceMotionAvailable
+    summary: Returns a Boolean indicating whether device-motion is available on the device.
+    returns:
+        type: Boolean
+
+  - name: getDeviceMotion
+    summary: Returns the latest sample of device-motion data.
+    description: |
+        An app that is receiving device-motion data after calling 
+        <Modules.CoreMotion.DeviceMotion.startDeviceMotionUpdatesUsingReferenceFrame> or
+        <Modules.CoreMotion.DeviceMotion.startDeviceMotionUpdates> with no callback, need to periodically
+        check the value returned by this method and process the device-motion data.
+    returns:
+        type: CoreMotionDeviceMotionData
+

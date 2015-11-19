@@ -1,0 +1,68 @@
+---
+name: Modules.CoreMotion.StepCounter
+platforms: [iphone, ipad]
+summary: Allows Titanium client applications to access CoreMotion's (deprecated) StepCounter APIs.
+since: "5.2.0"
+deprecated:
+    since: "5.2.0"
+    notes: |
+        This API was deprecated by Apple in iOS 7 and is only available for backward compatibility 
+        with older versions of this module. It will be removed in the next release. Please use 
+        <Modules.CoreMotion.Pedometer> API instead, which provides the same functionality including 
+        new properties like `floorCount` and `distance`.
+
+methods:
+
+  - name: isStepCountingAvailable
+    summary: Returns a Boolean indicating whether step-counting support is available on the current device.
+    returns:
+        type: Boolean
+
+  - name: startStepCountingUpdates
+    summary: Starts the delivery of current step-counting data to your app.
+    description: |
+        This method initiates tracking of the user's steps and calls the callback 
+        periodically to deliver the results. When you call this method, the step counter 
+        resets the current step count value to 0 and begins counting. Each time the step 
+        counter records the number of steps in the stepCounts parameter, it executes the 
+        specified callback. For example, if stepCounts is 100, it would send updates 
+        at 100 steps, 200 steps, 300 steps, and so on. The number of steps reported to your 
+        handler is always the total number of steps since you called this method.
+
+        The callback is executed on a best effort basis each time the step count 
+        threshold is exceeded. If your app is suspended when the threshold is exceeded, 
+        the callback is not executed. When your app resumes, the callback is not executed 
+        until the threshold is exceeded again.
+
+        To stop the delivery of step-counting updates, call the 
+        <Modules.CoreMotion.StepCounter.stopStepCountingUpdates> method. 
+
+    parameters:
+        - name: args
+          summary: An object of arguments
+          type: CoreMotionStartStepCountingArgs
+
+        - name: callback
+          summary: The callback to execute with the results.
+          type: Callback<CoreMotionStepCountingDataWithSuccess>
+
+  - name: stopStepCountingUpdates
+    summary: Stops the delivery of step-counting updates to your app.
+    description: |
+        Call this method to stop the delivery of updates that you started by calling 
+        the <Modules.CoreMotion.startStepCountingUpdates> method. This method does not 
+        stop queries started using the <Modules.CoreMotion.StepCounter.queryStepCount> method.
+
+  - name: queryStepCount
+    summary: Gathers and returns historical step count data for the specified time period.
+    description: |
+        The system stores only the last seven days worth of step data at most. 
+        If there are no samples for the specified range of time, a value of 0 is passed to the callback.
+    parameters:
+      - name: args
+        summary: An object of arguments
+        type: CoreMotionQueryStepCountArgs
+
+      - name: callback
+        summary: The callback to execute with the results.
+        type: Callback<CoreMotionStepCountingQueryDataWithSuccess>

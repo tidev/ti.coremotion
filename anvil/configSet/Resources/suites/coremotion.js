@@ -9,11 +9,24 @@ module.exports = new function () {
     var finish;
     var valueOf;
     var CoreMotion;
+    var Accelerometer;
+    var Gyroscope;
+    var Magnetometer;
+    var DeviceMotion;
+    var MotionActivity;
+    var StepCounter;
 
     this.init = function (testUtils) {
         finish = testUtils.finish;
         valueOf = testUtils.valueOf;
         CoreMotion = require('ti.coremotion');
+
+        Accelerometer = CoreMotion.createAccelerometer();
+        Gyroscope = CoreMotion.createGyroscope();
+        Magnetometer = CoreMotion.createMagnetometer();
+        DeviceMotion = CoreMotion.createDeviceMotion();
+        MotionActivity = CoreMotion.createDeviceMotion();
+        StepCounter = CoreMotion.createStepCounter();
     };
 
     this.name = "coremotion";
@@ -27,51 +40,47 @@ module.exports = new function () {
 
     this.testMethods = function (testRun) {
         // Accelerometer
-        valueOf(testRun, CoreMotion.setAccelerometerUpdateInterval).shouldBeFunction();
-        valueOf(testRun, CoreMotion.startAccelerometerUpdates).shouldBeFunction();
-        valueOf(testRun, CoreMotion.stopAccelerometerUpdates).shouldBeFunction();
-        valueOf(testRun, CoreMotion.isAccelerometerActive).shouldBeFunction();
-        valueOf(testRun, CoreMotion.isAccelerometerAvailable).shouldBeFunction();
-        valueOf(testRun, CoreMotion.getAccelerometerData).shouldBeFunction();
+        valueOf(testRun, Accelerometer.setAccelerometerUpdateInterval).shouldBeFunction();
+        valueOf(testRun, Accelerometer.startAccelerometerUpdates).shouldBeFunction();
+        valueOf(testRun, Accelerometer.stopAccelerometerUpdates).shouldBeFunction();
+        valueOf(testRun, Accelerometer.isAccelerometerActive).shouldBeFunction();
+        valueOf(testRun, Accelerometer.isAccelerometerAvailable).shouldBeFunction();
+        valueOf(testRun, Accelerometer.getAccelerometerData).shouldBeFunction();
         // Gyroscope
-        valueOf(testRun, CoreMotion.setGyroUpdateInterval).shouldBeFunction();
-        valueOf(testRun, CoreMotion.startGyroUpdates).shouldBeFunction();
-        valueOf(testRun, CoreMotion.stopGyroUpdates).shouldBeFunction();
-        valueOf(testRun, CoreMotion.isGyroActive).shouldBeFunction();
-        valueOf(testRun, CoreMotion.isGyroAvailable).shouldBeFunction();
-        valueOf(testRun, CoreMotion.getGyroData).shouldBeFunction();
+        valueOf(testRun, Gyroscope.setGyroUpdateInterval).shouldBeFunction();
+        valueOf(testRun, Gyroscope.startGyroUpdates).shouldBeFunction();
+        valueOf(testRun, Gyroscope.stopGyroUpdates).shouldBeFunction();
+        valueOf(testRun, Gyroscope.isGyroActive).shouldBeFunction();
+        valueOf(testRun, Gyroscope.isGyroAvailable).shouldBeFunction();
+        valueOf(testRun, Gyroscope.getGyroData).shouldBeFunction();
         // Magnetometer
-        valueOf(testRun, CoreMotion.setMagnetometerUpdateInterval).shouldBeFunction();
-        valueOf(testRun, CoreMotion.startMagnetometerUpdates).shouldBeFunction();
-        valueOf(testRun, CoreMotion.stopMagnetometerUpdates).shouldBeFunction();
-        valueOf(testRun, CoreMotion.isMagnetometerActive).shouldBeFunction();
-        valueOf(testRun, CoreMotion.isMagnetometerAvailable).shouldBeFunction();
-        valueOf(testRun, CoreMotion.getMagnetometerData).shouldBeFunction();
+        valueOf(testRun, Magnetometer.setMagnetometerUpdateInterval).shouldBeFunction();
+        valueOf(testRun, Magnetometer.startMagnetometerUpdates).shouldBeFunction();
+        valueOf(testRun, Magnetometer.stopMagnetometerUpdates).shouldBeFunction();
+        valueOf(testRun, Magnetometer.isMagnetometerActive).shouldBeFunction();
+        valueOf(testRun, Magnetometer.isMagnetometerAvailable).shouldBeFunction();
+        valueOf(testRun, Magnetometer.getMagnetometerData).shouldBeFunction();
         // Device Motion
-        valueOf(testRun, CoreMotion.setShowsDeviceMovementDisplay).shouldBeFunction();
-        valueOf(testRun, CoreMotion.setDeviceMotionUpdateInterval).shouldBeFunction();
-        valueOf(testRun, CoreMotion.startDeviceMotionUpdatesUsingReferenceFrame).shouldBeFunction();
-        valueOf(testRun, CoreMotion.startDeviceMotionUpdates).shouldBeFunction();
-        valueOf(testRun, CoreMotion.stopDeviceMotionUpdates).shouldBeFunction();
-        valueOf(testRun, CoreMotion.getAttitudeReferenceFrame).shouldBeFunction();
-        valueOf(testRun, CoreMotion.availableAttitudeReferenceFrames).shouldBeFunction();
-        valueOf(testRun, CoreMotion.isDeviceMotionActive).shouldBeFunction();
-        valueOf(testRun, CoreMotion.isDeviceMotionAvailable).shouldBeFunction();
-        valueOf(testRun, CoreMotion.getDeviceMotion).shouldBeFunction();
+        valueOf(testRun, DeviceMotion.setShowsDeviceMovementDisplay).shouldBeFunction();
+        valueOf(testRun, DeviceMotion.setDeviceMotionUpdateInterval).shouldBeFunction();
+        valueOf(testRun, DeviceMotion.startDeviceMotionUpdatesUsingReferenceFrame).shouldBeFunction();
+        valueOf(testRun, DeviceMotion.startDeviceMotionUpdates).shouldBeFunction();
+        valueOf(testRun, DeviceMotion.stopDeviceMotionUpdates).shouldBeFunction();
+        valueOf(testRun, DeviceMotion.getAttitudeReferenceFrame).shouldBeFunction();
+        valueOf(testRun, DeviceMotion.availableAttitudeReferenceFrames).shouldBeFunction();
+        valueOf(testRun, DeviceMotion.isDeviceMotionActive).shouldBeFunction();
+        valueOf(testRun, DeviceMotion.isDeviceMotionAvailable).shouldBeFunction();
+        valueOf(testRun, DeviceMotion.getDeviceMotion).shouldBeFunction();
         // Motion Activity
-        valueOf(testRun, CoreMotion.isActivityAvailable).shouldBeFunction();
-        valueOf(testRun, CoreMotion.startActivityUpdates).shouldBeFunction();
-        valueOf(testRun, CoreMotion.stopActivityUpdates).shouldBeFunction();
-        valueOf(testRun, CoreMotion.queryActivity).shouldBeFunction();
+        valueOf(testRun, MotionActivity.isActivityAvailable).shouldBeFunction();
+        valueOf(testRun, MotionActivity.startActivityUpdates).shouldBeFunction();
+        valueOf(testRun, MotionActivity.stopActivityUpdates).shouldBeFunction();
+        valueOf(testRun, MotionActivity.queryActivity).shouldBeFunction();
         // Step Counter
-        valueOf(testRun, CoreMotion.isStepCountingAvailable).shouldBeFunction();
-        valueOf(testRun, CoreMotion.startStepCountingUpdates).shouldBeFunction();
-        valueOf(testRun, CoreMotion.stopStepCountingUpdates).shouldBeFunction();
-        valueOf(testRun, CoreMotion.queryStepCount).shouldBeFunction();
-        // Shared Managers
-        valueOf(testRun, CoreMotion.sharedManager).shouldBeFunction();
-        valueOf(testRun, CoreMotion.sharedActivityManager).shouldBeFunction();
-        valueOf(testRun, CoreMotion.sharedStepCounter).shouldBeFunction();
+        valueOf(testRun, StepCounter.isStepCountingAvailable).shouldBeFunction();
+        valueOf(testRun, StepCounter.startStepCountingUpdates).shouldBeFunction();
+        valueOf(testRun, StepCounter.stopStepCountingUpdates).shouldBeFunction();
+        valueOf(testRun, StepCounter.queryStepCount).shouldBeFunction();
 
         finish(testRun);
     };
@@ -112,14 +121,14 @@ module.exports = new function () {
     // ----------------------------------------------------
     this.testSetAccelerometerUpdateInterval = function (testRun) {
         valueOf(testRun, function() {
-            CoreMotion.setAccelerometerUpdateInterval(1000);
+            Accelerometer.setAccelerometerUpdateInterval(1000);
         }).shouldNotThrowException();
 
         valueOf(testRun, function() {
-            CoreMotion.setAccelerometerUpdateInterval("hi");
+            Accelerometer.setAccelerometerUpdateInterval("hi");
         }).shouldThrowException();
         valueOf(testRun, function() {
-            CoreMotion.setAccelerometerUpdateInterval();
+            Accelerometer.setAccelerometerUpdateInterval();
         }).shouldThrowException();
 
         finish(testRun);
@@ -127,14 +136,14 @@ module.exports = new function () {
 
     this.testStartAccelerometerUpdates = function (testRun) {
         valueOf(testRun, function() {
-            CoreMotion.startAccelerometerUpdates(function() {});
+            Accelerometer.startAccelerometerUpdates(function() {});
         }).shouldNotThrowException();
         valueOf(testRun, function() {
-            CoreMotion.startAccelerometerUpdates();
+            Accelerometer.startAccelerometerUpdates();
         }).shouldNotThrowException();
 
         valueOf(testRun, function() {
-            CoreMotion.startAccelerometerUpdates("hi");
+            Accelerometer.startAccelerometerUpdates("hi");
         }).shouldThrowException();
 
         finish(testRun);
@@ -142,26 +151,26 @@ module.exports = new function () {
 
     this.testStopAccelerometerUpdates = function (testRun) {
         valueOf(testRun, function() {
-            CoreMotion.stopAccelerometerUpdates();
+            Accelerometer.stopAccelerometerUpdates();
         }).shouldNotThrowException();
 
         finish(testRun);
     }
 
     this.testIsAccelerometerActive = function (testRun) {
-        valueOf(testRun, CoreMotion.isAccelerometerActive()).shouldBeBoolean();
+        valueOf(testRun, Accelerometer.isAccelerometerActive()).shouldBeBoolean();
 
         finish(testRun);
     }
 
     this.testIsAccelerometerAvailable = function (testRun) {
-        valueOf(testRun, CoreMotion.isAccelerometerAvailable()).shouldBeBoolean();
+        valueOf(testRun, Accelerometer.isAccelerometerAvailable()).shouldBeBoolean();
 
         finish(testRun);
     }
 
     this.testGetAccelerometerData = function (testRun) {
-        valueOf(testRun, CoreMotion.getAccelerometerData()).shouldBeObject();
+        valueOf(testRun, Accelerometer.getAccelerometerData()).shouldBeObject();
 
         finish(testRun);
     }
@@ -171,14 +180,14 @@ module.exports = new function () {
     // ----------------------------------------------------
     this.testSetGyroUpdateInterval = function (testRun) {
         valueOf(testRun, function() {
-            CoreMotion.setGyroUpdateInterval(1000);
+            Gyroscope.setGyroUpdateInterval(1000);
         }).shouldNotThrowException();
 
         valueOf(testRun, function() {
-            CoreMotion.setGyroUpdateInterval("hi");
+            Gyroscope.setGyroUpdateInterval("hi");
         }).shouldThrowException();
         valueOf(testRun, function() {
-            CoreMotion.setGyroUpdateInterval();
+            Gyroscope.setGyroUpdateInterval();
         }).shouldThrowException();
 
         finish(testRun);
@@ -186,41 +195,41 @@ module.exports = new function () {
 
     this.testStartGyroUpdates = function (testRun) {
         valueOf(testRun, function() {
-            CoreMotion.startGyroUpdates(function() {});
+            Gyroscope.startGyroUpdates(function() {});
         }).shouldNotThrowException();
         valueOf(testRun, function() {
-            CoreMotion.startGyroUpdates();
+            Gyroscope.startGyroUpdates();
         }).shouldNotThrowException();
 
         valueOf(testRun, function() {
-            CoreMotion.startGyroUpdates("hi");
+            Gyroscope.startGyroUpdates("hi");
         }).shouldThrowException();
 
         finish(testRun);
     }
 
-    this.testStopAccelerometerUpdates = function (testRun) {
+    this.testStopGyroUpdates = function (testRun) {
         valueOf(testRun, function() {
-            CoreMotion.stopGyroUpdates();
+            Gyroscope.stopGyroUpdates();
         }).shouldNotThrowException();
 
         finish(testRun);
     }
 
     this.testIsGyroActive = function (testRun) {
-        valueOf(testRun, CoreMotion.isGyroActive()).shouldBeBoolean();
+        valueOf(testRun, Gyroscope.isGyroActive()).shouldBeBoolean();
 
         finish(testRun);
     }
 
     this.testIsGyroAvailable = function (testRun) {
-        valueOf(testRun, CoreMotion.isGyroAvailable()).shouldBeBoolean();
+        valueOf(testRun, Gyroscope.isGyroAvailable()).shouldBeBoolean();
 
         finish(testRun);
     }
 
     this.testGetGyroData = function (testRun) {
-        valueOf(testRun, CoreMotion.getGyroData()).shouldBeObject();
+        valueOf(testRun, Gyroscope.getGyroData()).shouldBeObject();
 
         finish(testRun);
     }
@@ -230,14 +239,14 @@ module.exports = new function () {
     // ----------------------------------------------------
     this.testSetMagnetometerUpdateInterval = function (testRun) {
         valueOf(testRun, function() {
-            CoreMotion.setMagnetometerUpdateInterval(1000);
+            Magnetometer.setMagnetometerUpdateInterval(1000);
         }).shouldNotThrowException();
 
         valueOf(testRun, function() {
-            CoreMotion.setMagnetometerUpdateInterval("hi");
+            Magnetometer.setMagnetometerUpdateInterval("hi");
         }).shouldThrowException();
         valueOf(testRun, function() {
-            CoreMotion.setMagnetometerUpdateInterval();
+            Magnetometer.setMagnetometerUpdateInterval();
         }).shouldThrowException();
 
         finish(testRun);
@@ -245,14 +254,14 @@ module.exports = new function () {
 
     this.testStartMagnetometerUpdates = function (testRun) {
         valueOf(testRun, function() {
-            CoreMotion.startMagnetometerUpdates(function() {});
+            Magnetometer.startMagnetometerUpdates(function() {});
         }).shouldNotThrowException();
         valueOf(testRun, function() {
-            CoreMotion.startMagnetometerUpdates();
+            Magnetometer.startMagnetometerUpdates();
         }).shouldNotThrowException();
 
         valueOf(testRun, function() {
-            CoreMotion.startMagnetometerUpdates("hi");
+            Magnetometer.startMagnetometerUpdates("hi");
         }).shouldThrowException();
 
         finish(testRun);
@@ -260,26 +269,26 @@ module.exports = new function () {
 
     this.testStopMagnetometerUpdates = function (testRun) {
         valueOf(testRun, function() {
-            CoreMotion.stopMagnetometerUpdates();
+            Magnetometer.stopMagnetometerUpdates();
         }).shouldNotThrowException();
 
         finish(testRun);
     }
 
     this.testIsMagnetometerActive = function (testRun) {
-        valueOf(testRun, CoreMotion.isMagnetometerActive()).shouldBeBoolean();
+        valueOf(testRun, Magnetometer.isMagnetometerActive()).shouldBeBoolean();
 
         finish(testRun);
     }
 
     this.testIsMagnetometerAvailable = function (testRun) {
-        valueOf(testRun, CoreMotion.isMagnetometerAvailable()).shouldBeBoolean();
+        valueOf(testRun, Magnetometer.isMagnetometerAvailable()).shouldBeBoolean();
 
         finish(testRun);
     }
 
     this.testGetMagnetometerData = function (testRun) {
-        valueOf(testRun, CoreMotion.getMagnetometerData()).shouldBeObject();
+        valueOf(testRun, Magnetometer.getMagnetometerData()).shouldBeObject();
 
         finish(testRun);
     }
@@ -289,14 +298,14 @@ module.exports = new function () {
     // ----------------------------------------------------
     this.testSetShowsDeviceMovementDisplay = function (testRun) {
         valueOf(testRun, function() {
-            CoreMotion.setShowsDeviceMovementDisplay(true);
+            DeviceMotion.setShowsDeviceMovementDisplay(true);
         }).shouldNotThrowException();
 
         valueOf(testRun, function() {
-            CoreMotion.setShowsDeviceMovementDisplay("hi");
+            DeviceMotion.setShowsDeviceMovementDisplay("hi");
         }).shouldThrowException();
         valueOf(testRun, function() {
-            CoreMotion.setShowsDeviceMovementDisplay();
+            DeviceMotion.setShowsDeviceMovementDisplay();
         }).shouldThrowException();
 
         finish(testRun);
@@ -304,14 +313,14 @@ module.exports = new function () {
 
     this.testSetDeviceMotionUpdateInterval = function (testRun) {
         valueOf(testRun, function() {
-            CoreMotion.setDeviceMotionUpdateInterval(1000);
+            DeviceMotion.setDeviceMotionUpdateInterval(1000);
         }).shouldNotThrowException();
 
         valueOf(testRun, function() {
-            CoreMotion.setDeviceMotionUpdateInterval("hi");
+            DeviceMotion.setDeviceMotionUpdateInterval("hi");
         }).shouldThrowException();
         valueOf(testRun, function() {
-            CoreMotion.setDeviceMotionUpdateInterval();
+            DeviceMotion.setDeviceMotionUpdateInterval();
         }).shouldThrowException();
 
         finish(testRun);
@@ -319,18 +328,18 @@ module.exports = new function () {
 
     this.testStartDeviceMotionUpdatesUsingReferenceFrame = function (testRun) {
         valueOf(testRun, function() {
-            CoreMotion.startDeviceMotionUpdatesUsingReferenceFrame({
+            DeviceMotion.startDeviceMotionUpdatesUsingReferenceFrame({
                 referenceFrame: CoreMotion.ATTITUDE_REFERENCE_FRAME_X_TRUE_NORTH_Z_VERTICAL
             }, function() {});
         }).shouldNotThrowException();
         valueOf(testRun, function() {
-            CoreMotion.startDeviceMotionUpdatesUsingReferenceFrame({
+            DeviceMotion.startDeviceMotionUpdatesUsingReferenceFrame({
                 referenceFrame: CoreMotion.ATTITUDE_REFERENCE_FRAME_X_TRUE_NORTH_Z_VERTICAL
             });
         }).shouldNotThrowException();
 
         valueOf(testRun, function() {
-            CoreMotion.startDeviceMotionUpdatesUsingReferenceFrame();
+            DeviceMotion.startDeviceMotionUpdatesUsingReferenceFrame();
         }).shouldThrowException();
 
         finish(testRun);
@@ -338,23 +347,22 @@ module.exports = new function () {
 
     this.testStartDeviceMotionUpdates = function (testRun) {
         valueOf(testRun, function() {
-            CoreMotion.startDeviceMotionUpdates(function() {});
+            DeviceMotion.startDeviceMotionUpdates(function() {});
         }).shouldNotThrowException();
         valueOf(testRun, function() {
-            CoreMotion.startDeviceMotionUpdates();
+            DeviceMotion.startDeviceMotionUpdates();
         }).shouldNotThrowException();
 
         valueOf(testRun, function() {
-            CoreMotion.startDeviceMotionUpdates("hi");
+            DeviceMotion.startDeviceMotionUpdates("hi");
         }).shouldThrowException();
 
         finish(testRun);
     }
 
-
     this.testStopDeviceMotionUpdates = function (testRun) {
         valueOf(testRun, function() {
-            CoreMotion.stopDeviceMotionUpdates();
+            DeviceMotion.stopDeviceMotionUpdates();
         }).shouldNotThrowException();
 
         finish(testRun);
@@ -362,7 +370,7 @@ module.exports = new function () {
 
     this.testGetAttitudeReferenceFrame = function (testRun) {
         valueOf(testRun, function() {
-            CoreMotion.getAttitudeReferenceFrame();
+            DeviceMotion.getAttitudeReferenceFrame();
         }).shouldNotThrowException();
 
         finish(testRun);
@@ -370,26 +378,26 @@ module.exports = new function () {
 
     this.testAvailableAttitudeReferenceFrames = function (testRun) {
         valueOf(testRun, function() {
-            CoreMotion.availableAttitudeReferenceFrames();
+            DeviceMotion.availableAttitudeReferenceFrames();
         }).shouldNotThrowException();
 
         finish(testRun);
     }
 
     this.testIsDeviceMotionActive = function (testRun) {
-        valueOf(testRun, CoreMotion.isDeviceMotionActive()).shouldBeBoolean();
+        valueOf(testRun, DeviceMotion.isDeviceMotionActive()).shouldBeBoolean();
 
         finish(testRun);
     }
 
     this.testIsDeviceMotionAvailable = function (testRun) {
-        valueOf(testRun, CoreMotion.isDeviceMotionAvailable()).shouldBeBoolean();
+        valueOf(testRun, DeviceMotion.isDeviceMotionAvailable()).shouldBeBoolean();
 
         finish(testRun);
     }
 
     this.testGetDeviceMotion = function (testRun) {
-        valueOf(testRun, CoreMotion.getDeviceMotion()).shouldBeObject();
+        valueOf(testRun, DeviceMotion.getDeviceMotion()).shouldBeObject();
 
         finish(testRun);
     }
@@ -398,24 +406,24 @@ module.exports = new function () {
     // Motion Activity
     // ----------------------------------------------------
     this.testIsActivityAvailable = function (testRun) {
-        valueOf(testRun, CoreMotion.isActivityAvailable()).shouldBeBoolean();
+        valueOf(testRun, MotionActivity.isActivityAvailable()).shouldBeBoolean();
 
         finish(testRun);
     }
 
     this.testStartActivityUpdates = function (testRun) {
         valueOf(testRun, function() {
-            CoreMotion.startActivityUpdates(function() {});
+            MotionActivity.startActivityUpdates(function() {});
         }).shouldNotThrowException();
 
         valueOf(testRun, function() {
-            CoreMotion.startActivityUpdates();
+            MotionActivity.startActivityUpdates();
         }).shouldThrowException();
         valueOf(testRun, function() {
-            CoreMotion.startActivityUpdates("hi");
+            MotionActivity.startActivityUpdates("hi");
         }).shouldThrowException();
         valueOf(testRun, function() {
-            CoreMotion.startActivityUpdates(21);
+            MotionActivity.startActivityUpdates(21);
         }).shouldThrowException();
 
         finish(testRun);
@@ -423,7 +431,7 @@ module.exports = new function () {
 
     this.testStopActivityUpdates = function (testRun) {
         valueOf(testRun, function() {
-            CoreMotion.stopActivityUpdates();
+            MotionActivity.stopActivityUpdates();
         }).shouldNotThrowException();
 
         finish(testRun);
@@ -431,39 +439,39 @@ module.exports = new function () {
 
     this.testQueryActivity = function (testRun) {
         valueOf(testRun, function() {
-            CoreMotion.queryActivity({
+            MotionActivity.queryActivity({
                 start: new Date(new Date().getTime() - 60*60*1000),
                 end: new Date()
             }, function() {});
         }).shouldNotThrowException();
 
         valueOf(testRun, function() {
-            CoreMotion.queryActivity("hi");
+            MotionActivity.queryActivity("hi");
         }).shouldThrowException();
         valueOf(testRun, function() {
-            CoreMotion.queryActivity();
+            MotionActivity.queryActivity();
         }).shouldThrowException();
         valueOf(testRun, function() {
-            CoreMotion.queryActivity({
+            MotionActivity.queryActivity({
                 end: new Date()
             }, function() {});
         }).shouldThrowException();
         valueOf(testRun, function() {
-            CoreMotion.queryActivity({
+            MotionActivity.queryActivity({
                 start: new Date(new Date().getTime() - 60*60*1000)
             }, function() {});
         }).shouldThrowException();
         valueOf(testRun, function() {
-            CoreMotion.queryActivity("hi", function() {});
+            MotionActivity.queryActivity("hi", function() {});
         }).shouldThrowException();
         valueOf(testRun, function() {
-            CoreMotion.queryActivity({
+            MotionActivity.queryActivity({
                 start: new Date(new Date().getTime() - 60*60*1000),
                 end: new Date()
             });
         }).shouldThrowException();
         valueOf(testRun, function() {
-            CoreMotion.queryActivity({
+            MotionActivity.queryActivity({
                 start: new Date(new Date().getTime() - 60*60*1000),
                 end: new Date()
             }, "hi");
@@ -476,32 +484,32 @@ module.exports = new function () {
     // Step Counter
     // ----------------------------------------------------
     this.testIsStepCountingAvailable = function (testRun) {
-        valueOf(testRun, CoreMotion.isStepCountingAvailable()).shouldBeBoolean();
+        valueOf(testRun, StepCounter.isStepCountingAvailable()).shouldBeBoolean();
 
         finish(testRun);
     }
 
     this.testStartStepCountingUpdates = function (testRun) {
         valueOf(testRun, function() {
-            CoreMotion.startStepCountingUpdates({
+            StepCounter.startStepCountingUpdates({
                 stepCounts: 5
             }, function() {});
         }).shouldNotThrowException();
 
         valueOf(testRun, function() {
-            CoreMotion.startStepCountingUpdates();
+            StepCounter.startStepCountingUpdates();
         }).shouldThrowException();
         valueOf(testRun, function() {
-            CoreMotion.startStepCountingUpdates("hi");
+            StepCounter.startStepCountingUpdates("hi");
         }).shouldThrowException();
         valueOf(testRun, function() {
-            CoreMotion.startStepCountingUpdates(21);
+            StepCounter.startStepCountingUpdates(21);
         }).shouldThrowException();
         valueOf(testRun, function() {
-            CoreMotion.startStepCountingUpdates({}, function() {});
+            StepCounter.startStepCountingUpdates({}, function() {});
         }).shouldThrowException();
         valueOf(testRun, function() {
-            CoreMotion.startStepCountingUpdates({}, {});
+            StepCounter.startStepCountingUpdates({}, {});
         }).shouldThrowException();
 
         finish(testRun);
@@ -509,7 +517,7 @@ module.exports = new function () {
 
     this.testStopStepCountingUpdates = function (testRun) {
         valueOf(testRun, function() {
-            CoreMotion.stopStepCountingUpdates();
+            StepCounter.stopStepCountingUpdates();
         }).shouldNotThrowException();
 
         finish(testRun);
@@ -517,39 +525,39 @@ module.exports = new function () {
 
     this.testQueryStepCount = function (testRun) {
         valueOf(testRun, function() {
-            CoreMotion.queryStepCount({
+            StepCounter.queryStepCount({
                 start: new Date(new Date().getTime() - 60*60*1000),
                 end: new Date()
             }, function() {});
         }).shouldNotThrowException();
 
         valueOf(testRun, function() {
-            CoreMotion.queryStepCount("hi");
+            StepCounter.queryStepCount("hi");
         }).shouldThrowException();
         valueOf(testRun, function() {
-            CoreMotion.queryStepCount();
+            StepCounter.queryStepCount();
         }).shouldThrowException();
         valueOf(testRun, function() {
-            CoreMotion.queryStepCount({
+            StepCounter.queryStepCount({
                 end: new Date()
             }, function() {});
         }).shouldThrowException();
         valueOf(testRun, function() {
-            CoreMotion.queryStepCount({
+            StepCounter.queryStepCount({
                 start: new Date(new Date().getTime() - 60*60*1000)
             }, function() {});
         }).shouldThrowException();
         valueOf(testRun, function() {
-            CoreMotion.queryStepCount("hi", function() {});
+            StepCounter.queryStepCount("hi", function() {});
         }).shouldThrowException();
         valueOf(testRun, function() {
-            CoreMotion.queryStepCount({
+            StepCounter.queryStepCount({
                 start: new Date(new Date().getTime() - 60*60*1000),
                 end: new Date()
             });
         }).shouldThrowException();
         valueOf(testRun, function() {
-            CoreMotion.queryStepCount({
+            StepCounter.queryStepCount({
                 start: new Date(new Date().getTime() - 60*60*1000),
                 end: new Date()
             }, "hi");

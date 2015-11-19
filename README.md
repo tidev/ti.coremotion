@@ -1,18 +1,19 @@
+
+
 # Core Motion [![Build Status](https://travis-ci.org/appcelerator-modules/ti.coremotion.svg?branch=master)](https://travis-ci.org/appcelerator-modules/ti.coremotion)
 
-**This module is available only for iOS 7 and above.**
+This is the CoreMotion module for Titanium Mobile covering the iOS 7+ APIs of the CoreMotion framework.
 
-## COMPILING AND PACKAGING THE MODULE
+## Contributors
 
-Create an environment variable `TI_ROOT` that points to the root of your titanium_mobile repo and then run `build.sh`. For example
+* Please see https://github.com/appcelerator-modules/ti.coremotion/graphs/contributors
+* Interested in contributing? Read the [contributors/committer's](https://wiki.appcelerator.org/display/community/Home) guide.
 
-```bash
-git checkout https://github.com/appcelerator-modules/ti.coremotion.git
-pushd ti.coremotion
-git submodule init
-git submodule update
-export TI_ROOT=/Users/matt/Documents/Appcelerator/src/Appcelerator
-./build.sh
-```
+## Legal
 
-This will compile and package the ti.coremotion iOS module in the build sub-directory, e.g. build/ti.coremotion-iphone-1.1.0.zip
+This module is Copyright (c) 2010-2015 by Appcelerator, Inc. All Rights Reserved. Usage of this module is subject to 
+the Terms of Service agreement with Appcelerator, Inc.  
+
+# Example
+
+Please check the demo located in `iphone/example/app.js` for using this module.
