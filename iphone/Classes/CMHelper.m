@@ -135,18 +135,18 @@
 +(NSDictionary*)dictionaryFromPedometerData:(CMPedometerData*)pedometerData
 {
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:@{
-        @"startDate": (!pedometerData) ? [NSNull null] : [TiUtils UTCDateForDate:pedometerData.startDate],
-        @"endDate": (!pedometerData) ? [NSNull null] : [TiUtils UTCDateForDate:pedometerData.endDate],
-        @"numberOfSteps": (!pedometerData) ? [NSNull null] : NUMINT(pedometerData.numberOfSteps),
-        @"distance": (!pedometerData) ? [NSNull null] : NUMINT(pedometerData.distance),
-        @"floorsAscended": (!pedometerData) ? [NSNull null] : NUMINT(pedometerData.floorsAscended),
-        @"floorsDescended": (!pedometerData) ? [NSNull null] : NUMINT(pedometerData.floorsDescended)        
+        @"startDate": (!pedometerData.startDate) ? [NSNull null] : [TiUtils UTCDateForDate:pedometerData.startDate],
+        @"endDate": (!pedometerData.endDate) ? [NSNull null] : [TiUtils UTCDateForDate:pedometerData.endDate],
+        @"numberOfSteps": (!pedometerData.numberOfSteps) ? [NSNull null] : pedometerData.numberOfSteps,
+        @"distance": (!pedometerData.distance) ? [NSNull null] : pedometerData.distance,
+        @"floorsAscended": (!pedometerData.floorsAscended) ? [NSNull null] : pedometerData.floorsAscended,
+        @"floorsDescended": (!pedometerData.floorsDescended) ? [NSNull null] : pedometerData.floorsDescended
     }];
     
 #ifdef IS_XCODE_7
     if ([TiUtils isIOS9OrGreater]) {
-        [dict setValue:(!pedometerData) ? [NSNull null] : NUMINT(pedometerData.currentCadence) forKey:@"currentCadence"];
-        [dict setValue:(!pedometerData) ? [NSNull null] : NUMINT(pedometerData.currentPace) forKey:@"currentPace"];
+        [dict setValue:(!pedometerData.currentCadence) ? [NSNull null] : pedometerData.currentCadence forKey:@"currentCadence"];
+        [dict setValue:(!pedometerData.currentPace) ? [NSNull null] : pedometerData.currentPace forKey:@"currentPace"];
     }
 #endif
     
