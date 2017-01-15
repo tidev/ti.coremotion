@@ -3,6 +3,8 @@ name: Modules.CoreMotion.DeviceMotion
 platforms: [iphone, ipad]
 summary: Allows Titanium client applications to access CoreMotion's DeviceMotion APIs.
 since: "5.2.0"
+extends: Titanium.Proxy
+createable: true
 
 methods:
   - name: setShowsDeviceMovementDisplay
@@ -133,4 +135,3 @@ methods:
         check the value returned by this method and process the device-motion data.
     returns:
         type: CoreMotionDeviceMotionData
-
