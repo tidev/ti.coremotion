@@ -3,6 +3,8 @@ name: Modules.CoreMotion.StepCounter
 platforms: [iphone, ipad]
 summary: Allows Titanium client applications to access CoreMotion's (deprecated) StepCounter APIs.
 since: "5.2.0"
+extends: Titanium.Proxy
+createable: true
 deprecated:
     since: "5.2.0"
     notes: |
