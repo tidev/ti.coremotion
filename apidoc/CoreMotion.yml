@@ -38,16 +38,16 @@ description: |
 
         var CoreMotion = require("ti.coremotion");
 
-        The `CoreMotion` variable is a reference to the Module object.  Use this reference to make
-        subsequent calls to the CoreMotion Module API. The following example shows the step counting
-        API of `CoreMotion`.
+        // The `CoreMotion` variable is a reference to the Module object.  Use this reference to make
+        // subsequent calls to the CoreMotion Module API. The following example shows the step counting
+        // API of `CoreMotion`.
 
         var pedometer = CoreMotion.createPedometer();
 
         // This code checks to see if the device can gather step counting data
         if (pedometer.isStepCountingAvailable()) {
             // If it can, it starts the step counter and outputs the data to the console
-            pedometer.startPedometerUpdates(function(e){
+            pedometer.startPedometerUpdates(function(e) {
                 Ti.API.info(JSON.stringify(e));
             });
         } else {
