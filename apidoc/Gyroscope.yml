@@ -3,6 +3,8 @@ name: Modules.CoreMotion.Gyroscope
 platforms: [iphone, ipad]
 summary: Allows Titanium client applications to access CoreMotion's Gyroscope APIs.
 since: "5.2.0"
+extends: Titanium.Proxy
+createable: true
 
 methods:
   - name: setGyroUpdateInterval
