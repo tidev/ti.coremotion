@@ -24,8 +24,7 @@ methods:
         <Modules.CoreMotion.Accelerometer.getAccelerometerData> method. To stop the delivery of events, 
         call the <Modules.CoreMotion.Accelerometer.stopAccelerometerUpdates> method.
         Note: It is recommended to set an update interval of at least 250ms before, to avoid receiving
-        too many callbacks at once.
-        
+        too many callbacks at once.    
     parameters:
       - name: callback
         summary: The method to be called when there is an update.
