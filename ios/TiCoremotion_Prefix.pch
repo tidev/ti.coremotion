@@ -4,8 +4,8 @@
     #import <UIKit/UIKit.h>
 #endif
 
-#ifdef __IPHONE_9_0
-#define IS_XCODE_7 true
+#ifdef __IPHONE_11_0
+#define IS_XCODE_9 true
 #else
-#define IS_XCODE_7 false
+#define IS_XCODE_9 false
 #endif

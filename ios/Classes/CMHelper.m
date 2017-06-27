@@ -110,12 +110,15 @@
     };
 
     return @{
+#ifdef IS_XCODE_9
+        @"heading": [TiUtils isIOSVersionOrGreater:@"11.0"] ? NUMDOUBLE(deviceMotion.heading) : NUMDOUBLE(-1),
+#endif
         @"timestamp" : (!deviceMotion) ? [NSNull null] : NUMDOUBLE([self intervalToMilliseconds:deviceMotion.timestamp]),
         @"attitude": attitude,
         @"rotationRate": rotationRate,
         @"gravity": gravity,
         @"userAcceleration": userAcceleration,
-        @"magneticField": magneticField
+        @"magneticField": magneticField,
     };
 }
 
@@ -140,15 +143,10 @@
         @"numberOfSteps": (!pedometerData.numberOfSteps) ? [NSNull null] : pedometerData.numberOfSteps,
         @"distance": (!pedometerData.distance) ? [NSNull null] : pedometerData.distance,
         @"floorsAscended": (!pedometerData.floorsAscended) ? [NSNull null] : pedometerData.floorsAscended,
-        @"floorsDescended": (!pedometerData.floorsDescended) ? [NSNull null] : pedometerData.floorsDescended
+        @"floorsDescended": (!pedometerData.floorsDescended) ? [NSNull null] : pedometerData.floorsDescended,
+        @"currentCadence": (!pedometerData.currentCadence) ? [NSNull null] : pedometerData.currentCadence,
+        @"currentPace": (!pedometerData.currentPace) ? [NSNull null] : pedometerData.currentPace
     }];
-    
-#ifdef IS_XCODE_7
-    if ([TiUtils isIOS9OrGreater]) {
-        [dict setValue:(!pedometerData.currentCadence) ? [NSNull null] : pedometerData.currentCadence forKey:@"currentCadence"];
-        [dict setValue:(!pedometerData.currentPace) ? [NSNull null] : pedometerData.currentPace forKey:@"currentPace"];
-    }
-#endif
     
     return dict;
 }
