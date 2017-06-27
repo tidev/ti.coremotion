@@ -42,7 +42,7 @@
     ENSURE_TYPE(stepCounts, NSNumber);
     ENSURE_TYPE(callback, KrollCallback);
     
-    [[self sharedStepCounter] startStepCountingUpdatesToQueue:[NSOperationQueue mainQueue] updateOn:stepCounts withHandler:^(NSInteger numberOfSteps, NSDate *timestamp, NSError * error) {
+    [[self sharedStepCounter] startStepCountingUpdatesToQueue:[NSOperationQueue mainQueue] updateOn:[stepCounts integerValue] withHandler:^(NSInteger numberOfSteps, NSDate *timestamp, NSError * error) {
         
         NSDictionary *eventDict = [CMHelper dictionaryWithError:error andDictionary:@{
             @"timestamp": [TiUtils UTCDateForDate:timestamp],

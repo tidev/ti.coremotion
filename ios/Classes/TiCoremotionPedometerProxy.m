@@ -32,11 +32,7 @@
 
 -(NSNumber*)isCadenceAvailable:(id)unused
 {
-#ifdef IS_XCODE_7
     return NUMBOOL([TiUtils isIOS9OrGreater] ? [CMPedometer isCadenceAvailable] : NO);
-#else
-    return NO;
-#endif
 }
 
 -(NSNumber*)isDistanceAvailable:(id)unused
@@ -46,11 +42,7 @@
 
 -(NSNumber*)isPaceAvailable:(id)unused
 {
-#ifdef IS_XCODE_7
     return NUMBOOL([TiUtils isIOS9OrGreater] ? [CMPedometer isPaceAvailable] : NO);
-#else
-    return NO;
-#endif
 }
 
 -(NSNumber*)isFloorCountingAvailable:(id)unused
