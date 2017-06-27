@@ -15,6 +15,7 @@ description: |
     For instruction and examples of using the Core Motion Module, see the
     [Core Motion Module guide](http://docs.appcelerator.com/titanium/latest/#!/guide/Core_Motion_Module).
 
+
     ### Requirements
 
     This module only works with devices running iOS 7 and later. Not all devices have the same hardware sensors,
@@ -28,6 +29,7 @@ description: |
     use the "Motion Activity" permission. When the application uses the Core Motion API for the first
     time, iOS prompts the user to either approve or deny access to the Core Motion features of the
     device. The user can change the permission settings with **Settings** > **Privacy**.
+
 
     ### Getting Started
 
@@ -61,6 +63,9 @@ description: |
 
     - [iOS Developer Library: Core Motion Framework Reference](https://developer.apple.com/library/ios/documentation/CoreMotion/Reference/CoreMotion_Reference/_index.html)
     - [iOS Developer Library: Motion Events](https://developer.apple.com/library/ios/documentation/EventHandling/Conceptual/EventHandlingiPhoneOS/motion_event_basics/motion_event_basics.html)
+
+methods:
+
 
 properties:
   - name: ERROR_NULL
@@ -172,6 +177,8 @@ properties:
     summary: Confidence is high.
     type: Number
     permission: "read-only"
+
+
 
 ---
 name: CoreMotionReferenceFrameArgs
@@ -482,6 +489,15 @@ properties:
     summary: Returns the magnetic field vector with respect to the device.
     type: CoreMotionCalibratedMagneticField
     permission: "read-only"
+
+  - name: heading
+    summary: | 
+        Returns heading angle in the range [0,360) degrees with respect to the 
+        attitude-reference-frame.
+    type: Number
+    permission: "read-only"
+    osver: {ios: {min: "11.0"}}
+    since: "6.2.0"
 
 ---
 name: CoreMotionActivityData
