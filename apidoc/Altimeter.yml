@@ -1,0 +1,50 @@
+---
+name: Modules.CoreMotion.Altimeter
+platforms: [iphone, ipad]
+summary: | 
+    Allows Titanium client applications to access CoreMotion's Altimeter APIs. 
+    Note: This API is only available in iOS 8 and later.
+since: "6.2.0"
+extends: Titanium.Proxy
+createable: true
+
+methods:
+  - name: isSupported
+    summary: Returns a Boolean value indicating whether the altimeter is supported on the current iOS version.
+    returns:
+        type: Boolean
+
+  - name: isRelativeAltitudeAvailable
+    summary: Returns a Boolean value indicating whether the altimeter is supported on the current iOS version.
+    returns:
+        type: Boolean
+
+  - name: authorizationStatus
+    summary: Returns the current authorization status for altimeter.
+    returns:
+        type: Number
+        constants: Modules.CoreMotion.AUTHORIZATION_STATUS_*
+    osver: {ios: {min: "11.0"}}
+
+  - name: hasAltimeterPermissions
+    summary: Determines whether the device supports reporting relative altitude changes..
+    returns:
+        type: Boolean
+
+  - name: startRelativeAltitudeUpdates
+    summary: |
+        Starts relative altitude updates, providing data to the given handler on the given queue
+        every few seconds. The first altitude update will be established as the reference altitude
+        and have relative altitude 0.
+ 
+        Calls to start must be balanced with calls to <Modules.CoreMotion.Altimeter.stopRelativeAltitudeUpdates> 
+        even if an error is returned to the handler.
+    parameters:
+      - name: callback
+        summary: The method to be called when there is an update.
+        type: Callback<CoreMotionAltimeterData>
+        optional: true
+
+  - name: stopRelativeAltitudeUpdates
+    summary: Stops relative altitude updates.
+  

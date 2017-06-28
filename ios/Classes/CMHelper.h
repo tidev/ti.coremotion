@@ -23,6 +23,8 @@
 
 +(NSDictionary*)dictionaryFromPedometerData:(CMPedometerData*)pedometerData;
 
++(NSDictionary*)dictionaryFromAltitudeData:(CMAltitudeData*)altitudeData;
+
 +(NSDictionary*)dictionaryWithError:(NSError*)error andDictionary:(NSDictionary*)eventDict;
 
 +(NSMutableArray*)arrayFromMotionActivities:(NSArray*)array;

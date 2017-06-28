@@ -142,6 +142,34 @@ properties:
         to calculate the difference between magnetic and true north.
     type: Number
     permission: "read-only"
+ 
+  - name: AUTHORIZATION_STATUS_NOT_DETERMINED
+    summary: The user has not been prompted yet.
+    type: Number
+    since: "6.2.0"
+    osver: {ios: {min: "11.0"}}
+    permission: "read-only"
+ 
+  - name: AUTHORIZATION_STATUS_RESTRICTED
+    summary: Access is denied due to system-wide restrictions.
+    type: Number
+    since: "6.2.0"
+    osver: {ios: {min: "11.0"}}
+    permission: "read-only"
+ 
+  - name: AUTHORIZATION_STATUS_DENIED
+    summary: Access is denied by the user.
+    type: Number
+    since: "6.2.0"
+    osver: {ios: {min: "11.0"}}
+    permission: "read-only"
+ 
+  - name: AUTHORIZATION_STATUS_AUTHORIZED
+    summary: Access is authorized by the user.
+    type: Number
+    since: "6.2.0"
+    osver: {ios: {min: "11.0"}}
+    permission: "read-only"
 
   - name: MAGNETIC_FIELD_CALIBRATION_ACCURACY_UNCALIBRATED
     summary: The magnetic field estimate is not calibrated.
@@ -871,6 +899,7 @@ properties:
         A structure containing 3-axis calibrated magnetic field data. See the description of
         the structure of <CoreMotionMagneticField>.
     type: CoreMotionMagneticField
+    permission: "read-only"
 
   - name: accuracy
     summary: An enum-constant value that indicates the accuracy of the magnetic field estimate.
@@ -887,5 +916,21 @@ properties:
     summary: The time when the logged item is valid.
     description: |
         The time stamp is the amount of time in milliseconds since the phone booted.
+    type: Number
+    permission: "read-only"
+
+---
+name: CoreMotionAltimeterData
+platforms: [iphone, ipad]
+summary: Data returned from <Modules.CoreMotion.Altimeter.startRelativeAltitudeUpdates>.
+since: "6.2.0"
+properties:
+  - name: relativeAltitude
+    summary: The relative altitude in meters to the starting altitude.
+    type: Number
+    permission: "read-only"
+
+  - name: pressure
+    summary: The pressure in kPa.
     type: Number
     permission: "read-only"
