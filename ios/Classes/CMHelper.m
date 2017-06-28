@@ -137,20 +137,29 @@
 
 +(NSDictionary*)dictionaryFromPedometerData:(CMPedometerData*)pedometerData
 {
-    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:@{
-        @"startDate": (!pedometerData.startDate) ? [NSNull null] : [TiUtils UTCDateForDate:pedometerData.startDate],
-        @"endDate": (!pedometerData.endDate) ? [NSNull null] : [TiUtils UTCDateForDate:pedometerData.endDate],
-        @"numberOfSteps": (!pedometerData.numberOfSteps) ? [NSNull null] : pedometerData.numberOfSteps,
-        @"distance": (!pedometerData.distance) ? [NSNull null] : pedometerData.distance,
-        @"floorsAscended": (!pedometerData.floorsAscended) ? [NSNull null] : pedometerData.floorsAscended,
-        @"floorsDescended": (!pedometerData.floorsDescended) ? [NSNull null] : pedometerData.floorsDescended,
-        @"currentCadence": (!pedometerData.currentCadence) ? [NSNull null] : pedometerData.currentCadence,
-        @"currentPace": (!pedometerData.currentPace) ? [NSNull null] : pedometerData.currentPace
+    NSDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:@{
+        @"startDate": NULL_IF_NIL([TiUtils UTCDateForDate:pedometerData.startDate]),
+        @"endDate": NULL_IF_NIL([TiUtils UTCDateForDate:pedometerData.endDate]),
+        @"numberOfSteps": NULL_IF_NIL(pedometerData.numberOfSteps),
+        @"distance": NULL_IF_NIL(pedometerData.distance),
+        @"floorsAscended": NULL_IF_NIL(pedometerData.floorsAscended),
+        @"floorsDescended": NULL_IF_NIL(pedometerData.floorsDescended),
+        @"currentCadence": NULL_IF_NIL(pedometerData.currentCadence),
+        @"currentPace": NULL_IF_NIL(pedometerData.currentPace)
     }];
     
     return dict;
 }
 
++(NSDictionary*)dictionaryFromAltitudeData:(CMAltitudeData*)altitudeData
+{
+    NSDictionary *dict = @{
+        @"relativeAltitude": altitudeData.relativeAltitude,
+        @"pressure": altitudeData.pressure
+    };
+    
+    return dict;
+}
 
 +(NSDictionary*)dictionaryWithError:(NSError*)error andDictionary:(NSDictionary*)eventDict
 {
