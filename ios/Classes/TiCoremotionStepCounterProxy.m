@@ -12,7 +12,7 @@
 
 #pragma mark Proxy configuration
 
--(void)dealloc
+- (void)dealloc
 {
     RELEASE_TO_NIL(stepCounter);
     [super dealloc];
@@ -20,12 +20,12 @@
 
 #pragma mark Public APIs
 
--(NSNumber*)isStepCountingAvailable:(id)unused
+- (NSNumber *)isStepCountingAvailable:(id)unused
 {
     return NUMBOOL([CMStepCounter isStepCountingAvailable]);
 }
 
--(void)startStepCountingUpdates:(id)args
+- (void)startStepCountingUpdates:(id)args
 {
     ENSURE_TYPE(args, NSArray);
     
@@ -51,12 +51,12 @@
     }];
 }
 
--(void)stopStepCountingUpdates:(id)unused
+- (void)stopStepCountingUpdates:(id)unused
 {
     [[self sharedStepCounter] stopStepCountingUpdates];
 }
 
--(void)queryStepCount:(id)args
+- (void)queryStepCount:(id)args
 {
     ENSURE_TYPE(args, NSArray);
 
@@ -84,7 +84,7 @@
 
 #pragma mark Singleton instance
 
--(CMStepCounter*)sharedStepCounter
+- (CMStepCounter *)sharedStepCounter
 {
     if (stepCounter == nil) {
         stepCounter = [[CMStepCounter alloc] init];

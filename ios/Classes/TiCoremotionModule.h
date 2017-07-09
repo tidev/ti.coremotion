@@ -31,101 +31,101 @@
 // Accelerometer
 // ----------------------------------------------------
 
--(void)setAccelerometerUpdateInterval:(id)value;
+- (void)setAccelerometerUpdateInterval:(id)value;
 
--(void)startAccelerometerUpdates:(id)arg;
+- (void)startAccelerometerUpdates:(id)arg;
 
--(void)stopAccelerometerUpdates:(id)unused;
+- (void)stopAccelerometerUpdates:(id)unused;
 
--(NSNumber*)isAccelerometerActive:(id)unused;
+- (NSNumber *)isAccelerometerActive:(id)unused;
 
--(NSNumber*)isAccelerometerAvailable:(id)unused;
+- (NSNumber *)isAccelerometerAvailable:(id)unused;
 
--(NSDictionary*)getAccelerometerData:(id)unused;
+- (NSDictionary *)getAccelerometerData:(id)unused;
 
 
 // ----------------------------------------------------
 // Gyroscope
 // ----------------------------------------------------
 
--(void)setGyroUpdateInterval:(id)value;
+- (void)setGyroUpdateInterval:(id)value;
 
--(void)startGyroUpdates:(id)arg;
+- (void)startGyroUpdates:(id)arg;
 
--(void)stopGyroUpdates:(id)unused;
+- (void)stopGyroUpdates:(id)unused;
 
--(NSNumber*)isGyroActive:(id)unused;
+- (NSNumber *)isGyroActive:(id)unused;
 
--(NSNumber*)isGyroAvailable:(id)unused;
+- (NSNumber *)isGyroAvailable:(id)unused;
 
--(NSDictionary*)getGyroData:(id)unused;
+- (NSDictionary *)getGyroData:(id)unused;
 
 
 // ----------------------------------------------------
 // Magnetometer
 // ----------------------------------------------------
 
--(void)setMagnetometerUpdateInterval:(id)value;
+- (void)setMagnetometerUpdateInterval:(id)value;
 
--(void)startMagnetometerUpdates:(id)arg;
+- (void)startMagnetometerUpdates:(id)arg;
 
--(void)stopMagnetometerUpdates:(id)unused;
+- (void)stopMagnetometerUpdates:(id)unused;
 
--(NSNumber*)isMagnetometerActive:(id)unused;
+- (NSNumber *)isMagnetometerActive:(id)unused;
 
--(NSNumber*)isMagnetometerAvailable:(id)unused;
+- (NSNumber *)isMagnetometerAvailable:(id)unused;
 
--(NSDictionary*)getMagnetometerData:(id)unused;
+- (NSDictionary *)getMagnetometerData:(id)unused;
 
 
 // ----------------------------------------------------
 // Device Motion
 // ----------------------------------------------------
 
--(void)setShowsDeviceMovementDisplay:(id)value;
+- (void)setShowsDeviceMovementDisplay:(id)value;
 
--(void)setDeviceMotionUpdateInterval:(id)value;
+- (void)setDeviceMotionUpdateInterval:(id)value;
 
--(void)startDeviceMotionUpdatesUsingReferenceFrame:(id)args;
+- (void)startDeviceMotionUpdatesUsingReferenceFrame:(id)args;
 
--(void)startDeviceMotionUpdates:(id)arg;
+- (void)startDeviceMotionUpdates:(id)arg;
 
--(void)stopDeviceMotionUpdates:(id)unused;
+- (void)stopDeviceMotionUpdates:(id)unused;
 
--(NSNumber*)getAttitudeReferenceFrame:(id)unused;
+- (NSNumber *)getAttitudeReferenceFrame:(id)unused;
 
--(NSNumber*)availableAttitudeReferenceFrames:(id)unused;
+- (NSNumber *)availableAttitudeReferenceFrames:(id)unused;
 
--(NSNumber*)isDeviceMotionActive:(id)unused;
+- (NSNumber *)isDeviceMotionActive:(id)unused;
 
--(NSNumber*)isDeviceMotionAvailable:(id)unused;
+- (NSNumber *)isDeviceMotionAvailable:(id)unused;
 
--(NSDictionary*)getDeviceMotion:(id)unused;
+- (NSDictionary *)getDeviceMotion:(id)unused;
 
 
 // ----------------------------------------------------
 // Motion Activity
 // ----------------------------------------------------
 
--(NSNumber*)isActivityAvailable:(id)unused;
+- (NSNumber *)isActivityAvailable:(id)unused;
 
--(void)startActivityUpdates:(id)arg;
+- (void)startActivityUpdates:(id)arg;
 
--(void)stopActivityUpdates:(id)unused;
+- (void)stopActivityUpdates:(id)unused;
 
--(void)queryActivity:(id)args;
+- (void)queryActivity:(id)args;
 
 
 // ----------------------------------------------------
 // Step Counter
 // ----------------------------------------------------
 
--(NSNumber*)isStepCountingAvailable:(id)unused;
+- (NSNumber *)isStepCountingAvailable:(id)unused;
 
--(void)startStepCountingUpdates:(id)args;
+- (void)startStepCountingUpdates:(id)args;
 
--(void)stopStepCountingUpdates:(id)unused;
+- (void)stopStepCountingUpdates:(id)unused;
 
--(void)queryStepCount:(id)args;
+- (void)queryStepCount:(id)args;
 
 @end

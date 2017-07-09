@@ -11,28 +11,28 @@
 
 @interface CMHelper : NSObject
 
-+(NSDictionary*)dictionaryFromAccelerometerData:(CMAccelerometerData*)accelerometerData;
++ (NSDictionary *)dictionaryFromAccelerometerData:(CMAccelerometerData *)accelerometerData;
 
-+(NSDictionary*)dictionaryFromGyroData:(CMGyroData*)gyroData;
++ (NSDictionary *)dictionaryFromGyroData:(CMGyroData *)gyroData;
 
-+(NSDictionary*)dictionaryFromMagnetometerData:(CMMagnetometerData*)magnetometerData;
++ (NSDictionary *)dictionaryFromMagnetometerData:(CMMagnetometerData *)magnetometerData;
 
-+(NSDictionary*)dictionaryFromDeviceMotion:(CMDeviceMotion*)deviceMotion;
++ (NSDictionary *)dictionaryFromDeviceMotion:(CMDeviceMotion *)deviceMotion;
 
-+(NSDictionary*)dictionaryFromMotionActivity:(CMMotionActivity*)motionActivity;
++ (NSDictionary *)dictionaryFromMotionActivity:(CMMotionActivity *)motionActivity;
 
-+(NSDictionary*)dictionaryFromPedometerData:(CMPedometerData*)pedometerData;
++ (NSDictionary *)dictionaryFromPedometerData:(CMPedometerData *)pedometerData;
 
-+(NSDictionary*)dictionaryFromAltitudeData:(CMAltitudeData*)altitudeData;
++ (NSDictionary *)dictionaryFromAltitudeData:(CMAltitudeData *)altitudeData;
 
-+(NSDictionary*)dictionaryWithError:(NSError*)error andDictionary:(NSDictionary*)eventDict;
++ (NSDictionary *)dictionaryWithError:(NSError *)error andDictionary:(NSDictionary *)eventDict;
 
-+(NSMutableArray*)arrayFromMotionActivities:(NSArray*)array;
++ (NSMutableArray *)arrayFromMotionActivities:(NSArray *)array;
 
-+(double)millisecondsToSeconds:(double)milliSeconds;
++ (double)millisecondsToSeconds:(double)milliSeconds;
 
-+(double)intervalToMilliseconds:(NSTimeInterval)interval;
++ (double)intervalToMilliseconds:(NSTimeInterval)interval;
 
-+(void)logDeprecatedMethod:(NSString*)method withNewMethod:(NSString*)newMethod;
++ (void)logDeprecatedMethod:(NSString *)method withNewMethod:(NSString *)newMethod;
 
 @end

@@ -12,7 +12,7 @@
 
 #pragma mark Proxy configuration
 
--(void)dealloc
+- (void)dealloc
 {
     RELEASE_TO_NIL(pedometer);
     [super dealloc];
@@ -20,37 +20,37 @@
 
 #pragma mark Public APIs
 
--(NSNumber*)isSupported:(id)unused
+- (NSNumber *)isSupported:(id)unused
 {
     return NUMBOOL([TiUtils isIOS8OrGreater]);
 }
 
--(NSNumber*)isCadenceAvailable:(id)unused
+- (NSNumber *)isCadenceAvailable:(id)unused
 {
     return NUMBOOL([TiUtils isIOS9OrGreater] ? [CMPedometer isCadenceAvailable] : NO);
 }
 
--(NSNumber*)isDistanceAvailable:(id)unused
+- (NSNumber *)isDistanceAvailable:(id)unused
 {
     return NUMBOOL([CMPedometer isDistanceAvailable]);
 }
 
--(NSNumber*)isPaceAvailable:(id)unused
+- (NSNumber *)isPaceAvailable:(id)unused
 {
     return NUMBOOL([TiUtils isIOS9OrGreater] ? [CMPedometer isPaceAvailable] : NO);
 }
 
--(NSNumber*)isFloorCountingAvailable:(id)unused
+- (NSNumber *)isFloorCountingAvailable:(id)unused
 {
     return NUMBOOL([CMPedometer isFloorCountingAvailable]);
 }
 
--(NSNumber*)isStepCountingAvailable:(id)unused
+- (NSNumber *)isStepCountingAvailable:(id)unused
 {
     return NUMBOOL([CMPedometer isStepCountingAvailable]);
 }
 
--(void)startPedometerUpdates:(id)args
+- (void)startPedometerUpdates:(id)args
 {
     ENSURE_TYPE(args, NSArray);
 
@@ -72,12 +72,12 @@
     }];
 }
 
--(void)stopPedometerUpdates:(id)unused
+- (void)stopPedometerUpdates:(id)unused
 {
     [[self sharedPedometer] stopPedometerUpdates];
 }
 
--(void)queryPedometerData:(id)args
+- (void)queryPedometerData:(id)args
 {
     ENSURE_TYPE(args, NSArray);
     
@@ -102,7 +102,7 @@
 
 #pragma mark Singleton instance
 
--(CMPedometer*)sharedPedometer
+- (CMPedometer *)sharedPedometer
 {
     if (pedometer == nil) {
         pedometer = [[CMPedometer alloc] init];

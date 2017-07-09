@@ -11,14 +11,14 @@
     CMMotionActivityManager *activityManager;
 }
 
--(NSNumber*)isActivityAvailable:(id)unused;
+- (NSNumber *)isActivityAvailable:(id)unused;
 
--(void)startActivityUpdates:(id)arg;
+- (void)startActivityUpdates:(id)arg;
 
--(void)stopActivityUpdates:(id)unused;
+- (void)stopActivityUpdates:(id)unused;
 
--(void)queryActivity:(id)args;
+- (void)queryActivity:(id)args;
 
--(CMMotionActivityManager*)sharedActivityManager;
+- (CMMotionActivityManager *)sharedActivityManager;
 
 @end
