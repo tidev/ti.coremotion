@@ -10,14 +10,6 @@
 
 @implementation TiCoremotionMotionActivityProxy
 
-#pragma mark Proxy configuration
-
-- (void)dealloc
-{
-    RELEASE_TO_NIL(activityManager);
-    [super dealloc];
-}
-
 #pragma mark Public APIs
 
 - (NSString *)apiName
@@ -41,7 +33,6 @@
         NSArray *invocationArray = [[NSArray alloc] initWithObjects:&eventDict count:1];
         
         [callback call:invocationArray thisObject:self];
-        [invocationArray release];
     }];
 }
 
@@ -71,7 +62,6 @@
         NSArray *invocationArray = [[NSArray alloc] initWithObjects:&eventDict count:1];
         
         [callback call:invocationArray thisObject:self];
-        [invocationArray release];
     }];
 }
 
