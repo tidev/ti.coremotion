@@ -9,7 +9,7 @@
 
 @implementation CMHelper
 
-+(NSDictionary*)dictionaryFromAccelerometerData:(CMAccelerometerData*)accelerometerData
++ (NSDictionary *)dictionaryFromAccelerometerData:(CMAccelerometerData *)accelerometerData
 {
     NSDictionary *acceleration = @{
         @"x" : (accelerometerData == nil) ? [NSNull null] : NUMDOUBLE(accelerometerData.acceleration.x),
@@ -23,7 +23,7 @@
     };
 }
 
-+(NSDictionary*)dictionaryFromGyroData:(CMGyroData*)gyroData
++ (NSDictionary *)dictionaryFromGyroData:(CMGyroData *)gyroData
 {
     NSDictionary *rotationRate = @{
         @"x" : (gyroData == nil) ? [NSNull null] : NUMDOUBLE(gyroData.rotationRate.x),
@@ -37,7 +37,7 @@
     };
 }
 
-+(NSDictionary*)dictionaryFromMagnetometerData:(CMMagnetometerData*)magnetometerData
++ (NSDictionary *)dictionaryFromMagnetometerData:(CMMagnetometerData *)magnetometerData
 {
     NSDictionary *magneticField = @{
         @"x" : (magnetometerData == nil) ? [NSNull null] : NUMDOUBLE(magnetometerData.magneticField.x),
@@ -51,7 +51,7 @@
     };
 }
 
-+(NSDictionary*)dictionaryFromDeviceMotion:(CMDeviceMotion*)deviceMotion
++ (NSDictionary *)dictionaryFromDeviceMotion:(CMDeviceMotion *)deviceMotion
 {
     NSDictionary *rotationRate = @{
         @"x" : (deviceMotion == nil) ? [NSNull null] : NUMDOUBLE(deviceMotion.rotationRate.x),
@@ -122,7 +122,7 @@
     };
 }
 
-+(NSDictionary*)dictionaryFromMotionActivity:(CMMotionActivity*)motionActivity
++ (NSDictionary *)dictionaryFromMotionActivity:(CMMotionActivity *)motionActivity
 {
     return @{
         @"stationary" : (!motionActivity) ? [NSNull null] : NUMBOOL(motionActivity.stationary),
@@ -135,7 +135,7 @@
     };
 }
 
-+(NSDictionary*)dictionaryFromPedometerData:(CMPedometerData*)pedometerData
++ (NSDictionary *)dictionaryFromPedometerData:(CMPedometerData *)pedometerData
 {
     NSDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:@{
         @"startDate": NULL_IF_NIL([TiUtils UTCDateForDate:pedometerData.startDate]),
@@ -151,7 +151,7 @@
     return dict;
 }
 
-+(NSDictionary*)dictionaryFromAltitudeData:(CMAltitudeData*)altitudeData
++ (NSDictionary *)dictionaryFromAltitudeData:(CMAltitudeData *)altitudeData
 {
     NSDictionary *dict = @{
         @"relativeAltitude": altitudeData.relativeAltitude,
@@ -161,7 +161,7 @@
     return dict;
 }
 
-+(NSDictionary*)dictionaryWithError:(NSError*)error andDictionary:(NSDictionary*)eventDict
++ (NSDictionary *)dictionaryWithError:(NSError *)error andDictionary:(NSDictionary *)eventDict
 {
     NSMutableDictionary *errorDict = [NSMutableDictionary dictionaryWithDictionary:eventDict];
     
@@ -172,7 +172,7 @@
     return [NSDictionary dictionaryWithDictionary:errorDict];
 }
 
-+(NSMutableArray*)arrayFromMotionActivities:(NSArray*)array
++ (NSMutableArray *)arrayFromMotionActivities:(NSArray *)array
 {
     if (array == nil) {
         return [NSMutableArray array];
@@ -187,17 +187,17 @@
     return result;
 }
 
-+(double)millisecondsToSeconds:(double)milliSeconds
++ (double)millisecondsToSeconds:(double)milliSeconds
 {
     return  milliSeconds / 1000;
 }
 
-+(double)intervalToMilliseconds:(NSTimeInterval)interval
++ (double)intervalToMilliseconds:(NSTimeInterval)interval
 {
     return interval * 1000;
 }
 
-+(void)logDeprecatedMethod:(NSString*)method withNewMethod:(NSString*)newMethod
++ (void)logDeprecatedMethod:(NSString *)method withNewMethod:(NSString *)newMethod
 {
     NSLog(@"[WARN] %@ is deprecated and will be removed in the next major version. Please use %@ instead.", method, newMethod);
 }

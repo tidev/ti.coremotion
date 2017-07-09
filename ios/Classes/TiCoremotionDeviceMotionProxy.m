@@ -12,7 +12,7 @@
 
 #pragma mark Proxy configuration
 
--(void)dealloc
+- (void)dealloc
 {
     RELEASE_TO_NIL(motionManager);
     [super dealloc];
@@ -25,19 +25,19 @@
   return @"Ti.CoreMotion.DeviceMotion";
 }
 
--(void)setShowsDeviceMovementDisplay:(id)value
+- (void)setShowsDeviceMovementDisplay:(id)value
 {
     ENSURE_TYPE(value, NSNumber);
     [[self sharedManager] setShowsDeviceMovementDisplay:[TiUtils boolValue:value]];
 }
 
--(void)setDeviceMotionUpdateInterval:(id)value
+- (void)setDeviceMotionUpdateInterval:(id)value
 {
     ENSURE_TYPE(value, NSNumber);
     [[self sharedManager] setDeviceMotionUpdateInterval:[CMHelper millisecondsToSeconds:[TiUtils doubleValue:value]]];
 }
 
--(void)startDeviceMotionUpdatesUsingReferenceFrame:(id)args
+- (void)startDeviceMotionUpdatesUsingReferenceFrame:(id)args
 {
     if ([[self sharedManager] isDeviceMotionActive]) {
         NSLog(@"[WARN] The device motion is already updating. Please stop device motion updates first and try again.");
@@ -70,7 +70,7 @@
     }
 }
 
--(void)startDeviceMotionUpdates:(id)arg
+- (void)startDeviceMotionUpdates:(id)arg
 {
     if ([[self sharedManager] isDeviceMotionActive]) {
         NSLog(@"[WARN] The device motion is already updating. Please stop device motion updates first and try again.");
@@ -93,32 +93,32 @@
     }
 }
 
--(void)stopDeviceMotionUpdates:(id)unused
+- (void)stopDeviceMotionUpdates:(id)unused
 {
     [[self sharedManager] stopDeviceMotionUpdates];
 }
 
--(NSNumber*)getAttitudeReferenceFrame:(id)unused
+- (NSNumber *)getAttitudeReferenceFrame:(id)unused
 {
     return NUMINT([[self sharedManager] attitudeReferenceFrame]);
 }
 
--(NSNumber*)availableAttitudeReferenceFrames:(id)unused
+- (NSNumber *)availableAttitudeReferenceFrames:(id)unused
 {
     return NUMINT([CMMotionManager availableAttitudeReferenceFrames]);
 }
 
--(NSNumber*)isDeviceMotionActive:(id)unused
+- (NSNumber *)isDeviceMotionActive:(id)unused
 {
     return NUMBOOL([[self sharedManager] isDeviceMotionActive]);
 }
 
--(NSNumber*)isDeviceMotionAvailable:(id)unused
+- (NSNumber *)isDeviceMotionAvailable:(id)unused
 {
     return NUMBOOL([[self sharedManager] isDeviceMotionAvailable]);
 }
 
--(NSDictionary*)getDeviceMotion:(id)unused
+- (NSDictionary *)getDeviceMotion:(id)unused
 {
     NSDictionary *res =[CMHelper dictionaryFromDeviceMotion:[[self sharedManager] deviceMotion]];
     return res;
@@ -126,7 +126,7 @@
 
 #pragma mark Singleton instance
 
--(CMMotionManager*)sharedManager
+- (CMMotionManager *)sharedManager
 {
     if (motionManager == nil) {
         motionManager = [[CMMotionManager alloc] init];

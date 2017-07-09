@@ -7,14 +7,14 @@ extern NSData* filterDataInRange(NSData* thedata, NSRange range);
 
 @implementation TiCoremotionModuleAssets
 
-- (NSData*) moduleAsset
+- (NSData *) moduleAsset
 {
 	
 
 	return nil;
 }
 
-- (NSData*) resolveModuleAsset:(NSString*)path
+- (NSData *) resolveModuleAsset:(NSString *)path
 {
 	
 

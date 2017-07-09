@@ -12,7 +12,7 @@
 
 #pragma mark Proxy configuration
 
--(void)dealloc
+- (void)dealloc
 {
     RELEASE_TO_NIL(altimeter);
     [super dealloc];
@@ -20,13 +20,13 @@
 
 #pragma mark Public APIs
 
--(NSNumber*)isSupported:(id)unused
+- (NSNumber *)isSupported:(id)unused
 {
     return NUMBOOL([TiUtils isIOS8OrGreater]);
 }
 
 #if IS_XCODE_9
--(NSNumber*)authorizationStatus:(id)unused
+- (NSNumber *)authorizationStatus:(id)unused
 {
     if (@available(iOS 11_0, *)) {
         return NUMINT([CMAltimeter authorizationStatus]);
@@ -35,7 +35,7 @@
     }
 }
 
--(NSNumber*)hasAltimeterPermissions:(id)unused
+- (NSNumber *)hasAltimeterPermissions:(id)unused
 {
     if (@available(iOS 11_0, *)) {
         return NUMBOOL([CMAltimeter authorizationStatus] == CMAuthorizationStatusAuthorized);
@@ -45,12 +45,12 @@
 }
 #endif
 
--(NSNumber*)isRelativeAltitudeAvailable:(id)unused
+- (NSNumber *)isRelativeAltitudeAvailable:(id)unused
 {
     return NUMBOOL([CMAltimeter isRelativeAltitudeAvailable]);
 }
 
--(void)startRelativeAltitudeUpdates:(id)value
+- (void)startRelativeAltitudeUpdates:(id)value
 {
     ENSURE_SINGLE_ARG(value, KrollCallback);
     
@@ -63,14 +63,14 @@
     }];
 }
 
--(void)stopRelativeAltitudeUpdates:(id)unused
+- (void)stopRelativeAltitudeUpdates:(id)unused
 {
     [[self sharedAltimeter] stopRelativeAltitudeUpdates];
 }
 
 #pragma mark Singleton instance
 
--(CMAltimeter *)sharedAltimeter
+- (CMAltimeter *)sharedAltimeter
 {
     if (altimeter == nil) {
         altimeter = [[CMAltimeter alloc] init];

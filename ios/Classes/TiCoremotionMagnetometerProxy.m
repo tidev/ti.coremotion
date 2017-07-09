@@ -12,7 +12,7 @@
 
 #pragma mark Proxy configuration
 
--(void)dealloc
+- (void)dealloc
 {
     RELEASE_TO_NIL(motionManager);
     [super dealloc];
@@ -25,13 +25,13 @@
   return @"Ti.CoreMotion.Magnetometer";
 }
 
--(void)setMagnetometerUpdateInterval:(id)value
+- (void)setMagnetometerUpdateInterval:(id)value
 {
     ENSURE_TYPE(value, NSNumber);
     [[self sharedManager] setMagnetometerUpdateInterval:[CMHelper millisecondsToSeconds:[TiUtils doubleValue:value]]];
 }
 
--(void)startMagnetometerUpdates:(id)arg
+- (void)startMagnetometerUpdates:(id)arg
 {
     if ([[self sharedManager] isMagnetometerActive]) {
         NSLog(@"[WARN] The magnetometer is already updating. Please stop magnetometer updates first and try again.");
@@ -55,29 +55,29 @@
     }
 }
 
--(void)stopMagnetometerUpdates:(id)unused
+- (void)stopMagnetometerUpdates:(id)unused
 {
     [[self sharedManager] stopMagnetometerUpdates];
 }
 
--(NSNumber*)isMagnetometerActive:(id)unused
+- (NSNumber *)isMagnetometerActive:(id)unused
 {
     return NUMBOOL([[self sharedManager] isMagnetometerActive]);
 }
 
--(NSNumber*)isMagnetometerAvailable:(id)unused
+- (NSNumber *)isMagnetometerAvailable:(id)unused
 {
     return NUMBOOL([[self sharedManager] isMagnetometerAvailable]);
 }
 
--(NSDictionary*)getMagnetometerData:(id)unused
+- (NSDictionary *)getMagnetometerData:(id)unused
 {
     return [CMHelper dictionaryFromMagnetometerData:[[self sharedManager] magnetometerData]];
 }
 
 #pragma mark Singleton instance
 
--(CMMotionManager*)sharedManager
+- (CMMotionManager *)sharedManager
 {
     if (motionManager == nil) {
         motionManager = [[CMMotionManager alloc] init];

@@ -11,18 +11,18 @@
     CMMotionManager *motionManager;
 }
 
--(void)setAccelerometerUpdateInterval:(id)value;
+- (void)setAccelerometerUpdateInterval:(id)value;
 
--(void)startAccelerometerUpdates:(id)arg;
+- (void)startAccelerometerUpdates:(id)arg;
 
--(void)stopAccelerometerUpdates:(id)unused;
+- (void)stopAccelerometerUpdates:(id)unused;
 
--(NSNumber*)isAccelerometerActive:(id)unused;
+- (NSNumber *)isAccelerometerActive:(id)unused;
 
--(NSNumber*)isAccelerometerAvailable:(id)unused;
+- (NSNumber *)isAccelerometerAvailable:(id)unused;
 
--(NSDictionary*)getAccelerometerData:(id)unused;
+- (NSDictionary *)getAccelerometerData:(id)unused;
 
--(CMMotionManager*)sharedManager;
+- (CMMotionManager *)sharedManager;
 
 @end

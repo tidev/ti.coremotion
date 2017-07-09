@@ -12,7 +12,7 @@
 
 #pragma mark Proxy configuration
 
--(void)dealloc
+- (void)dealloc
 {
     RELEASE_TO_NIL(activityManager);
     [super dealloc];
@@ -25,12 +25,12 @@
   return @"Ti.CoreMotion.MotionActivity";
 }
 
--(NSNumber*)isActivityAvailable:(id)unused
+- (NSNumber *)isActivityAvailable:(id)unused
 {
     return NUMBOOL([CMMotionActivityManager isActivityAvailable]);
 }
 
--(void)startActivityUpdates:(id)arg
+- (void)startActivityUpdates:(id)arg
 {
     KrollCallback *callback = [arg objectAtIndex:0];
     ENSURE_TYPE(callback, KrollCallback);
@@ -45,12 +45,12 @@
     }];
 }
 
--(void)stopActivityUpdates:(id)unused
+- (void)stopActivityUpdates:(id)unused
 {
     [[self sharedActivityManager] stopActivityUpdates];
 }
 
--(void)queryActivity:(id)args
+- (void)queryActivity:(id)args
 {
     ENSURE_TYPE(args, NSArray);
     
@@ -77,7 +77,7 @@
 
 #pragma mark Singleton instance
 
--(CMMotionActivityManager*)sharedActivityManager
+- (CMMotionActivityManager *)sharedActivityManager
 {
     if (activityManager == nil) {
         activityManager = [[CMMotionActivityManager alloc] init];

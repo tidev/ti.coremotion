@@ -11,20 +11,20 @@
     CMAltimeter *altimeter;
 }
 
--(NSNumber*)isSupported:(id)unused;
+- (NSNumber *)isSupported:(id)unused;
 
 #if IS_XCODE_9
--(NSNumber*)authorizationStatus:(id)unused;
+- (NSNumber *)authorizationStatus:(id)unused;
 
--(NSNumber*)hasAltimeterPermissions:(id)unused;
+- (NSNumber *)hasAltimeterPermissions:(id)unused;
 #endif
 
--(NSNumber*)isRelativeAltitudeAvailable:(id)unused;
+- (NSNumber *)isRelativeAltitudeAvailable:(id)unused;
 
--(void)startRelativeAltitudeUpdates:(id)value;
+- (void)startRelativeAltitudeUpdates:(id)value;
 
--(void)stopRelativeAltitudeUpdates:(id)unused;
+- (void)stopRelativeAltitudeUpdates:(id)unused;
 
--(CMAltimeter *)sharedAltimeter;
+- (CMAltimeter *)sharedAltimeter;
 
 @end
