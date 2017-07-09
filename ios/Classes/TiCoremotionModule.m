@@ -33,18 +33,6 @@
 	NSLog(@"[INFO] %@ loaded",self);
 }
 
-- (void)dealloc
-{
-    RELEASE_TO_NIL(accelerometer)
-    RELEASE_TO_NIL(gyroscope)
-    RELEASE_TO_NIL(magnetometer)
-    RELEASE_TO_NIL(deviceMotion)
-    RELEASE_TO_NIL(motionActivity)
-    RELEASE_TO_NIL(stepCounter)
- 
-    [super dealloc];
-}
-
 #pragma mark - Public APIs
 
 #pragma mark Accelerometer (deprecated)

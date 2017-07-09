@@ -10,14 +10,6 @@
 
 @implementation TiCoremotionGyroscopeProxy
 
-#pragma mark Proxy configuration
-
-- (void)dealloc
-{
-    RELEASE_TO_NIL(motionManager);
-    [super dealloc];
-}
-
 #pragma mark Public APIs
 
 - (void)setGyroUpdateInterval:(id)value
@@ -43,7 +35,6 @@
             NSArray *invocationArray = [[NSArray alloc] initWithObjects:&eventDict count:1];
             
             [callback call:invocationArray thisObject:self];
-            [invocationArray release];
         }];
     } else {
         [[self sharedManager] startGyroUpdates];
