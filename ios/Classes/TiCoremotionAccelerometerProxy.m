@@ -12,7 +12,7 @@
 
 #pragma mark Proxy configuration
 
--(void)dealloc
+- (void)dealloc
 {
     RELEASE_TO_NIL(motionManager);
     [super dealloc];
@@ -25,13 +25,13 @@
   return @"Ti.CoreMotion.Accelerometer";
 }
 
--(void)setAccelerometerUpdateInterval:(id)value
+- (void)setAccelerometerUpdateInterval:(id)value
 {
     ENSURE_TYPE(value, NSNumber);
     [[self sharedManager] setAccelerometerUpdateInterval:[CMHelper millisecondsToSeconds:[TiUtils doubleValue:value]]];
 }
 
--(void)startAccelerometerUpdates:(id)arg
+- (void)startAccelerometerUpdates:(id)arg
 {
     if ([[self sharedManager] isAccelerometerActive]) {
         NSLog(@"[WARN] The accelerometer is already updating. Please stop accelerator updates first and try again.");
@@ -55,29 +55,29 @@
     }
 }
 
--(void)stopAccelerometerUpdates:(id)unused
+- (void)stopAccelerometerUpdates:(id)unused
 {
     [[self sharedManager] stopAccelerometerUpdates];
 }
 
--(NSNumber*)isAccelerometerActive:(id)unused
+- (NSNumber *)isAccelerometerActive:(id)unused
 {
     return NUMBOOL([[self sharedManager] isAccelerometerActive]);
 }
 
--(NSNumber*)isAccelerometerAvailable:(id)unused
+- (NSNumber *)isAccelerometerAvailable:(id)unused
 {
     return NUMBOOL([[self sharedManager] isAccelerometerAvailable]);
 }
 
--(NSDictionary*)getAccelerometerData:(id)unused
+- (NSDictionary *)getAccelerometerData:(id)unused
 {
     return [CMHelper dictionaryFromAccelerometerData:[[self sharedManager] accelerometerData]];
 }
 
 #pragma mark Singleton instance
 
--(CMMotionManager*)sharedManager
+- (CMMotionManager *)sharedManager
 {
     if (motionManager == nil) {
         motionManager = [[CMMotionManager alloc] init];

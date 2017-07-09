@@ -11,24 +11,24 @@
     CMPedometer *pedometer;
 }
 
--(NSNumber*)isSupported:(id)unused;
+- (NSNumber *)isSupported:(id)unused;
 
--(NSNumber*)isCadenceAvailable:(id)unused;
+- (NSNumber *)isCadenceAvailable:(id)unused;
 
--(NSNumber*)isDistanceAvailable:(id)unused;
+- (NSNumber *)isDistanceAvailable:(id)unused;
 
--(NSNumber*)isFloorCountingAvailable:(id)unused;
+- (NSNumber *)isFloorCountingAvailable:(id)unused;
 
--(NSNumber*)isPaceAvailable:(id)unused;
+- (NSNumber *)isPaceAvailable:(id)unused;
 
--(NSNumber*)isStepCountingAvailable:(id)unused;
+- (NSNumber *)isStepCountingAvailable:(id)unused;
 
--(void)startPedometerUpdates:(id)args;
+- (void)startPedometerUpdates:(id)args;
 
--(void)stopPedometerUpdates:(id)unused;
+- (void)stopPedometerUpdates:(id)unused;
 
--(void)queryPedometerData:(id)args;
+- (void)queryPedometerData:(id)args;
 
--(CMPedometer*)sharedPedometer;
+- (CMPedometer *)sharedPedometer;
 
 @end

@@ -11,26 +11,26 @@
     CMMotionManager *motionManager;
 }
 
--(void)setShowsDeviceMovementDisplay:(id)value;
+- (void)setShowsDeviceMovementDisplay:(id)value;
 
--(void)setDeviceMotionUpdateInterval:(id)value;
+- (void)setDeviceMotionUpdateInterval:(id)value;
 
--(void)startDeviceMotionUpdatesUsingReferenceFrame:(id)args;
+- (void)startDeviceMotionUpdatesUsingReferenceFrame:(id)args;
 
--(void)startDeviceMotionUpdates:(id)arg;
+- (void)startDeviceMotionUpdates:(id)arg;
 
--(void)stopDeviceMotionUpdates:(id)unused;
+- (void)stopDeviceMotionUpdates:(id)unused;
 
--(NSNumber*)getAttitudeReferenceFrame:(id)unused;
+- (NSNumber *)getAttitudeReferenceFrame:(id)unused;
 
--(NSNumber*)availableAttitudeReferenceFrames:(id)unused;
+- (NSNumber *)availableAttitudeReferenceFrames:(id)unused;
 
--(NSNumber*)isDeviceMotionActive:(id)unused;
+- (NSNumber *)isDeviceMotionActive:(id)unused;
 
--(NSNumber*)isDeviceMotionAvailable:(id)unused;
+- (NSNumber *)isDeviceMotionAvailable:(id)unused;
 
--(NSDictionary*)getDeviceMotion:(id)unused;
+- (NSDictionary *)getDeviceMotion:(id)unused;
 
--(CMMotionManager*)sharedManager;
+- (CMMotionManager *)sharedManager;
 
 @end

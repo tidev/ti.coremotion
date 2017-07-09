@@ -12,7 +12,7 @@
 
 #pragma mark Proxy configuration
 
--(void)dealloc
+- (void)dealloc
 {
     RELEASE_TO_NIL(motionManager);
     [super dealloc];
@@ -25,13 +25,13 @@
   return @"Ti.CoreMotion.Gyroscope";
 }
 
--(void)setGyroUpdateInterval:(id)value
+- (void)setGyroUpdateInterval:(id)value
 {
     ENSURE_TYPE(value, NSNumber);
     [[self sharedManager] setGyroUpdateInterval:[CMHelper millisecondsToSeconds:[TiUtils doubleValue:value]]];
 }
 
--(void)startGyroUpdates:(id)arg
+- (void)startGyroUpdates:(id)arg
 {
     if ([[self sharedManager] isGyroActive]) {
         NSLog(@"[WARN] The gyroscope is already updating. Please stop gyroscope updates first and try again.");
@@ -55,29 +55,29 @@
     }
 }
 
--(void)stopGyroUpdates:(id)unused
+- (void)stopGyroUpdates:(id)unused
 {
     [[self sharedManager] stopGyroUpdates];
 }
 
--(NSNumber*)isGyroActive:(id)unused
+- (NSNumber *)isGyroActive:(id)unused
 {
     return NUMBOOL([[self sharedManager] isGyroActive]);
 }
 
--(NSNumber*)isGyroAvailable:(id)unused
+- (NSNumber *)isGyroAvailable:(id)unused
 {
     return NUMBOOL([[self sharedManager] isGyroAvailable]);
 }
 
--(NSDictionary*)getGyroData:(id)unused
+- (NSDictionary *)getGyroData:(id)unused
 {
     return [CMHelper dictionaryFromGyroData:[[self sharedManager] gyroData]];
 }
 
 #pragma mark Singleton instance
 
--(CMMotionManager*)sharedManager
+- (CMMotionManager *)sharedManager
 {
     if (motionManager == nil) {
         motionManager = [[CMMotionManager alloc] init];

@@ -11,14 +11,14 @@
     CMStepCounter *stepCounter;
 }
 
--(NSNumber*)isStepCountingAvailable:(id)unused;
+- (NSNumber *)isStepCountingAvailable:(id)unused;
 
--(void)startStepCountingUpdates:(id)args;
+- (void)startStepCountingUpdates:(id)args;
 
--(void)stopStepCountingUpdates:(id)unused;
+- (void)stopStepCountingUpdates:(id)unused;
 
--(void)queryStepCount:(id)args;
+- (void)queryStepCount:(id)args;
 
--(CMStepCounter*)sharedStepCounter;
+- (CMStepCounter *)sharedStepCounter;
 
 @end

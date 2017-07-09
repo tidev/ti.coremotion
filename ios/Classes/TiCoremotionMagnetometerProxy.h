@@ -11,18 +11,18 @@
     CMMotionManager *motionManager;
 }
 
--(void)setMagnetometerUpdateInterval:(id)value;
+- (void)setMagnetometerUpdateInterval:(id)value;
 
--(void)startMagnetometerUpdates:(id)arg;
+- (void)startMagnetometerUpdates:(id)arg;
 
--(void)stopMagnetometerUpdates:(id)unused;
+- (void)stopMagnetometerUpdates:(id)unused;
 
--(NSNumber*)isMagnetometerActive:(id)unused;
+- (NSNumber *)isMagnetometerActive:(id)unused;
 
--(NSNumber*)isMagnetometerAvailable:(id)unused;
+- (NSNumber *)isMagnetometerAvailable:(id)unused;
 
--(NSDictionary*)getMagnetometerData:(id)unused;
+- (NSDictionary *)getMagnetometerData:(id)unused;
 
--(CMMotionManager*)sharedManager;
+- (CMMotionManager *)sharedManager;
 
 @end

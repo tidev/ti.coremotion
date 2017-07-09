@@ -11,18 +11,18 @@
     CMMotionManager *motionManager;
 }
 
--(void)setGyroUpdateInterval:(id)value;
+- (void)setGyroUpdateInterval:(id)value;
 
--(void)startGyroUpdates:(id)arg;
+- (void)startGyroUpdates:(id)arg;
 
--(void)stopGyroUpdates:(id)unused;
+- (void)stopGyroUpdates:(id)unused;
 
--(NSNumber*)isGyroActive:(id)unused;
+- (NSNumber *)isGyroActive:(id)unused;
 
--(NSNumber*)isGyroAvailable:(id)unused;
+- (NSNumber *)isGyroAvailable:(id)unused;
 
--(NSDictionary*)getGyroData:(id)unused;
+- (NSDictionary *)getGyroData:(id)unused;
 
--(CMMotionManager*)sharedManager;
+- (CMMotionManager *)sharedManager;
 
 @end
