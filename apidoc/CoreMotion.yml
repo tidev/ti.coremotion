@@ -13,7 +13,7 @@ description: |
     magnetometer. The Core Motion module allows you to access the metrics provided by these sensors.
 
     For instruction and examples of using the Core Motion Module, see the
-    [Core Motion Module guide](http://docs.appcelerator.com/titanium/latest/#!/guide/Core_Motion_Module).
+    [Core Motion Module guide](http://docs.appcelerator.com/platform/latest/#!/guide/Core_Motion_Module).
 
     ### Requirements
 
@@ -577,7 +577,7 @@ properties:
 ---
 name: CoreMotionStepCountingQueryDataWithSuccess
 summary: |
-    Dictionary passed to the callback of the [StepCounter.ueryStepCount()](Modules.CoreMotion.StepCounter.queryStepCount) method.
+    Dictionary passed to the callback of the [StepCounter.queryStepCount()](Modules.CoreMotion.StepCounter.queryStepCount) method.
 platforms: [iphone, ipad]
 since: "3.3.0"
 extends: CoreMotionStepCountingQueryData
