@@ -25,6 +25,11 @@
 	return @"ti.coremotion";
 }
 
+- (NSString *)apiName
+{
+  return @"Ti.CoreMotion";
+}
+
 #pragma mark - Lifecycle
 
 -(void)startup
