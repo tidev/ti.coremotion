@@ -3,6 +3,9 @@
 node_modules/
 TESTS-ios.xml
 
+ios/dist/
+ios/metadata.json
+
 # Xcode
 #
 build/
