@@ -1,5 +1,8 @@
 .DS_Store
 
+node_modules/
+TESTS-ios.xml
+
 # Xcode
 #
 build/
