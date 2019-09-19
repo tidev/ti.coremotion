@@ -27,7 +27,7 @@ methods:
     osver: {ios: {min: "11.0"}}
 
   - name: hasAltimeterPermissions
-    summary: Determines whether the device supports reporting relative altitude changes..
+    summary: Determines whether the device supports reporting relative altitude changes.
     returns:
         type: Boolean
 
