@@ -71,6 +71,24 @@ describe('ti.coremotion', () => {
 				});
 			});
 
+			describe('AUTHORIZATION_STATUS_*', () => {
+				it('AUTHORIZATION_STATUS_NOT_DETERMINED', () => {
+					expect(CoreMotion.AUTHORIZATION_STATUS_NOT_DETERMINED).toEqual(jasmine.any(Number));
+				});
+
+				it('AUTHORIZATION_STATUS_RESTRICTED', () => {
+					expect(CoreMotion.AUTHORIZATION_STATUS_RESTRICTED).toEqual(jasmine.any(Number));
+				});
+
+				it('AUTHORIZATION_STATUS_DENIED', () => {
+					expect(CoreMotion.AUTHORIZATION_STATUS_DENIED).toEqual(jasmine.any(Number));
+				});
+
+				it('AUTHORIZATION_STATUS_AUTHORIZED', () => {
+					expect(CoreMotion.AUTHORIZATION_STATUS_AUTHORIZED).toEqual(jasmine.any(Number));
+				});
+			});
+
 			describe('MAGNETIC_FIELD_CALIBRATION_ACCURACY_*', () => {
 			 	it('MAGNETIC_FIELD_CALIBRATION_ACCURACY_UNCALIBRATED', () => {
 					expect(CoreMotion.MAGNETIC_FIELD_CALIBRATION_ACCURACY_UNCALIBRATED).toEqual(jasmine.any(Number));
