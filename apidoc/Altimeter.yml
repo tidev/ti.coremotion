@@ -4,7 +4,7 @@ platforms: [iphone, ipad]
 summary: | 
     Allows Titanium client applications to access CoreMotion's Altimeter APIs. 
     Note: This API is only available in iOS 8 and later.
-since: "6.2.0"
+since: "8.3.0"
 extends: Titanium.Proxy
 createable: true
 
