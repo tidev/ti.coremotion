@@ -2,6 +2,9 @@ const CoreMotion = require('ti.coremotion');
 
 let Pedometer;
 
+// TODO: Hack the tiapp.xml to include required Info.plist key: https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW21
+// How would we tell sim not to prompt though?
+
 describe('ti.coremotion.Pedometer', () => {
 	it('can be created', () => {
 		Pedometer = CoreMotion.createPedometer();
