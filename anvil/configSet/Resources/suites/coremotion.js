@@ -9,9 +9,6 @@ module.exports = new function () {
     var finish;
     var valueOf;
     var CoreMotion;
-    var Accelerometer;
-    var Gyroscope;
-    var Magnetometer;
     var DeviceMotion;
     var MotionActivity;
     var StepCounter;
@@ -21,9 +18,6 @@ module.exports = new function () {
         valueOf = testUtils.valueOf;
         CoreMotion = require('ti.coremotion');
 
-        Accelerometer = CoreMotion.createAccelerometer();
-        Gyroscope = CoreMotion.createGyroscope();
-        Magnetometer = CoreMotion.createMagnetometer();
         DeviceMotion = CoreMotion.createDeviceMotion();
         MotionActivity = CoreMotion.createDeviceMotion();
         StepCounter = CoreMotion.createStepCounter();
@@ -31,35 +25,7 @@ module.exports = new function () {
 
     this.name = "coremotion";
 
-    // Test that module is loaded
-    this.testModule = function (testRun) {
-        // Verify that the module is defined
-        valueOf(testRun, CoreMotion).shouldBeObject();
-        finish(testRun);
-    };
-
     this.testMethods = function (testRun) {
-        // Accelerometer
-        valueOf(testRun, Accelerometer.setAccelerometerUpdateInterval).shouldBeFunction();
-        valueOf(testRun, Accelerometer.startAccelerometerUpdates).shouldBeFunction();
-        valueOf(testRun, Accelerometer.stopAccelerometerUpdates).shouldBeFunction();
-        valueOf(testRun, Accelerometer.isAccelerometerActive).shouldBeFunction();
-        valueOf(testRun, Accelerometer.isAccelerometerAvailable).shouldBeFunction();
-        valueOf(testRun, Accelerometer.getAccelerometerData).shouldBeFunction();
-        // Gyroscope
-        valueOf(testRun, Gyroscope.setGyroUpdateInterval).shouldBeFunction();
-        valueOf(testRun, Gyroscope.startGyroUpdates).shouldBeFunction();
-        valueOf(testRun, Gyroscope.stopGyroUpdates).shouldBeFunction();
-        valueOf(testRun, Gyroscope.isGyroActive).shouldBeFunction();
-        valueOf(testRun, Gyroscope.isGyroAvailable).shouldBeFunction();
-        valueOf(testRun, Gyroscope.getGyroData).shouldBeFunction();
-        // Magnetometer
-        valueOf(testRun, Magnetometer.setMagnetometerUpdateInterval).shouldBeFunction();
-        valueOf(testRun, Magnetometer.startMagnetometerUpdates).shouldBeFunction();
-        valueOf(testRun, Magnetometer.stopMagnetometerUpdates).shouldBeFunction();
-        valueOf(testRun, Magnetometer.isMagnetometerActive).shouldBeFunction();
-        valueOf(testRun, Magnetometer.isMagnetometerAvailable).shouldBeFunction();
-        valueOf(testRun, Magnetometer.getMagnetometerData).shouldBeFunction();
         // Device Motion
         valueOf(testRun, DeviceMotion.setShowsDeviceMovementDisplay).shouldBeFunction();
         valueOf(testRun, DeviceMotion.setDeviceMotionUpdateInterval).shouldBeFunction();
@@ -84,214 +50,6 @@ module.exports = new function () {
 
         finish(testRun);
     };
-
-    this.testContants = function (testRun) {
-        // Errors
-        valueOf(testRun, CoreMotion.ERROR_NULL).shouldBeNumber();
-        valueOf(testRun, CoreMotion.ERROR_DEVICE_REQUIRES_MOVEMENT).shouldBeNumber();
-        valueOf(testRun, CoreMotion.ERROR_TRUE_NORTH_NOT_AVAILABLE).shouldBeNumber();
-        valueOf(testRun, CoreMotion.ERROR_UNKNOWN).shouldBeNumber();
-        valueOf(testRun, CoreMotion.ERROR_MOTION_ACTIVITY_NOT_AVAILABLE).shouldBeNumber();
-        valueOf(testRun, CoreMotion.ERROR_MOTION_ACTIVITY_NOT_AUTHORIZED).shouldBeNumber();
-        valueOf(testRun, CoreMotion.ERROR_MOTION_ACTIVITY_NOT_ENTITLED).shouldBeNumber();
-        valueOf(testRun, CoreMotion.ERROR_INVALID_PARAMETER).shouldBeNumber();
-
-        // Attitude Reference Frames
-        valueOf(testRun, CoreMotion.ATTITUDE_REFERENCE_FRAME_X_ARBITRARY_Z_VERTICAL).shouldBeNumber();
-        valueOf(testRun, CoreMotion.ATTITUDE_REFERENCE_FRAME_X_ARBITRARY_CORRECTED_Z_VERTICAL).shouldBeNumber();
-        valueOf(testRun, CoreMotion.ATTITUDE_REFERENCE_FRAME_X_MAGNETIC_NORTH_Z_VERTICAL).shouldBeNumber();
-        valueOf(testRun, CoreMotion.ATTITUDE_REFERENCE_FRAME_X_TRUE_NORTH_Z_VERTICAL).shouldBeNumber();
-
-        // Magnetic Field Calibration Accuracy
-        valueOf(testRun, CoreMotion.MAGNETIC_FIELD_CALIBRATION_ACCURACY_UNCALIBRATED).shouldBeNumber();
-        valueOf(testRun, CoreMotion.MAGNETIC_FIELD_CALIBRATION_ACCURACY_LOW).shouldBeNumber();
-        valueOf(testRun, CoreMotion.MAGNETIC_FIELD_CALIBRATION_ACCURACY_MEDIUM).shouldBeNumber();
-        valueOf(testRun, CoreMotion.MAGNETIC_FIELD_CALIBRATION_ACCURACY_HIGH).shouldBeNumber();
-
-        // Motion Activity Confidence
-        valueOf(testRun, CoreMotion.MOTION_ACTIVITY_CONFIDENCE_LOW).shouldBeNumber();
-        valueOf(testRun, CoreMotion.MOTION_ACTIVITY_CONFIDENCE_MEDIUM).shouldBeNumber();
-        valueOf(testRun, CoreMotion.MOTION_ACTIVITY_CONFIDENCE_HIGH).shouldBeNumber();
-
-        finish(testRun);
-    };
-
-    // ----------------------------------------------------
-    // Accelerometer
-    // ----------------------------------------------------
-    this.testSetAccelerometerUpdateInterval = function (testRun) {
-        valueOf(testRun, function() {
-            Accelerometer.setAccelerometerUpdateInterval(1000);
-        }).shouldNotThrowException();
-
-        valueOf(testRun, function() {
-            Accelerometer.setAccelerometerUpdateInterval("hi");
-        }).shouldThrowException();
-        valueOf(testRun, function() {
-            Accelerometer.setAccelerometerUpdateInterval();
-        }).shouldThrowException();
-
-        finish(testRun);
-    }
-
-    this.testStartAccelerometerUpdates = function (testRun) {
-        valueOf(testRun, function() {
-            Accelerometer.startAccelerometerUpdates(function() {});
-        }).shouldNotThrowException();
-        valueOf(testRun, function() {
-            Accelerometer.startAccelerometerUpdates();
-        }).shouldNotThrowException();
-
-        valueOf(testRun, function() {
-            Accelerometer.startAccelerometerUpdates("hi");
-        }).shouldThrowException();
-
-        finish(testRun);
-    }
-
-    this.testStopAccelerometerUpdates = function (testRun) {
-        valueOf(testRun, function() {
-            Accelerometer.stopAccelerometerUpdates();
-        }).shouldNotThrowException();
-
-        finish(testRun);
-    }
-
-    this.testIsAccelerometerActive = function (testRun) {
-        valueOf(testRun, Accelerometer.isAccelerometerActive()).shouldBeBoolean();
-
-        finish(testRun);
-    }
-
-    this.testIsAccelerometerAvailable = function (testRun) {
-        valueOf(testRun, Accelerometer.isAccelerometerAvailable()).shouldBeBoolean();
-
-        finish(testRun);
-    }
-
-    this.testGetAccelerometerData = function (testRun) {
-        valueOf(testRun, Accelerometer.getAccelerometerData()).shouldBeObject();
-
-        finish(testRun);
-    }
-
-    // ----------------------------------------------------
-    // Gyroscope
-    // ----------------------------------------------------
-    this.testSetGyroUpdateInterval = function (testRun) {
-        valueOf(testRun, function() {
-            Gyroscope.setGyroUpdateInterval(1000);
-        }).shouldNotThrowException();
-
-        valueOf(testRun, function() {
-            Gyroscope.setGyroUpdateInterval("hi");
-        }).shouldThrowException();
-        valueOf(testRun, function() {
-            Gyroscope.setGyroUpdateInterval();
-        }).shouldThrowException();
-
-        finish(testRun);
-    }
-
-    this.testStartGyroUpdates = function (testRun) {
-        valueOf(testRun, function() {
-            Gyroscope.startGyroUpdates(function() {});
-        }).shouldNotThrowException();
-        valueOf(testRun, function() {
-            Gyroscope.startGyroUpdates();
-        }).shouldNotThrowException();
-
-        valueOf(testRun, function() {
-            Gyroscope.startGyroUpdates("hi");
-        }).shouldThrowException();
-
-        finish(testRun);
-    }
-
-    this.testStopGyroUpdates = function (testRun) {
-        valueOf(testRun, function() {
-            Gyroscope.stopGyroUpdates();
-        }).shouldNotThrowException();
-
-        finish(testRun);
-    }
-
-    this.testIsGyroActive = function (testRun) {
-        valueOf(testRun, Gyroscope.isGyroActive()).shouldBeBoolean();
-
-        finish(testRun);
-    }
-
-    this.testIsGyroAvailable = function (testRun) {
-        valueOf(testRun, Gyroscope.isGyroAvailable()).shouldBeBoolean();
-
-        finish(testRun);
-    }
-
-    this.testGetGyroData = function (testRun) {
-        valueOf(testRun, Gyroscope.getGyroData()).shouldBeObject();
-
-        finish(testRun);
-    }
-
-    // ----------------------------------------------------
-    // Magnetometer
-    // ----------------------------------------------------
-    this.testSetMagnetometerUpdateInterval = function (testRun) {
-        valueOf(testRun, function() {
-            Magnetometer.setMagnetometerUpdateInterval(1000);
-        }).shouldNotThrowException();
-
-        valueOf(testRun, function() {
-            Magnetometer.setMagnetometerUpdateInterval("hi");
-        }).shouldThrowException();
-        valueOf(testRun, function() {
-            Magnetometer.setMagnetometerUpdateInterval();
-        }).shouldThrowException();
-
-        finish(testRun);
-    }
-
-    this.testStartMagnetometerUpdates = function (testRun) {
-        valueOf(testRun, function() {
-            Magnetometer.startMagnetometerUpdates(function() {});
-        }).shouldNotThrowException();
-        valueOf(testRun, function() {
-            Magnetometer.startMagnetometerUpdates();
-        }).shouldNotThrowException();
-
-        valueOf(testRun, function() {
-            Magnetometer.startMagnetometerUpdates("hi");
-        }).shouldThrowException();
-
-        finish(testRun);
-    }
-
-    this.testStopMagnetometerUpdates = function (testRun) {
-        valueOf(testRun, function() {
-            Magnetometer.stopMagnetometerUpdates();
-        }).shouldNotThrowException();
-
-        finish(testRun);
-    }
-
-    this.testIsMagnetometerActive = function (testRun) {
-        valueOf(testRun, Magnetometer.isMagnetometerActive()).shouldBeBoolean();
-
-        finish(testRun);
-    }
-
-    this.testIsMagnetometerAvailable = function (testRun) {
-        valueOf(testRun, Magnetometer.isMagnetometerAvailable()).shouldBeBoolean();
-
-        finish(testRun);
-    }
-
-    this.testGetMagnetometerData = function (testRun) {
-        valueOf(testRun, Magnetometer.getMagnetometerData()).shouldBeObject();
-
-        finish(testRun);
-    }
 
     // ----------------------------------------------------
     // Device Motion
