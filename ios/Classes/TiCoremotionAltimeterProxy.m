@@ -12,6 +12,11 @@
 
 #pragma mark Public APIs
 
+- (NSString *)apiName
+{
+  return @"Ti.CoreMotion.Altimeter";
+}
+
 - (NSNumber *)isSupported:(id)unused
 {
     return NUMBOOL([TiUtils isIOS8OrGreater]);
