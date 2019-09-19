@@ -203,8 +203,6 @@ properties:
     type: Number
     permission: "read-only"
 
-
-
 ---
 name: CoreMotionReferenceFrameArgs
 summary: |
