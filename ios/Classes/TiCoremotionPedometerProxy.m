@@ -20,6 +20,11 @@
 
 #pragma mark Public APIs
 
+- (NSString *)apiName
+{
+  return @"Ti.CoreMotion.Pedometer";
+}
+
 -(NSNumber*)isSupported:(id)unused
 {
     return NUMBOOL([TiUtils isIOS8OrGreater]);
@@ -90,14 +95,16 @@
     ENSURE_TYPE(args, NSArray);
     
     NSDictionary *dict = [args objectAtIndex:0];
-    KrollCallback *callback = [args objectAtIndex:1];
+    ENSURE_TYPE(dict, NSDictionary);
     
-    ENSURE_TYPE([dict valueForKey:@"start"], NSDate);
-    ENSURE_TYPE([dict valueForKey:@"end"], NSDate);
+    KrollCallback *callback = [args objectAtIndex:1];
+    ENSURE_TYPE(callback, KrollCallback);
     
     NSDate *start = [dict valueForKey:@"start"];
     NSDate *end = [dict valueForKey:@"end"];
-    
+    ENSURE_TYPE(start, NSDate);
+    ENSURE_TYPE(end, NSDate);
+
     [[self sharedPedometer] queryPedometerDataFromDate:start toDate:end withHandler: ^(CMPedometerData *pedometerData, NSError *error) {
         
         NSDictionary *eventDict = [CMHelper dictionaryWithError:error andDictionary:[CMHelper dictionaryFromPedometerData:pedometerData]];
