@@ -1,6 +1,6 @@
 {
 	"name": "@titanium/ti.coremotion",
-	"version": "2.0.1",
+	"version": "2.1.0",
 	"description": "CoreMotion module for Titanium Mobile covering the iOS 7+ APIs of the CoreMotion framework.",
 	"scripts": {
 		"lint": "npm run lint:docs",
