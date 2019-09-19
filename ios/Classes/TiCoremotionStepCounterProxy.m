@@ -20,6 +20,11 @@
 
 #pragma mark Public APIs
 
+- (NSString *)apiName
+{
+  return @"Ti.CoreMotion.StepCounter";
+}
+
 -(NSNumber*)isStepCountingAvailable:(id)unused
 {
     return NUMBOOL([CMStepCounter isStepCountingAvailable]);
@@ -61,13 +66,15 @@
     ENSURE_TYPE(args, NSArray);
 
     NSDictionary *dict = [args objectAtIndex:0];
+    ENSURE_TYPE(dict, NSDictionary);
+
     KrollCallback *callback = [args objectAtIndex:1];
-    
-    ENSURE_TYPE([dict valueForKey:@"start"], NSDate);
-    ENSURE_TYPE([dict valueForKey:@"end"], NSDate);
+    ENSURE_TYPE(callback, KrollCallback);
     
     NSDate *start = [dict valueForKey:@"start"];
     NSDate *end = [dict valueForKey:@"end"];
+    ENSURE_TYPE(start, NSDate);
+    ENSURE_TYPE(end, NSDate);
     
     [[self sharedStepCounter] queryStepCountStartingFrom:start to:end toQueue:[NSOperationQueue mainQueue] withHandler:^(NSInteger numberOfSteps, NSError *error) {
         

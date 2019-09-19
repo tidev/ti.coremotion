@@ -20,6 +20,11 @@
 
 #pragma mark Public APIs
 
+- (NSString *)apiName
+{
+  return @"Ti.CoreMotion.DeviceMotion";
+}
+
 -(void)setShowsDeviceMovementDisplay:(id)value
 {
     ENSURE_TYPE(value, NSNumber);
