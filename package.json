@@ -5,9 +5,9 @@
 	"scripts": {
 		"lint": "npm run lint:docs",
 		"lint:docs": "tdoc-validate -w Titanium.Proxy,Titanium.Module apidoc",
-		"test": "karma start test/unit/karma.unit.config.js",
-		"test:android": "npm test -- --browsers android",
-		"test:ios": "npm test -- --browsers ios"
+		"test": "npm run lint && npm run test:unit",
+		"test:unit": "karma start test/unit/karma.unit.config.js",
+		"test:ios": "npm run test:unit -- --browsers ios"
 	},
 	"repository": {
 		"type": "git",
