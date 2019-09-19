@@ -143,28 +143,28 @@ properties:
   - name: AUTHORIZATION_STATUS_NOT_DETERMINED
     summary: The user has not been prompted yet.
     type: Number
-    since: "6.2.0"
+    since: "8.3.0"
     osver: {ios: {min: "11.0"}}
     permission: "read-only"
  
   - name: AUTHORIZATION_STATUS_RESTRICTED
     summary: Access is denied due to system-wide restrictions.
     type: Number
-    since: "6.2.0"
+    since: "8.3.0"
     osver: {ios: {min: "11.0"}}
     permission: "read-only"
  
   - name: AUTHORIZATION_STATUS_DENIED
     summary: Access is denied by the user.
     type: Number
-    since: "6.2.0"
+    since: "8.3.0"
     osver: {ios: {min: "11.0"}}
     permission: "read-only"
  
   - name: AUTHORIZATION_STATUS_AUTHORIZED
     summary: Access is authorized by the user.
     type: Number
-    since: "6.2.0"
+    since: "8.3.0"
     osver: {ios: {min: "11.0"}}
     permission: "read-only"
 
@@ -522,7 +522,7 @@ properties:
     type: Number
     permission: "read-only"
     osver: {ios: {min: "11.0"}}
-    since: "6.2.0"
+    since: "8.3.0"
 
 ---
 name: CoreMotionActivityData
@@ -920,7 +920,7 @@ properties:
 name: CoreMotionAltimeterData
 platforms: [iphone, ipad]
 summary: Data returned from <Modules.CoreMotion.Altimeter.startRelativeAltitudeUpdates>.
-since: "6.2.0"
+since: "8.3.0"
 properties:
   - name: relativeAltitude
     summary: The relative altitude in meters to the starting altitude.
