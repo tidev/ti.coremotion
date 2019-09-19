@@ -64,9 +64,6 @@ description: |
     - [iOS Developer Library: Core Motion Framework Reference](https://developer.apple.com/library/ios/documentation/CoreMotion/Reference/CoreMotion_Reference/_index.html)
     - [iOS Developer Library: Motion Events](https://developer.apple.com/library/ios/documentation/EventHandling/Conceptual/EventHandlingiPhoneOS/motion_event_basics/motion_event_basics.html)
 
-methods:
-
-
 properties:
   - name: ERROR_NULL
     summary: No error.
