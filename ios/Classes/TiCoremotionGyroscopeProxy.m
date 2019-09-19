@@ -20,6 +20,11 @@
 
 #pragma mark Public APIs
 
+- (NSString *)apiName
+{
+  return @"Ti.CoreMotion.Gyroscope";
+}
+
 -(void)setGyroUpdateInterval:(id)value
 {
     ENSURE_TYPE(value, NSNumber);

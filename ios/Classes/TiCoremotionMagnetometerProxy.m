@@ -20,6 +20,11 @@
 
 #pragma mark Public APIs
 
+- (NSString *)apiName
+{
+  return @"Ti.CoreMotion.Magnetometer";
+}
+
 -(void)setMagnetometerUpdateInterval:(id)value
 {
     ENSURE_TYPE(value, NSNumber);
