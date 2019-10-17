@@ -19,7 +19,7 @@
 
 - (NSNumber *)isSupported:(id)unused
 {
-  return NUMBOOL([TiUtils isIOS8OrGreater]);
+  return NUMBOOL(YES);
 }
 
 - (NSNumber *)isCadenceAvailable:(id)unused
