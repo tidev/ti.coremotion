@@ -1,6 +1,6 @@
 /**
  * Appcelerator Titanium Mobile
- * Copyright (c) 2009-2017 by Appcelerator, Inc. All Rights Reserved.
+ * Copyright (c) 2009-Present by Appcelerator, Inc. All Rights Reserved.
  * Licensed under the terms of the Apache Public License
  * Please see the LICENSE included with this distribution for details.
  */
@@ -19,7 +19,7 @@
 
 - (NSNumber *)isSupported:(id)unused
 {
-    return NUMBOOL([TiUtils isIOS8OrGreater]);
+    return NUMBOOL(YES);
 }
 
 #if IS_XCODE_9
