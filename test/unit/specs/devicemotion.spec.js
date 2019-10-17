@@ -5,6 +5,7 @@ let DeviceMotion;
 describe('ti.coremotion.DeviceMotion', () => {
 	it('can be created', () => {
 		DeviceMotion = CoreMotion.createDeviceMotion();
+
 		expect(DeviceMotion).toBeDefined();
 	});
 
@@ -22,6 +23,7 @@ describe('ti.coremotion.DeviceMotion', () => {
 				function foo() {
 					DeviceMotion.setShowsDeviceMovementDisplay(true);
 				}
+
 				expect(foo).not.toThrow();
 			});
 
@@ -29,6 +31,7 @@ describe('ti.coremotion.DeviceMotion', () => {
 				function foo() {
 					DeviceMotion.setShowsDeviceMovementDisplay('hi');
 				}
+
 				expect(foo).toThrow();
 			});
 
@@ -36,6 +39,7 @@ describe('ti.coremotion.DeviceMotion', () => {
 				function foo() {
 					DeviceMotion.setShowsDeviceMovementDisplay();
 				}
+
 				expect(foo).toThrow();
 			});
 		});
@@ -49,6 +53,7 @@ describe('ti.coremotion.DeviceMotion', () => {
 				function foo () {
 					DeviceMotion.setDeviceMotionUpdateInterval(1000);
 				}
+
 				expect(foo).not.toThrow();
 			});
 
@@ -56,6 +61,7 @@ describe('ti.coremotion.DeviceMotion', () => {
 				function foo () {
 					DeviceMotion.setDeviceMotionUpdateInterval('hi');
 				}
+
 				expect(foo).toThrow();
 			});
 
@@ -63,6 +69,7 @@ describe('ti.coremotion.DeviceMotion', () => {
 				function foo () {
 					DeviceMotion.setDeviceMotionUpdateInterval();
 				}
+
 				expect(foo).toThrow();
 			});
 		});
@@ -76,8 +83,9 @@ describe('ti.coremotion.DeviceMotion', () => {
 				function foo () {
 					DeviceMotion.startDeviceMotionUpdatesUsingReferenceFrame({
 						referenceFrame: CoreMotion.ATTITUDE_REFERENCE_FRAME_X_TRUE_NORTH_Z_VERTICAL
-					}, function() {});
+					}, function () {});
 				}
+
 				expect(foo).not.toThrow();
 			});
 
@@ -87,6 +95,7 @@ describe('ti.coremotion.DeviceMotion', () => {
 						referenceFrame: CoreMotion.ATTITUDE_REFERENCE_FRAME_X_TRUE_NORTH_Z_VERTICAL
 					});
 				}
+
 				expect(foo).not.toThrow();
 			});
 
@@ -94,6 +103,7 @@ describe('ti.coremotion.DeviceMotion', () => {
 				function foo () {
 					DeviceMotion.startDeviceMotionUpdatesUsingReferenceFrame();
 				}
+
 				expect(foo).toThrow();
 			});
 		});
@@ -107,6 +117,7 @@ describe('ti.coremotion.DeviceMotion', () => {
 				function foo () {
 					DeviceMotion.startDeviceMotionUpdates(() => {});
 				}
+
 				expect(foo).not.toThrow();
 			});
 
@@ -114,6 +125,7 @@ describe('ti.coremotion.DeviceMotion', () => {
 				function foo () {
 					DeviceMotion.startDeviceMotionUpdates('hi');
 				}
+
 				expect(foo).toThrow();
 			});
 
@@ -121,6 +133,7 @@ describe('ti.coremotion.DeviceMotion', () => {
 				function foo () {
 					DeviceMotion.startDeviceMotionUpdates();
 				}
+
 				expect(foo).not.toThrow();
 			});
 		});
@@ -134,10 +147,11 @@ describe('ti.coremotion.DeviceMotion', () => {
 				function foo () {
 					DeviceMotion.stopDeviceMotionUpdates();
 				}
+
 				expect(foo).not.toThrow();
 			});
 		});
-		
+
 		describe('#getAttitudeReferenceFrame()', () => {
 			it('is a Function', () => {
 				expect(DeviceMotion.getAttitudeReferenceFrame).toEqual(jasmine.any(Function));
@@ -147,11 +161,13 @@ describe('ti.coremotion.DeviceMotion', () => {
 				function foo () {
 					DeviceMotion.getAttitudeReferenceFrame();
 				}
+
 				expect(foo).not.toThrow();
 			});
 
 			it('returns numeric constant', () => {
 				const result = DeviceMotion.getAttitudeReferenceFrame();
+
 				expect(result).toEqual(jasmine.any(Number));
 				expect([
 					CoreMotion.ATTITUDE_REFERENCE_FRAME_X_ARBITRARY_Z_VERTICAL,
@@ -171,16 +187,18 @@ describe('ti.coremotion.DeviceMotion', () => {
 				function foo () {
 					DeviceMotion.availableAttitudeReferenceFrames();
 				}
+
 				expect(foo).not.toThrow();
 			});
 
 			it('returns numeric constant', () => {
 				const result = DeviceMotion.getAttitudeReferenceFrame();
+
 				expect(result).toEqual(jasmine.any(Number));
 				// TODO: Verify it's a bit-mask of the constants available!
 			});
 		});
-        
+
 		describe('#isDeviceMotionActive()', () => {
 			it('is a Function', () => {
 				expect(DeviceMotion.isDeviceMotionActive).toEqual(jasmine.any(Function));

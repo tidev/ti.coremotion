@@ -5,6 +5,7 @@ let MotionActivity;
 describe('ti.coremotion.MotionActivity', () => {
 	it('can be created', () => {
 		MotionActivity = CoreMotion.createMotionActivity();
+
 		expect(MotionActivity).toBeDefined();
 	});
 
@@ -33,6 +34,7 @@ describe('ti.coremotion.MotionActivity', () => {
 				function foo () {
 					MotionActivity.startActivityUpdates(() => {});
 				}
+
 				expect(foo).not.toThrow();
 			});
 
@@ -40,6 +42,7 @@ describe('ti.coremotion.MotionActivity', () => {
 				function foo () {
 					MotionActivity.startActivityUpdates('hi');
 				}
+
 				expect(foo).toThrow();
 			});
 
@@ -47,6 +50,7 @@ describe('ti.coremotion.MotionActivity', () => {
 				function foo () {
 					MotionActivity.startActivityUpdates();
 				}
+
 				expect(foo).toThrow();
 			});
 		});
@@ -60,6 +64,7 @@ describe('ti.coremotion.MotionActivity', () => {
 				function foo () {
 					MotionActivity.stopActivityUpdates();
 				}
+
 				expect(foo).not.toThrow();
 			});
 		});
@@ -73,10 +78,11 @@ describe('ti.coremotion.MotionActivity', () => {
 			xit('accepts object and callback arguments', () => {
 				function foo() {
 					MotionActivity.queryActivity({
-						start: new Date(new Date().getTime() - 60*60*1000),
+						start: new Date(new Date().getTime() - 60 * 60 * 1000),
 						end: new Date()
-					}, function() {});
+					}, function () {});
 				}
+
 				expect(foo).not.toThrow();
 			});
 
@@ -84,6 +90,7 @@ describe('ti.coremotion.MotionActivity', () => {
 				function foo() {
 					MotionActivity.queryActivity('hi', function () {});
 				}
+
 				expect(foo).toThrow();
 			});
 
@@ -91,6 +98,7 @@ describe('ti.coremotion.MotionActivity', () => {
 				function foo() {
 					MotionActivity.queryActivity();
 				}
+
 				expect(foo).toThrow();
 			});
 
@@ -98,27 +106,30 @@ describe('ti.coremotion.MotionActivity', () => {
 				function foo() {
 					MotionActivity.queryActivity({
 						end: new Date()
-					}, function() {});
+					}, function () {});
 				}
+
 				expect(foo).toThrow();
 			});
 
 			it('throws if object argument has no end property', () => {
 				function foo() {
 					MotionActivity.queryActivity({
-						start: new Date(new Date().getTime() - 60*60*1000)
-					}, function() {});
+						start: new Date(new Date().getTime() - 60 * 60 * 1000)
+					}, function () {});
 				}
+
 				expect(foo).toThrow();
 			});
 
 			it('throws if callback argument is missing', () => {
 				function foo() {
 					MotionActivity.queryActivity({
-						start: new Date(new Date().getTime() - 60*60*1000),
+						start: new Date(new Date().getTime() - 60 * 60 * 1000),
 						end: new Date()
 					});
 				}
+
 				expect(foo).toThrow();
 			});
 
@@ -127,31 +138,34 @@ describe('ti.coremotion.MotionActivity', () => {
 					MotionActivity.queryActivity({
 						start: 'hello',
 						end: new Date()
-					}, function() {});
+					}, function () {});
 				}
+
 				expect(foo).toThrow();
 			});
 
 			it('throws if object argument has end property that is not a Date', () => {
 				function foo() {
 					MotionActivity.queryActivity({
-						start: new Date(new Date().getTime() - 60*60*1000),
+						start: new Date(new Date().getTime() - 60 * 60 * 1000),
 						end: 1234
-					}, function() {});
+					}, function () {});
 				}
+
 				expect(foo).toThrow();
 			});
 
 			it('throws if callback argument is not a Function', () => {
 				function foo() {
 					MotionActivity.queryActivity({
-						start: new Date(new Date().getTime() - 60*60*1000),
+						start: new Date(new Date().getTime() - 60 * 60 * 1000),
 						end: new Date()
-					}, "hi");
+					}, 'hi');
 				}
+
 				expect(foo).toThrow();
 			});
-		
+
 		});
 	});
 });

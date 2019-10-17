@@ -5,6 +5,7 @@ let Accelerometer;
 describe('ti.coremotion.Accelerometer', () => {
 	it('can be created', () => {
 		Accelerometer = CoreMotion.createAccelerometer();
+
 		expect(Accelerometer).toBeDefined();
 	});
 
@@ -22,6 +23,7 @@ describe('ti.coremotion.Accelerometer', () => {
 				function foo () {
 					Accelerometer.setAccelerometerUpdateInterval(1000);
 				}
+
 				expect(foo).not.toThrow();
 			});
 
@@ -29,6 +31,7 @@ describe('ti.coremotion.Accelerometer', () => {
 				function foo () {
 					Accelerometer.setAccelerometerUpdateInterval('hi');
 				}
+
 				expect(foo).toThrow();
 			});
 
@@ -36,6 +39,7 @@ describe('ti.coremotion.Accelerometer', () => {
 				function foo () {
 					Accelerometer.setAccelerometerUpdateInterval();
 				}
+
 				expect(foo).toThrow();
 			});
 		});
@@ -49,6 +53,7 @@ describe('ti.coremotion.Accelerometer', () => {
 				function foo () {
 					Accelerometer.startAccelerometerUpdates(() => {});
 				}
+
 				expect(foo).not.toThrow();
 			});
 
@@ -56,6 +61,7 @@ describe('ti.coremotion.Accelerometer', () => {
 				function foo () {
 					Accelerometer.startAccelerometerUpdates('hi');
 				}
+
 				expect(foo).toThrow();
 			});
 
@@ -63,6 +69,7 @@ describe('ti.coremotion.Accelerometer', () => {
 				function foo () {
 					Accelerometer.startAccelerometerUpdates();
 				}
+
 				expect(foo).not.toThrow();
 			});
 		});
@@ -76,6 +83,7 @@ describe('ti.coremotion.Accelerometer', () => {
 				function foo () {
 					Accelerometer.stopAccelerometerUpdates();
 				}
+
 				expect(foo).not.toThrow();
 			});
 		});

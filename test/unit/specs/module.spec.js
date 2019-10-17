@@ -3,6 +3,7 @@ let CoreMotion;
 describe('ti.coremotion', () => {
 	it('can be required', () => {
 		CoreMotion = require('ti.coremotion');
+
 		expect(CoreMotion).toBeDefined();
 	});
 
@@ -90,10 +91,10 @@ describe('ti.coremotion', () => {
 			});
 
 			describe('MAGNETIC_FIELD_CALIBRATION_ACCURACY_*', () => {
-			 	it('MAGNETIC_FIELD_CALIBRATION_ACCURACY_UNCALIBRATED', () => {
+				it('MAGNETIC_FIELD_CALIBRATION_ACCURACY_UNCALIBRATED', () => {
 					expect(CoreMotion.MAGNETIC_FIELD_CALIBRATION_ACCURACY_UNCALIBRATED).toEqual(jasmine.any(Number));
 				});
-				
+
 				it('MAGNETIC_FIELD_CALIBRATION_ACCURACY_LOW', () => {
 					expect(CoreMotion.MAGNETIC_FIELD_CALIBRATION_ACCURACY_LOW).toEqual(jasmine.any(Number));
 				});

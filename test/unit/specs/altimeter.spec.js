@@ -5,6 +5,7 @@ let Altimeter;
 describe('ti.coremotion.Altimeter', () => {
 	it('can be created', () => {
 		Altimeter = CoreMotion.createAltimeter();
+
 		expect(Altimeter).toBeDefined();
 	});
 
@@ -40,6 +41,7 @@ describe('ti.coremotion.Altimeter', () => {
 
 			it('returns Boolean', () => {
 				const result = Altimeter.authorizationStatus();
+
 				expect(result).toEqual(jasmine.any(Number));
 				expect([
 					CoreMotion.AUTHORIZATION_STATUS_NOT_DETERMINED,
@@ -69,6 +71,7 @@ describe('ti.coremotion.Altimeter', () => {
 				function foo () {
 					Altimeter.startRelativeAltitudeUpdates(() => {});
 				}
+
 				expect(foo).not.toThrow();
 			});
 
@@ -76,6 +79,7 @@ describe('ti.coremotion.Altimeter', () => {
 				function foo () {
 					Altimeter.startRelativeAltitudeUpdates('hi');
 				}
+
 				expect(foo).toThrow();
 			});
 
@@ -83,6 +87,7 @@ describe('ti.coremotion.Altimeter', () => {
 				function foo () {
 					Altimeter.startRelativeAltitudeUpdates();
 				}
+
 				expect(foo).toThrow();
 			});
 		});
@@ -96,6 +101,7 @@ describe('ti.coremotion.Altimeter', () => {
 				function foo () {
 					Altimeter.stopRelativeAltitudeUpdates();
 				}
+
 				expect(foo).not.toThrow();
 			});
 		});

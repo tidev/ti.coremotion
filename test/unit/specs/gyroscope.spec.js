@@ -5,6 +5,7 @@ let Gyroscope;
 describe('ti.coremotion.Gyroscope', () => {
 	it('can be created', () => {
 		Gyroscope = CoreMotion.createGyroscope();
+
 		expect(Gyroscope).toBeDefined();
 	});
 
@@ -22,6 +23,7 @@ describe('ti.coremotion.Gyroscope', () => {
 				function foo () {
 					Gyroscope.setGyroUpdateInterval(1000);
 				}
+
 				expect(foo).not.toThrow();
 			});
 
@@ -29,6 +31,7 @@ describe('ti.coremotion.Gyroscope', () => {
 				function foo () {
 					Gyroscope.setGyroUpdateInterval('hi');
 				}
+
 				expect(foo).toThrow();
 			});
 
@@ -36,6 +39,7 @@ describe('ti.coremotion.Gyroscope', () => {
 				function foo () {
 					Gyroscope.setGyroUpdateInterval();
 				}
+
 				expect(foo).toThrow();
 			});
 		});
@@ -49,6 +53,7 @@ describe('ti.coremotion.Gyroscope', () => {
 				function foo () {
 					Gyroscope.startGyroUpdates(() => {});
 				}
+
 				expect(foo).not.toThrow();
 			});
 
@@ -56,6 +61,7 @@ describe('ti.coremotion.Gyroscope', () => {
 				function foo () {
 					Gyroscope.startGyroUpdates('hi');
 				}
+
 				expect(foo).toThrow();
 			});
 
@@ -63,6 +69,7 @@ describe('ti.coremotion.Gyroscope', () => {
 				function foo () {
 					Gyroscope.startGyroUpdates();
 				}
+
 				expect(foo).not.toThrow();
 			});
 		});
@@ -76,6 +83,7 @@ describe('ti.coremotion.Gyroscope', () => {
 				function foo () {
 					Gyroscope.stopGyroUpdates();
 				}
+
 				expect(foo).not.toThrow();
 			});
 		});
