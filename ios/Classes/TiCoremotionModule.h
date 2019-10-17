@@ -5,26 +5,25 @@
  * Copyright (c) 2015 Appcelerator, Inc. All rights reserved.
  */
 
-#import <CoreMotion/CoreMotion.h>
-#import "TiModule.h"
 #import "TiCoremotionAccelerometerProxy.h"
+#import "TiCoremotionDeviceMotionProxy.h"
 #import "TiCoremotionGyroscopeProxy.h"
 #import "TiCoremotionMagnetometerProxy.h"
-#import "TiCoremotionDeviceMotionProxy.h"
 #import "TiCoremotionMotionActivityProxy.h"
 #import "TiCoremotionStepCounterProxy.h"
+#import "TiModule.h"
+#import <CoreMotion/CoreMotion.h>
 
-@interface TiCoremotionModule : TiModule
-{
-    // To be removed in next major update,
-    // since just there for fallback with 1.x versions.
-    
-    TiCoremotionAccelerometerProxy *accelerometer;
-    TiCoremotionGyroscopeProxy *gyroscope;
-    TiCoremotionMagnetometerProxy *magnetometer;
-    TiCoremotionDeviceMotionProxy *deviceMotion;
-    TiCoremotionMotionActivityProxy *motionActivity;
-    TiCoremotionStepCounterProxy *stepCounter;
+@interface TiCoremotionModule : TiModule {
+  // To be removed in next major update,
+  // since just there for fallback with 1.x versions.
+
+  TiCoremotionAccelerometerProxy *accelerometer;
+  TiCoremotionGyroscopeProxy *gyroscope;
+  TiCoremotionMagnetometerProxy *magnetometer;
+  TiCoremotionDeviceMotionProxy *deviceMotion;
+  TiCoremotionMotionActivityProxy *motionActivity;
+  TiCoremotionStepCounterProxy *stepCounter;
 }
 
 // ----------------------------------------------------
@@ -43,7 +42,6 @@
 
 - (NSDictionary *)getAccelerometerData:(id)unused;
 
-
 // ----------------------------------------------------
 // Gyroscope
 // ----------------------------------------------------
@@ -60,7 +58,6 @@
 
 - (NSDictionary *)getGyroData:(id)unused;
 
-
 // ----------------------------------------------------
 // Magnetometer
 // ----------------------------------------------------
@@ -76,7 +73,6 @@
 - (NSNumber *)isMagnetometerAvailable:(id)unused;
 
 - (NSDictionary *)getMagnetometerData:(id)unused;
-
 
 // ----------------------------------------------------
 // Device Motion
@@ -102,7 +98,6 @@
 
 - (NSDictionary *)getDeviceMotion:(id)unused;
 
-
 // ----------------------------------------------------
 // Motion Activity
 // ----------------------------------------------------
@@ -114,7 +109,6 @@
 - (void)stopActivityUpdates:(id)unused;
 
 - (void)queryActivity:(id)args;
-
 
 // ----------------------------------------------------
 // Step Counter

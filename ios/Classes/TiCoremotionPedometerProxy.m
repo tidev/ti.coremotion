@@ -19,93 +19,94 @@
 
 - (NSNumber *)isSupported:(id)unused
 {
-    return NUMBOOL([TiUtils isIOS8OrGreater]);
+  return NUMBOOL([TiUtils isIOS8OrGreater]);
 }
 
 - (NSNumber *)isCadenceAvailable:(id)unused
 {
-    return NUMBOOL([TiUtils isIOS9OrGreater] ? [CMPedometer isCadenceAvailable] : NO);
+  return NUMBOOL([TiUtils isIOS9OrGreater] ? [CMPedometer isCadenceAvailable] : NO);
 }
 
 - (NSNumber *)isDistanceAvailable:(id)unused
 {
-    return NUMBOOL([CMPedometer isDistanceAvailable]);
+  return NUMBOOL([CMPedometer isDistanceAvailable]);
 }
 
 - (NSNumber *)isPaceAvailable:(id)unused
 {
-    return NUMBOOL([TiUtils isIOS9OrGreater] ? [CMPedometer isPaceAvailable] : NO);
+  return NUMBOOL([TiUtils isIOS9OrGreater] ? [CMPedometer isPaceAvailable] : NO);
 }
 
 - (NSNumber *)isFloorCountingAvailable:(id)unused
 {
-    return NUMBOOL([CMPedometer isFloorCountingAvailable]);
+  return NUMBOOL([CMPedometer isFloorCountingAvailable]);
 }
 
 - (NSNumber *)isStepCountingAvailable:(id)unused
 {
-    return NUMBOOL([CMPedometer isStepCountingAvailable]);
+  return NUMBOOL([CMPedometer isStepCountingAvailable]);
 }
 
 - (void)startPedometerUpdates:(id)args
 {
-    ENSURE_TYPE(args, NSArray);
+  ENSURE_TYPE(args, NSArray);
 
-    NSDictionary *dict = [args objectAtIndex:0];
-    KrollCallback *callback = [args objectAtIndex:1];
-    NSDate *start = [dict valueForKey:@"start"];
-    
-    ENSURE_TYPE(dict, NSDictionary);
-    ENSURE_TYPE(callback, KrollCallback);
-    ENSURE_TYPE(start, NSDate);
+  NSDictionary *dict = [args objectAtIndex:0];
+  KrollCallback *callback = [args objectAtIndex:1];
+  NSDate *start = [dict valueForKey:@"start"];
 
-    [[self sharedPedometer]  startPedometerUpdatesFromDate:start withHandler:^(CMPedometerData *pedometerData, NSError *error) {
-       
-        NSDictionary *eventDict = [CMHelper dictionaryWithError:error andDictionary:[CMHelper dictionaryFromPedometerData:pedometerData]];
-        NSArray *invocationArray = [[NSArray alloc] initWithObjects:&eventDict count:1];
-        
-        [callback call:invocationArray thisObject:self];
-    }];
+  ENSURE_TYPE(dict, NSDictionary);
+  ENSURE_TYPE(callback, KrollCallback);
+  ENSURE_TYPE(start, NSDate);
+
+  [[self sharedPedometer] startPedometerUpdatesFromDate:start
+                                            withHandler:^(CMPedometerData *pedometerData, NSError *error) {
+                                              NSDictionary *eventDict = [CMHelper dictionaryWithError:error andDictionary:[CMHelper dictionaryFromPedometerData:pedometerData]];
+                                              NSArray *invocationArray = [[NSArray alloc] initWithObjects:&eventDict count:1];
+
+                                              [callback call:invocationArray thisObject:self];
+                                            }];
 }
 
 - (void)stopPedometerUpdates:(id)unused
 {
-    [[self sharedPedometer] stopPedometerUpdates];
+  [[self sharedPedometer] stopPedometerUpdates];
 }
 
 - (void)queryPedometerData:(id)args
 {
-    ENSURE_TYPE(args, NSArray);
-    
-    NSDictionary *dict = [args objectAtIndex:0];
-    ENSURE_TYPE(dict, NSDictionary);
-    
-    KrollCallback *callback = [args objectAtIndex:1];
-    ENSURE_TYPE(callback, KrollCallback);
-    
-    NSDate *start = [dict valueForKey:@"start"];
-    NSDate *end = [dict valueForKey:@"end"];
-    ENSURE_TYPE(start, NSDate);
-    ENSURE_TYPE(end, NSDate);
+  ENSURE_TYPE(args, NSArray);
 
-    [[self sharedPedometer] queryPedometerDataFromDate:start toDate:end withHandler: ^(CMPedometerData *pedometerData, NSError *error) {
-        
-        NSDictionary *eventDict = [CMHelper dictionaryWithError:error andDictionary:[CMHelper dictionaryFromPedometerData:pedometerData]];
-        NSArray *invocationArray = [[NSArray alloc] initWithObjects:&eventDict count:1];
-        
-        [callback call:invocationArray thisObject:self];
-    }];
+  NSDictionary *dict = [args objectAtIndex:0];
+  ENSURE_TYPE(dict, NSDictionary);
+
+  KrollCallback *callback = [args objectAtIndex:1];
+  ENSURE_TYPE(callback, KrollCallback);
+
+  NSDate *start = [dict valueForKey:@"start"];
+  NSDate *end = [dict valueForKey:@"end"];
+  ENSURE_TYPE(start, NSDate);
+  ENSURE_TYPE(end, NSDate);
+
+  [[self sharedPedometer] queryPedometerDataFromDate:start
+                                              toDate:end
+                                         withHandler:^(CMPedometerData *pedometerData, NSError *error) {
+                                           NSDictionary *eventDict = [CMHelper dictionaryWithError:error andDictionary:[CMHelper dictionaryFromPedometerData:pedometerData]];
+                                           NSArray *invocationArray = [[NSArray alloc] initWithObjects:&eventDict count:1];
+
+                                           [callback call:invocationArray thisObject:self];
+                                         }];
 }
 
 #pragma mark Singleton instance
 
 - (CMPedometer *)sharedPedometer
 {
-    if (pedometer == nil) {
-        pedometer = [[CMPedometer alloc] init];
-    }
-    
-    return pedometer;
+  if (pedometer == nil) {
+    pedometer = [[CMPedometer alloc] init];
+  }
+
+  return pedometer;
 }
 
 @end

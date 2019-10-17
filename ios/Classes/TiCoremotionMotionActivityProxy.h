@@ -8,7 +8,7 @@
 #import <CoreMotion/CoreMotion.h>
 
 @interface TiCoremotionMotionActivityProxy : TiProxy {
-    CMMotionActivityManager *activityManager;
+  CMMotionActivityManager *activityManager;
 }
 
 - (NSNumber *)isActivityAvailable:(id)unused;

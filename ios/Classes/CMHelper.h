@@ -5,9 +5,9 @@
  * Copyright (c) 2015 Appcelerator, Inc. All rights reserved.
  */
 
-#import <Foundation/Foundation.h>
-#import <CoreMotion/CoreMotion.h>
 #import "TiModule.h"
+#import <CoreMotion/CoreMotion.h>
+#import <Foundation/Foundation.h>
 
 @interface CMHelper : NSObject
 

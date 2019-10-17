@@ -19,62 +19,62 @@
 
 - (void)setMagnetometerUpdateInterval:(id)value
 {
-    ENSURE_TYPE(value, NSNumber);
-    [[self sharedManager] setMagnetometerUpdateInterval:[CMHelper millisecondsToSeconds:[TiUtils doubleValue:value]]];
+  ENSURE_TYPE(value, NSNumber);
+  [[self sharedManager] setMagnetometerUpdateInterval:[CMHelper millisecondsToSeconds:[TiUtils doubleValue:value]]];
 }
 
 - (void)startMagnetometerUpdates:(id)arg
 {
-    if ([[self sharedManager] isMagnetometerActive]) {
-        NSLog(@"[WARN] The magnetometer is already updating. Please stop magnetometer updates first and try again.");
-        return;
-    }
-    
-    KrollCallback *callback = [arg objectAtIndex:0];
-    ENSURE_TYPE_OR_NIL(callback, KrollCallback);
-    
-    if (callback != nil) {
-        [[self sharedManager] startMagnetometerUpdatesToQueue:[NSOperationQueue mainQueue] withHandler:^(CMMagnetometerData *magnetometerData, NSError *error) {
-            
-            NSDictionary *eventDict = [CMHelper dictionaryWithError:error andDictionary:[CMHelper dictionaryFromMagnetometerData:magnetometerData]];
-            NSArray *invocationArray = [[NSArray alloc] initWithObjects:&eventDict count:1];
-            
-            [callback call:invocationArray thisObject:self];
-        }];
-    } else {
-        [[self sharedManager] startMagnetometerUpdates];
-    }
+  if ([[self sharedManager] isMagnetometerActive]) {
+    NSLog(@"[WARN] The magnetometer is already updating. Please stop magnetometer updates first and try again.");
+    return;
+  }
+
+  KrollCallback *callback = [arg objectAtIndex:0];
+  ENSURE_TYPE_OR_NIL(callback, KrollCallback);
+
+  if (callback != nil) {
+    [[self sharedManager] startMagnetometerUpdatesToQueue:[NSOperationQueue mainQueue]
+                                              withHandler:^(CMMagnetometerData *magnetometerData, NSError *error) {
+                                                NSDictionary *eventDict = [CMHelper dictionaryWithError:error andDictionary:[CMHelper dictionaryFromMagnetometerData:magnetometerData]];
+                                                NSArray *invocationArray = [[NSArray alloc] initWithObjects:&eventDict count:1];
+
+                                                [callback call:invocationArray thisObject:self];
+                                              }];
+  } else {
+    [[self sharedManager] startMagnetometerUpdates];
+  }
 }
 
 - (void)stopMagnetometerUpdates:(id)unused
 {
-    [[self sharedManager] stopMagnetometerUpdates];
+  [[self sharedManager] stopMagnetometerUpdates];
 }
 
 - (NSNumber *)isMagnetometerActive:(id)unused
 {
-    return NUMBOOL([[self sharedManager] isMagnetometerActive]);
+  return NUMBOOL([[self sharedManager] isMagnetometerActive]);
 }
 
 - (NSNumber *)isMagnetometerAvailable:(id)unused
 {
-    return NUMBOOL([[self sharedManager] isMagnetometerAvailable]);
+  return NUMBOOL([[self sharedManager] isMagnetometerAvailable]);
 }
 
 - (NSDictionary *)getMagnetometerData:(id)unused
 {
-    return [CMHelper dictionaryFromMagnetometerData:[[self sharedManager] magnetometerData]];
+  return [CMHelper dictionaryFromMagnetometerData:[[self sharedManager] magnetometerData]];
 }
 
 #pragma mark Singleton instance
 
 - (CMMotionManager *)sharedManager
 {
-    if (motionManager == nil) {
-        motionManager = [[CMMotionManager alloc] init];
-    }
-    
-    return motionManager;
+  if (motionManager == nil) {
+    motionManager = [[CMMotionManager alloc] init];
+  }
+
+  return motionManager;
 }
 
 @end
