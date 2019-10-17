@@ -14,9 +14,9 @@ methods:
     returns:
         type: Boolean
     deprecated:
-    since: "8.3.0"
-    notes: |
-        This API is supported on IOS 8+ and this module is now targeting iOS 8 as minimum, so this method will always return true.
+        since: "8.3.0"
+        notes: |
+            This API is supported on IOS 8+ and this module is now targeting iOS 8 as minimum, so this method will always return true.
 
   - name: isRelativeAltitudeAvailable
     summary: Returns a Boolean value indicating whether the altimeter is supported on the current iOS version.
