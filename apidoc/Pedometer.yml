@@ -11,9 +11,13 @@ createable: true
 methods:
 
   - name: isSupported
-    summary: Returns a Boolean value indicating whether the pedometer is supported on the current iOS version.
+    summary: Returns a Boolean value indicating whether the pedometer is supported on the current device. Returns true for iOS 8+.
     returns:
         type: Boolean
+    deprecated:
+        since: "8.3.0"
+        notes: |
+            This API is supported on IOS 8+ and this module is now targeting iOS 8 as minimum, so this method will always return true.
 
   - name: isCadenceAvailable
     summary: |
