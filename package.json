@@ -26,6 +26,7 @@
 	"devDependencies": {
 		"@seadub/danger-plugin-dependencies": "^0.1.0",
 		"@seadub/danger-plugin-junit": "^0.1.2",
+		"clang-format": "^1.2.3",
 		"danger": "^7.1.0",
 		"eslint": "^5.10.0",
 		"eslint-config-axway": "^4.1.1",
