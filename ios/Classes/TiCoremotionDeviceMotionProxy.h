@@ -8,7 +8,7 @@
 #import <CoreMotion/CoreMotion.h>
 
 @interface TiCoremotionDeviceMotionProxy : TiProxy {
-    CMMotionManager *motionManager;
+  CMMotionManager *motionManager;
 }
 
 - (void)setShowsDeviceMovementDisplay:(id)value;

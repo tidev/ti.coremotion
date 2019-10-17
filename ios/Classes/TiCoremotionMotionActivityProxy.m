@@ -19,61 +19,64 @@
 
 - (NSNumber *)isActivityAvailable:(id)unused
 {
-    return NUMBOOL([CMMotionActivityManager isActivityAvailable]);
+  return NUMBOOL([CMMotionActivityManager isActivityAvailable]);
 }
 
 - (void)startActivityUpdates:(id)arg
 {
-    KrollCallback *callback = [arg objectAtIndex:0];
-    ENSURE_TYPE(callback, KrollCallback);
-    
-    [[self sharedActivityManager] startActivityUpdatesToQueue:[NSOperationQueue mainQueue] withHandler:^(CMMotionActivity *activity) {
-        NSMutableArray *result = [NSMutableArray array];
-        NSDictionary *eventDict = @{@"activity": [CMHelper dictionaryFromMotionActivity:activity]};
-        NSArray *invocationArray = [[NSArray alloc] initWithObjects:&eventDict count:1];
-        
-        [callback call:invocationArray thisObject:self];
-    }];
+  KrollCallback *callback = [arg objectAtIndex:0];
+  ENSURE_TYPE(callback, KrollCallback);
+
+  [[self sharedActivityManager] startActivityUpdatesToQueue:[NSOperationQueue mainQueue]
+                                                withHandler:^(CMMotionActivity *activity) {
+                                                  NSMutableArray *result = [NSMutableArray array];
+                                                  NSDictionary *eventDict = @{ @"activity" : [CMHelper dictionaryFromMotionActivity:activity] };
+                                                  NSArray *invocationArray = [[NSArray alloc] initWithObjects:&eventDict count:1];
+
+                                                  [callback call:invocationArray thisObject:self];
+                                                }];
 }
 
 - (void)stopActivityUpdates:(id)unused
 {
-    [[self sharedActivityManager] stopActivityUpdates];
+  [[self sharedActivityManager] stopActivityUpdates];
 }
 
 - (void)queryActivity:(id)args
 {
-    ENSURE_TYPE(args, NSArray);
-    
-    NSDictionary *dict = [args objectAtIndex:0];
-    ENSURE_TYPE(dict, NSDictionary);
+  ENSURE_TYPE(args, NSArray);
 
-    KrollCallback *callback = [args objectAtIndex:1];
-    ENSURE_TYPE(callback, KrollCallback);
-    
-    NSDate *start = [dict valueForKey:@"start"];
-    NSDate *end = [dict valueForKey:@"end"];
-    ENSURE_TYPE(start, NSDate);
-    ENSURE_TYPE(end, NSDate);
-    
-    [[self sharedActivityManager] queryActivityStartingFromDate:start toDate:end toQueue:[NSOperationQueue mainQueue] withHandler:^(NSArray<CMMotionActivity*>*activities, NSError *error) {
-        
-        NSDictionary *eventDict = [CMHelper dictionaryWithError:error andDictionary:@{@"activities": [CMHelper arrayFromMotionActivities:activities]}];
-        NSArray *invocationArray = [[NSArray alloc] initWithObjects:&eventDict count:1];
-        
-        [callback call:invocationArray thisObject:self];
-    }];
+  NSDictionary *dict = [args objectAtIndex:0];
+  ENSURE_TYPE(dict, NSDictionary);
+
+  KrollCallback *callback = [args objectAtIndex:1];
+  ENSURE_TYPE(callback, KrollCallback);
+
+  NSDate *start = [dict valueForKey:@"start"];
+  NSDate *end = [dict valueForKey:@"end"];
+  ENSURE_TYPE(start, NSDate);
+  ENSURE_TYPE(end, NSDate);
+
+  [[self sharedActivityManager] queryActivityStartingFromDate:start
+                                                       toDate:end
+                                                      toQueue:[NSOperationQueue mainQueue]
+                                                  withHandler:^(NSArray<CMMotionActivity *> *activities, NSError *error) {
+                                                    NSDictionary *eventDict = [CMHelper dictionaryWithError:error andDictionary:@{ @"activities" : [CMHelper arrayFromMotionActivities:activities] }];
+                                                    NSArray *invocationArray = [[NSArray alloc] initWithObjects:&eventDict count:1];
+
+                                                    [callback call:invocationArray thisObject:self];
+                                                  }];
 }
 
 #pragma mark Singleton instance
 
 - (CMMotionActivityManager *)sharedActivityManager
 {
-    if (activityManager == nil) {
-        activityManager = [[CMMotionActivityManager alloc] init];
-    }
-    
-    return activityManager;
+  if (activityManager == nil) {
+    activityManager = [[CMMotionActivityManager alloc] init];
+  }
+
+  return activityManager;
 }
 
 @end

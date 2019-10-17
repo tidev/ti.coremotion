@@ -19,62 +19,62 @@
 
 - (void)setGyroUpdateInterval:(id)value
 {
-    ENSURE_TYPE(value, NSNumber);
-    [[self sharedManager] setGyroUpdateInterval:[CMHelper millisecondsToSeconds:[TiUtils doubleValue:value]]];
+  ENSURE_TYPE(value, NSNumber);
+  [[self sharedManager] setGyroUpdateInterval:[CMHelper millisecondsToSeconds:[TiUtils doubleValue:value]]];
 }
 
 - (void)startGyroUpdates:(id)arg
 {
-    if ([[self sharedManager] isGyroActive]) {
-        NSLog(@"[WARN] The gyroscope is already updating. Please stop gyroscope updates first and try again.");
-        return;
-    }
-    
-    KrollCallback *callback = [arg objectAtIndex:0];
-    ENSURE_TYPE_OR_NIL(callback, KrollCallback);
-    
-    if (callback != nil) {
-        [[self sharedManager] startGyroUpdatesToQueue:[NSOperationQueue mainQueue] withHandler:^(CMGyroData *gyroData, NSError *error) {
-            
-            NSDictionary *eventDict = [CMHelper dictionaryWithError:error andDictionary:[CMHelper dictionaryFromGyroData:gyroData]];
-            NSArray *invocationArray = [[NSArray alloc] initWithObjects:&eventDict count:1];
-            
-            [callback call:invocationArray thisObject:self];
-        }];
-    } else {
-        [[self sharedManager] startGyroUpdates];
-    }
+  if ([[self sharedManager] isGyroActive]) {
+    NSLog(@"[WARN] The gyroscope is already updating. Please stop gyroscope updates first and try again.");
+    return;
+  }
+
+  KrollCallback *callback = [arg objectAtIndex:0];
+  ENSURE_TYPE_OR_NIL(callback, KrollCallback);
+
+  if (callback != nil) {
+    [[self sharedManager] startGyroUpdatesToQueue:[NSOperationQueue mainQueue]
+                                      withHandler:^(CMGyroData *gyroData, NSError *error) {
+                                        NSDictionary *eventDict = [CMHelper dictionaryWithError:error andDictionary:[CMHelper dictionaryFromGyroData:gyroData]];
+                                        NSArray *invocationArray = [[NSArray alloc] initWithObjects:&eventDict count:1];
+
+                                        [callback call:invocationArray thisObject:self];
+                                      }];
+  } else {
+    [[self sharedManager] startGyroUpdates];
+  }
 }
 
 - (void)stopGyroUpdates:(id)unused
 {
-    [[self sharedManager] stopGyroUpdates];
+  [[self sharedManager] stopGyroUpdates];
 }
 
 - (NSNumber *)isGyroActive:(id)unused
 {
-    return NUMBOOL([[self sharedManager] isGyroActive]);
+  return NUMBOOL([[self sharedManager] isGyroActive]);
 }
 
 - (NSNumber *)isGyroAvailable:(id)unused
 {
-    return NUMBOOL([[self sharedManager] isGyroAvailable]);
+  return NUMBOOL([[self sharedManager] isGyroAvailable]);
 }
 
 - (NSDictionary *)getGyroData:(id)unused
 {
-    return [CMHelper dictionaryFromGyroData:[[self sharedManager] gyroData]];
+  return [CMHelper dictionaryFromGyroData:[[self sharedManager] gyroData]];
 }
 
 #pragma mark Singleton instance
 
 - (CMMotionManager *)sharedManager
 {
-    if (motionManager == nil) {
-        motionManager = [[CMMotionManager alloc] init];
-    }
-    
-    return motionManager;
+  if (motionManager == nil) {
+    motionManager = [[CMMotionManager alloc] init];
+  }
+
+  return motionManager;
 }
 
 @end

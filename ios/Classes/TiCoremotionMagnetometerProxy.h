@@ -8,7 +8,7 @@
 #import <CoreMotion/CoreMotion.h>
 
 @interface TiCoremotionMagnetometerProxy : TiProxy {
-    CMMotionManager *motionManager;
+  CMMotionManager *motionManager;
 }
 
 - (void)setMagnetometerUpdateInterval:(id)value;

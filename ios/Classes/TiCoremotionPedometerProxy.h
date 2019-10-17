@@ -8,7 +8,7 @@
 #import <CoreMotion/CoreMotion.h>
 
 @interface TiCoremotionPedometerProxy : TiProxy {
-    CMPedometer *pedometer;
+  CMPedometer *pedometer;
 }
 
 - (NSNumber *)isSupported:(id)unused;

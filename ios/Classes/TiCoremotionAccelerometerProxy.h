@@ -8,7 +8,7 @@
 #import <CoreMotion/CoreMotion.h>
 
 @interface TiCoremotionAccelerometerProxy : TiProxy {
-    CMMotionManager *motionManager;
+  CMMotionManager *motionManager;
 }
 
 - (void)setAccelerometerUpdateInterval:(id)value;

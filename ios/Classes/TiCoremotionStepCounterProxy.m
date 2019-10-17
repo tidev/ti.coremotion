@@ -19,75 +19,80 @@
 
 - (NSNumber *)isStepCountingAvailable:(id)unused
 {
-    return NUMBOOL([CMStepCounter isStepCountingAvailable]);
+  return NUMBOOL([CMStepCounter isStepCountingAvailable]);
 }
 
 - (void)startStepCountingUpdates:(id)args
 {
-    ENSURE_TYPE(args, NSArray);
-    
-    NSDictionary *dict = [args objectAtIndex:0];
-    KrollCallback *callback = [args objectAtIndex:1];
-    NSNumber *stepCounts = [dict valueForKey:@"stepCounts"];
-    
-    ENSURE_TYPE(dict, NSDictionary);
-    ENSURE_TYPE(stepCounts, NSNumber);
-    ENSURE_TYPE(callback, KrollCallback);
-    
-    [[self sharedStepCounter] startStepCountingUpdatesToQueue:[NSOperationQueue mainQueue] updateOn:[stepCounts integerValue] withHandler:^(NSInteger numberOfSteps, NSDate *timestamp, NSError * error) {
-        
-        NSDictionary *eventDict = [CMHelper dictionaryWithError:error andDictionary:@{
-            @"timestamp": [TiUtils UTCDateForDate:timestamp],
-            @"numberOfSteps": NUMINTEGER(numberOfSteps)
-        }];
-        
-        NSArray *invocationArray = [[NSArray alloc] initWithObjects:&eventDict count:1];
-        
-        [callback call:invocationArray thisObject:self];
-    }];
+  ENSURE_TYPE(args, NSArray);
+
+  NSDictionary *dict = [args objectAtIndex:0];
+  KrollCallback *callback = [args objectAtIndex:1];
+  NSNumber *stepCounts = [dict valueForKey:@"stepCounts"];
+
+  ENSURE_TYPE(dict, NSDictionary);
+  ENSURE_TYPE(stepCounts, NSNumber);
+  ENSURE_TYPE(callback, KrollCallback);
+
+  [[self sharedStepCounter] startStepCountingUpdatesToQueue:[NSOperationQueue mainQueue]
+                                                   updateOn:[stepCounts integerValue]
+                                                withHandler:^(NSInteger numberOfSteps, NSDate *timestamp, NSError *error) {
+                                                  NSDictionary *eventDict = [CMHelper dictionaryWithError:error
+                                                                                            andDictionary:@{
+                                                                                              @"timestamp" : [TiUtils UTCDateForDate:timestamp],
+                                                                                              @"numberOfSteps" : NUMINTEGER(numberOfSteps)
+                                                                                            }];
+
+                                                  NSArray *invocationArray = [[NSArray alloc] initWithObjects:&eventDict count:1];
+
+                                                  [callback call:invocationArray thisObject:self];
+                                                }];
 }
 
 - (void)stopStepCountingUpdates:(id)unused
 {
-    [[self sharedStepCounter] stopStepCountingUpdates];
+  [[self sharedStepCounter] stopStepCountingUpdates];
 }
 
 - (void)queryStepCount:(id)args
 {
-    ENSURE_TYPE(args, NSArray);
+  ENSURE_TYPE(args, NSArray);
 
-    NSDictionary *dict = [args objectAtIndex:0];
-    ENSURE_TYPE(dict, NSDictionary);
+  NSDictionary *dict = [args objectAtIndex:0];
+  ENSURE_TYPE(dict, NSDictionary);
 
-    KrollCallback *callback = [args objectAtIndex:1];
-    ENSURE_TYPE(callback, KrollCallback);
-    
-    NSDate *start = [dict valueForKey:@"start"];
-    NSDate *end = [dict valueForKey:@"end"];
-    ENSURE_TYPE(start, NSDate);
-    ENSURE_TYPE(end, NSDate);
-    
-    [[self sharedStepCounter] queryStepCountStartingFrom:start to:end toQueue:[NSOperationQueue mainQueue] withHandler:^(NSInteger numberOfSteps, NSError *error) {
-        
-        NSDictionary *eventDict = [CMHelper dictionaryWithError:error andDictionary:@{
-                                                                                      @"numberOfSteps": NUMINTEGER(numberOfSteps)
-                                                                                      }];
-        
-        NSArray *invocationArray = [[NSArray alloc] initWithObjects:&eventDict count:1];
-        
-        [callback call:invocationArray thisObject:self];
-    }];
+  KrollCallback *callback = [args objectAtIndex:1];
+  ENSURE_TYPE(callback, KrollCallback);
+
+  NSDate *start = [dict valueForKey:@"start"];
+  NSDate *end = [dict valueForKey:@"end"];
+  ENSURE_TYPE(start, NSDate);
+  ENSURE_TYPE(end, NSDate);
+
+  [[self sharedStepCounter] queryStepCountStartingFrom:start
+                                                    to:end
+                                               toQueue:[NSOperationQueue mainQueue]
+                                           withHandler:^(NSInteger numberOfSteps, NSError *error) {
+                                             NSDictionary *eventDict = [CMHelper dictionaryWithError:error
+                                                                                       andDictionary:@{
+                                                                                         @"numberOfSteps" : NUMINTEGER(numberOfSteps)
+                                                                                       }];
+
+                                             NSArray *invocationArray = [[NSArray alloc] initWithObjects:&eventDict count:1];
+
+                                             [callback call:invocationArray thisObject:self];
+                                           }];
 }
 
 #pragma mark Singleton instance
 
 - (CMStepCounter *)sharedStepCounter
 {
-    if (stepCounter == nil) {
-        stepCounter = [[CMStepCounter alloc] init];
-    }
-    
-    return stepCounter;
+  if (stepCounter == nil) {
+    stepCounter = [[CMStepCounter alloc] init];
+  }
+
+  return stepCounter;
 }
 
 @end

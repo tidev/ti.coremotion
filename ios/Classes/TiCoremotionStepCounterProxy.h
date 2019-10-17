@@ -8,7 +8,7 @@
 #import <CoreMotion/CoreMotion.h>
 
 @interface TiCoremotionStepCounterProxy : TiProxy {
-    CMStepCounter *stepCounter;
+  CMStepCounter *stepCounter;
 }
 
 - (NSNumber *)isStepCountingAvailable:(id)unused;

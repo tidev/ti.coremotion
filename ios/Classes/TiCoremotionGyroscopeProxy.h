@@ -8,7 +8,7 @@
 #import <CoreMotion/CoreMotion.h>
 
 @interface TiCoremotionGyroscopeProxy : TiProxy {
-    CMMotionManager *motionManager;
+  CMMotionManager *motionManager;
 }
 
 - (void)setGyroUpdateInterval:(id)value;

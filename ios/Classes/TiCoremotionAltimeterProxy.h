@@ -8,7 +8,7 @@
 #import <CoreMotion/CoreMotion.h>
 
 @interface TiCoremotionAltimeterProxy : TiProxy {
-    CMAltimeter *altimeter;
+  CMAltimeter *altimeter;
 }
 
 - (NSNumber *)isSupported:(id)unused;
