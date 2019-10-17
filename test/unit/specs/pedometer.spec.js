@@ -2,12 +2,14 @@ const CoreMotion = require('ti.coremotion');
 
 let Pedometer;
 
-// TODO: Hack the tiapp.xml to include required Info.plist key: https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW21
+// TODO: Hack the tiapp.xml to include required Info.plist key:
+// https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW21
 // How would we tell sim not to prompt though?
 
 describe('ti.coremotion.Pedometer', () => {
 	it('can be created', () => {
 		Pedometer = CoreMotion.createPedometer();
+
 		expect(Pedometer).toBeDefined();
 	});
 
@@ -86,8 +88,9 @@ describe('ti.coremotion.Pedometer', () => {
 				function foo() {
 					Pedometer.startPedometerUpdates({
 						start: new Date()
-					}, function() {});
+					}, function () {});
 				}
+
 				expect(foo).not.toThrow();
 			});
 
@@ -95,6 +98,7 @@ describe('ti.coremotion.Pedometer', () => {
 				function foo() {
 					Pedometer.startPedometerUpdates();
 				}
+
 				expect(foo).toThrow();
 			});
 
@@ -102,6 +106,7 @@ describe('ti.coremotion.Pedometer', () => {
 				function foo() {
 					Pedometer.startPedometerUpdates('hi');
 				}
+
 				expect(foo).toThrow();
 			});
 
@@ -109,20 +114,23 @@ describe('ti.coremotion.Pedometer', () => {
 				function foo() {
 					Pedometer.startPedometerUpdates(21);
 				}
+
 				expect(foo).toThrow();
 			});
 
 			it('throws if object argument has no start property', () => {
 				function foo() {
-					Pedometer.startPedometerUpdates({}, function() {});
+					Pedometer.startPedometerUpdates({}, function () {});
 				}
+
 				expect(foo).toThrow();
 			});
 
 			it('throws if object argument has stat property that is not a Date', () => {
 				function foo() {
-					Pedometer.startPedometerUpdates({ start: 'yes' }, function() {});
+					Pedometer.startPedometerUpdates({ start: 'yes' }, function () {});
 				}
+
 				expect(foo).toThrow();
 			});
 
@@ -130,6 +138,7 @@ describe('ti.coremotion.Pedometer', () => {
 				function foo() {
 					Pedometer.startPedometerUpdates({ start: new Date() }, {});
 				}
+
 				expect(foo).toThrow();
 			});
 
@@ -146,6 +155,7 @@ describe('ti.coremotion.Pedometer', () => {
 				function foo() {
 					Pedometer.stopPedometerUpdates();
 				}
+
 				expect(foo).not.toThrow();
 			});
 		});
@@ -159,10 +169,11 @@ describe('ti.coremotion.Pedometer', () => {
 			xit('accepts object and callback arguments', () => {
 				function foo() {
 					Pedometer.queryPedometerData({
-						start: new Date(new Date().getTime() - 60*60*1000),
+						start: new Date(new Date().getTime() - 60 * 60 * 1000),
 						end: new Date()
-					}, function() {});
+					}, function () {});
 				}
+
 				expect(foo).not.toThrow();
 			});
 
@@ -170,6 +181,7 @@ describe('ti.coremotion.Pedometer', () => {
 				function foo() {
 					Pedometer.queryPedometerData('hi', function () {});
 				}
+
 				expect(foo).toThrow();
 			});
 
@@ -177,6 +189,7 @@ describe('ti.coremotion.Pedometer', () => {
 				function foo() {
 					Pedometer.queryPedometerData();
 				}
+
 				expect(foo).toThrow();
 			});
 
@@ -184,27 +197,30 @@ describe('ti.coremotion.Pedometer', () => {
 				function foo() {
 					Pedometer.queryPedometerData({
 						end: new Date()
-					}, function() {});
+					}, function () {});
 				}
+
 				expect(foo).toThrow();
 			});
 
 			it('throws if object argument has no end property', () => {
 				function foo() {
 					Pedometer.queryPedometerData({
-						start: new Date(new Date().getTime() - 60*60*1000)
-					}, function() {});
+						start: new Date(new Date().getTime() - 60 * 60 * 1000)
+					}, function () {});
 				}
+
 				expect(foo).toThrow();
 			});
 
 			it('throws if callback argument is missing', () => {
 				function foo() {
 					Pedometer.queryPedometerData({
-						start: new Date(new Date().getTime() - 60*60*1000),
+						start: new Date(new Date().getTime() - 60 * 60 * 1000),
 						end: new Date()
 					});
 				}
+
 				expect(foo).toThrow();
 			});
 
@@ -213,28 +229,31 @@ describe('ti.coremotion.Pedometer', () => {
 					Pedometer.queryPedometerData({
 						start: 'hello',
 						end: new Date()
-					}, function() {});
+					}, function () {});
 				}
+
 				expect(foo).toThrow();
 			});
 
 			it('throws if object argument has end property that is not a Date', () => {
 				function foo() {
 					Pedometer.queryPedometerData({
-						start: new Date(new Date().getTime() - 60*60*1000),
+						start: new Date(new Date().getTime() - 60 * 60 * 1000),
 						end: 1234
-					}, function() {});
+					}, function () {});
 				}
+
 				expect(foo).toThrow();
 			});
 
 			it('throws if callback argument is not a Function', () => {
 				function foo() {
 					Pedometer.queryPedometerData({
-						start: new Date(new Date().getTime() - 60*60*1000),
+						start: new Date(new Date().getTime() - 60 * 60 * 1000),
 						end: new Date()
-					}, "hi");
+					}, 'hi');
 				}
+
 				expect(foo).toThrow();
 			});
 		});

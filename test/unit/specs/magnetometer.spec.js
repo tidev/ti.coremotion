@@ -5,6 +5,7 @@ let Magnetometer;
 describe('ti.coremotion.Magnetometer', () => {
 	it('can be created', () => {
 		Magnetometer = CoreMotion.createMagnetometer();
+
 		expect(Magnetometer).toBeDefined();
 	});
 
@@ -22,6 +23,7 @@ describe('ti.coremotion.Magnetometer', () => {
 				function foo () {
 					Magnetometer.setMagnetometerUpdateInterval(1000);
 				}
+
 				expect(foo).not.toThrow();
 			});
 
@@ -29,6 +31,7 @@ describe('ti.coremotion.Magnetometer', () => {
 				function foo () {
 					Magnetometer.setMagnetometerUpdateInterval('hi');
 				}
+
 				expect(foo).toThrow();
 			});
 
@@ -36,6 +39,7 @@ describe('ti.coremotion.Magnetometer', () => {
 				function foo () {
 					Magnetometer.setMagnetometerUpdateInterval();
 				}
+
 				expect(foo).toThrow();
 			});
 		});
@@ -49,6 +53,7 @@ describe('ti.coremotion.Magnetometer', () => {
 				function foo () {
 					Magnetometer.startMagnetometerUpdates(() => {});
 				}
+
 				expect(foo).not.toThrow();
 			});
 
@@ -56,6 +61,7 @@ describe('ti.coremotion.Magnetometer', () => {
 				function foo () {
 					Magnetometer.startMagnetometerUpdates('hi');
 				}
+
 				expect(foo).toThrow();
 			});
 
@@ -63,6 +69,7 @@ describe('ti.coremotion.Magnetometer', () => {
 				function foo () {
 					Magnetometer.startMagnetometerUpdates();
 				}
+
 				expect(foo).not.toThrow();
 			});
 		});
@@ -76,6 +83,7 @@ describe('ti.coremotion.Magnetometer', () => {
 				function foo () {
 					Magnetometer.stopMagnetometerUpdates();
 				}
+
 				expect(foo).not.toThrow();
 			});
 		});
