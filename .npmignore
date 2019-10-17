@@ -1,0 +1,8 @@
+iphone/documentation/
+iphone/example/
+iphone/assets/
+
+test/
+apidoc/
+Jenkinsfile
+dangerfile.js
