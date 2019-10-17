@@ -1,8 +1,8 @@
-
-
-# Core Motion [![Build Status](https://travis-ci.org/appcelerator-modules/ti.coremotion.svg?branch=master)](https://travis-ci.org/appcelerator-modules/ti.coremotion)
+# Core Motion [![Build Status](https://jenkins.appcelerator.org/buildStatus/icon?job=modules%2Fti.coremotion%2Fmaster)](https://jenkins.appcelerator.org/job/modules/job/ti.coremotion/job/master/) [![@titanium-sdk/ti.coremotion](https://img.shields.io/npm/v/@titanium-sdk/ti.coremotion.png)](https://www.npmjs.com/package/@titanium-sdk/ti.coremotion)
 
 This is the CoreMotion module for Titanium Mobile covering the iOS 7+ APIs of the CoreMotion framework.
+
+This is the Map Module for Titanium. Please use [JIRA](http://jira.appcelerator.org) to report issues or ask our [TiSlack community](http://tislack.org) for help! :rocket:
 
 ## Contributors
 
@@ -17,7 +17,7 @@ appc ti build -p ios --build-only
 
 ## Legal
 
-This module is Copyright (c) 2010-2015 by Appcelerator, Inc. All Rights Reserved. Usage of this module is subject to 
+This module is Copyright (c) 2010-present by Axway Appcelerator, Inc. All Rights Reserved. Usage of this module is subject to 
 the Terms of Service agreement with Appcelerator, Inc.  
 
 # Example
