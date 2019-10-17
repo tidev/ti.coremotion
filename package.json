@@ -3,8 +3,15 @@
 	"version": "2.1.0",
 	"description": "CoreMotion module for Titanium Mobile covering the iOS 7+ APIs of the CoreMotion framework.",
 	"scripts": {
-		"lint": "npm run lint:docs",
+		"commit": "git-cz",
+		"format": "npm run format:ios && npm run format:js",
+		"format:ios": "npm run lint:ios -- --fix",
+		"format:js": "npm run lint:js -- --fix",
+		"lint": "npm run lint:ios && npm run lint:js && npm run lint:docs",
+		"lint:android": "clang-format-lint android/src/**/*.java",
 		"lint:docs": "tdoc-validate -w Titanium.Proxy,Titanium.Module apidoc",
+		"lint:ios": "clang-format-lint ios/**/*.m ios/**/*.h",
+		"lint:js": "eslint .",
 		"test": "npm run lint && npm run test:unit",
 		"test:unit": "karma start test/unit/karma.unit.config.js",
 		"test:ios": "npm run test:unit -- --browsers ios"
