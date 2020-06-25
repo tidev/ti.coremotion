@@ -5,7 +5,6 @@ summary: Allows Titanium client applications to access CoreMotion's DeviceMotion
 since: "5.2.0"
 extends: Titanium.Proxy
 createable: true
-
 methods:
   - name: setShowsDeviceMovementDisplay
     summary: Controls whether the device-movement display is shown.
@@ -48,7 +47,6 @@ methods:
         If no callback is passed, the device-motion data can be accessed using the 
         <Modules.CoreMotion.DeviceMotion.getDeviceMotion> method. To stop the delivery of events, 
         call the <Modules.CoreMotion.DeviceMotion.stopDeviceMotionUpdates> method.
-        
     parameters:
       - name: args
         summary: The arguments passed to this method
@@ -68,7 +66,6 @@ methods:
         If no callback is passed, the device-motion data can be accessed using the 
         <Modules.CoreMotion.DeviceMotion.getDeviceMotion> method. To stop the delivery of events, 
         call the <Modules.CoreMotion.DeviceMotion.stopDeviceMotionUpdates> method.
-        
     parameters:
       - name: callback
         summary: The method to be called when there is an update.
@@ -93,7 +90,6 @@ methods:
         <Modules.CoreMotion.ATTITUDE_REFERENCE_FRAME_X_ARBITRARY_CORRECTED_Z_VERTICAL>, 
         <Modules.CoreMotion.ATTITUDE_REFERENCE_FRAME_X_MAGNETIC_NORTH_Z_VERTICAL>, and
         <Modules.CoreMotion.ATTITUDE_REFERENCE_FRAME_X_TRUE_NORTH_Z_VERTICAL>.
-
     returns:
         type: Number
 
@@ -104,11 +100,12 @@ methods:
 
         For example to determine if `ATTITUDE_REFERENCE_FRAME_X_MAGNETIC_NORTH_Z_VERTICAL` is available on device.
 
-            var frames = CoreMotion.DeviceMotion.availableAttitudeReferenceFrames();
-            if (frames & CoreMotion.ATTITUDE_REFERENCE_FRAME_X_MAGNETIC_NORTH_Z_VERTICAL) {
-                // do something here
-            }
-
+        ``` javascript
+        var frames = CoreMotion.DeviceMotion.availableAttitudeReferenceFrames();
+        if (frames & CoreMotion.ATTITUDE_REFERENCE_FRAME_X_MAGNETIC_NORTH_Z_VERTICAL) {
+            // do something here
+        }
+        ```
     returns:
         type: Number
 

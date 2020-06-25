@@ -7,9 +7,7 @@ summary: |
 since: "5.2.0"
 extends: Titanium.Proxy
 createable: true
-
 methods:
-
   - name: isSupported
     summary: Returns a Boolean value indicating whether the pedometer is supported on the current device. Returns true for iOS 8+.
     returns:
@@ -67,7 +65,6 @@ methods:
         or background execution, the pedometer object begins updates again.
 
         To stop the delivery of events, call the <Modules.CoreMotion.Pedometer.stopPedometerUpdates> method.
-
     parameters:
       - name: args
         summary: An object of arguments
@@ -94,7 +91,6 @@ methods:
 
         It is safe to call this method at the same time that you are generating continuous updates using the 
         <Modules.CoreMotion.Pedometer.startPedometerUpdates> method.
-
     parameters:
       - name: args
         summary: An object of arguments

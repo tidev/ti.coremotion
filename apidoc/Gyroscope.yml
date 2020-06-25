@@ -5,7 +5,6 @@ summary: Allows Titanium client applications to access CoreMotion's Gyroscope AP
 since: "5.2.0"
 extends: Titanium.Proxy
 createable: true
-
 methods:
   - name: setGyroUpdateInterval
     summary: The interval in milliseconds, for providing gyroscope updates to the callback.

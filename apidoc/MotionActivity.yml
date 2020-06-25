@@ -5,7 +5,6 @@ summary: Allows Titanium client applications to access CoreMotion's MotionActivi
 since: "5.2.0"
 extends: Titanium.Proxy
 createable: true
-
 methods:
   - name: isActivityAvailable
     summary: Returns a Boolean indicating whether motion activity data is available on the current device.
@@ -32,7 +31,6 @@ methods:
         method. If you call this method again with a new callback, the activity 
         manager stops delivering updates to the old callback and delivers them 
         to the new callback instead.
-        
     parameters:
       - name: callback
         summary: The method to be called when there is an update.
@@ -49,7 +47,6 @@ methods:
         activity data at most. If there are no samples for the specified range of time, 
         an error object with the code <Modules.CoreMotion.ERROR_UNKNOWN> is passed to the 
         callback.
-        
     parameters:
       - name: args
         summary: An object of arguments

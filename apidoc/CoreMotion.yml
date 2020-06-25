@@ -36,24 +36,25 @@ description: |
     Once you have [installed](#!/guide/Using_a_Module) the module and added it as a depedency,
     use `require()` to access it from JavaScript:
 
-        var CoreMotion = require("ti.coremotion");
+    ``` javascript
+    var CoreMotion = require("ti.coremotion");
 
-        // The `CoreMotion` variable is a reference to the Module object.  Use this reference to make
-        // subsequent calls to the CoreMotion Module API. The following example shows the step counting
-        // API of `CoreMotion`.
+    // The `CoreMotion` variable is a reference to the Module object.  Use this reference to make
+    // subsequent calls to the CoreMotion Module API. The following example shows the step counting
+    // API of `CoreMotion`.
 
-        var pedometer = CoreMotion.createPedometer();
+    var pedometer = CoreMotion.createPedometer();
 
-        // This code checks to see if the device can gather step counting data
-        if (pedometer.isStepCountingAvailable()) {
-            // If it can, it starts the step counter and outputs the data to the console
-            pedometer.startPedometerUpdates(function(e) {
-                Ti.API.info(JSON.stringify(e));
-            });
-        } else {
-            Ti.API.warn('This device does not support counting steps.');
-        }
-
+    // This code checks to see if the device can gather step counting data
+    if (pedometer.isStepCountingAvailable()) {
+        // If it can, it starts the step counter and outputs the data to the console
+        pedometer.startPedometerUpdates(function(e) {
+            Ti.API.info(JSON.stringify(e));
+        });
+    } else {
+        Ti.API.warn('This device does not support counting steps.');
+    }
+    ```
 
     ### Sample Application
 
@@ -63,7 +64,6 @@ description: |
 
     - [iOS Developer Library: Core Motion Framework Reference](https://developer.apple.com/library/ios/documentation/CoreMotion/Reference/CoreMotion_Reference/_index.html)
     - [iOS Developer Library: Motion Events](https://developer.apple.com/library/ios/documentation/EventHandling/Conceptual/EventHandlingiPhoneOS/motion_event_basics/motion_event_basics.html)
-
 properties:
   - name: ERROR_NULL
     summary: No error.

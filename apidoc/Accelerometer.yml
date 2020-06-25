@@ -5,7 +5,6 @@ summary: Allows Titanium client applications to access CoreMotion's Acceleromete
 since: "5.2.0"
 extends: Titanium.Proxy
 createable: true
-
 methods:
   - name: setAccelerometerUpdateInterval
     summary: The interval in milliseconds, for providing accelerometer updates to the callback.

@@ -5,7 +5,6 @@ summary: Allows Titanium client applications to access CoreMotion's Magnetometer
 since: "5.2.0"
 extends: Titanium.Proxy
 createable: true
-
 methods:
   - name: setMagnetometerUpdateInterval
     summary: The interval in milliseconds, for providing magnetometer updates to the callback.

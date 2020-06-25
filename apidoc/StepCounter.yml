@@ -12,9 +12,7 @@ deprecated:
         with older versions of this module. It will be removed in the next release. Please use
         [Modules.CoreMotion.Pedometer](Modules.CoreMotion.Pedometer) API instead, which provides the same functionality including
         new properties like `floorCount` and `distance`.
-
 methods:
-
   - name: isStepCountingAvailable
     summary: Returns a Boolean indicating whether step-counting support is available on the current device.
     returns:
@@ -37,8 +35,7 @@ methods:
         until the threshold is exceeded again.
 
         To stop the delivery of step-counting updates, call the 
-        <Modules.CoreMotion.StepCounter.stopStepCountingUpdates> method. 
-
+        <Modules.CoreMotion.StepCounter.stopStepCountingUpdates> method.
     parameters:
         - name: args
           summary: An object of arguments
