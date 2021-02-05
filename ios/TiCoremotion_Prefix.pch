@@ -3,9 +3,3 @@
     #import <Foundation/Foundation.h>
     #import <UIKit/UIKit.h>
 #endif
-
-#ifdef __IPHONE_11_0
-#define IS_XCODE_9 true
-#else
-#define IS_XCODE_9 false
-#endif
