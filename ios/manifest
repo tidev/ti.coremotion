@@ -4,7 +4,7 @@
 #
 version: 4.0.1
 apiversion: 2
-architectures: armv7 arm64 i386 x86_64
+architectures: arm64 x86_64
 description: ti.coremotion
 author: Hans Knoechel
 license: Apache-2.0
