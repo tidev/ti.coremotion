@@ -1,0 +1,41 @@
+name: iOS Build
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+env:
+  SDK_VERSION: 13.4.1.GA
+
+jobs:
+  ios:
+    runs-on: macos-latest
+    name: Build iOS module
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Setup node
+        uses: actions/setup-node@v7
+        with:
+          node-version: '26'
+
+      - name: Install Titanium CLI
+        run: npm install -g titanium
+
+      - name: Install Titanium SDK
+        run: ti sdk install ${{ env.SDK_VERSION }} --no-progress-bars
+
+      - name: Point the Xcode project at the installed SDK
+        run: sed -i .bak "s/TITANIUM_SDK_VERSION = .*/TITANIUM_SDK_VERSION = ${SDK_VERSION}/" ios/titanium.xcconfig
+
+      - name: Build module
+        working-directory: ios
+        run: ti build -p ios --build-only
+
+      - name: Upload module artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ti.coremotion-ios
+          path: ios/dist/ti.coremotion-iphone-*.zip
+          if-no-files-found: error
